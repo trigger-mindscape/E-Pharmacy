@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import { createAccount } from "../../../Redux/user/actions";
 import FormValidation from "../../../Validation/FormValidation";
 
 const Registration = ({ setIsAccount }) => {
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const [formData, setFormData] = useState({});
   const [errorData, setErrorData] = useState({});
@@ -35,7 +37,7 @@ const Registration = ({ setIsAccount }) => {
   const signUp = (e) => {
     e.preventDefault();
     // recheckUserInput();
-    dispatch(createAccount(formData));
+    dispatch(createAccount(formData,history));
     const { fastName, lastName, userName, phone, email, password, cmPassword } =
       formData;
     // if (

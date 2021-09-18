@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import { loginAccount } from '../../../Redux/user/actions';
 import FormValidation from '../../../Validation/FormValidation';
 import Registration from '../Registration/Registration';
@@ -8,6 +9,7 @@ import './Login.css';
 const LoginForm = () => {
   const [isAccount, setIsAccount] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const [formData, setFormData] = useState({});
   const [errorData, setErrorData] = useState({});
@@ -38,7 +40,7 @@ const LoginForm = () => {
   const login = (e) => {
     e.preventDefault();
     // recheckUserInput();
-    dispatch(loginAccount(formData));
+    dispatch(loginAccount(formData,history));
     const { email, password } =
       formData;
     // if (

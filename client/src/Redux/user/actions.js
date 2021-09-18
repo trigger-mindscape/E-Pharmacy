@@ -15,7 +15,7 @@ export const createAccount = (formData, history) => async (dispatch) => {
         message: "Account created successfully",
       })
     );
-    // history.push("/");
+    history.push("/checkout");
   } catch (error) {
     console.log(error?.message);
     dispatch(
@@ -39,7 +39,7 @@ export const loginAccount = (formData, history) => async (dispatch) => {
         message: `welcome ${data.userInfo.name}`,
       })
     );
-    // history.push("/");
+    history.push("/checkout");
   } catch (error) {
     dispatch(
       showNotification({

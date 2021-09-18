@@ -5,7 +5,6 @@ const User = require("../models/UserModel");
 const { signUpValidation,loginValidation } = require("../validations/AuthValidation");
 
 authController.sineUp = async (req, res) => {
-  console.log('----------------------request');
   try {
     const { fastName, lastName, userName, email, phone, password } = req.body;
 
@@ -24,10 +23,7 @@ authController.sineUp = async (req, res) => {
     });
 
     const saveUser = await newUser.save();
-    console.log(
-      "🚀 ~ file: AuthController.js ~ line 43 ~ authController.sineUp= ~ saveUser",
-      saveUser
-    );
+
 
     const token = jwt.sign({ id: saveUser._id }, process.env.JWT_PASSWORD);
     return res.send({

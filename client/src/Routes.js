@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PrivateRoute from './Helpers/PrivateRoute';
 import VenderDashboardPage from './Pages/Admin/Vendor/VenderDashboardPage';
 import LoginPage from './Pages/Authentication/LoginPage';
 import RegistrationPage from './Pages/Authentication/RegistrationPage';
@@ -27,21 +28,21 @@ const Navigation = () => {
           <Route path="/shopDetails/:vendorId">
             <ShopDetailsPage />
           </Route>
-          <Route path="/checkout">
+          <PrivateRoute path="/checkout">
             <CheckoutPage />
-          </Route>
+          </PrivateRoute>
           <Route exact path="/productDetails">
             <ProductDetails />
           </Route>
-          <Route exact path="/vendor/:panel">
+          <PrivateRoute exact path="/vendor/:panel">
             <VenderDashboardPage />
-          </Route>
+          </PrivateRoute>
           <Route path="/allShop">
               <AllShop></AllShop>
           </Route>
-          <Route path="/orderHistory">
+          <PrivateRoute path="/orderHistory">
             <OrderHistory></OrderHistory>
-          </Route>
+          </PrivateRoute>
         </Switch>
       </Router>
     </div>
