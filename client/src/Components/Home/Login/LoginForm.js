@@ -109,7 +109,7 @@ const LoginForm = () => {
                   <li></li>
                 </ul>
               </div>
-              <div className="md:flex md:items-center md:justify-center sm:w-auto md:h-full w-2/5 xl:w-2/5 p-8  md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white">
+              <div className="md:flex md:items-center md:justify-center sm:w-auto md:h-full w-5/6 sm:w-4/5 md:w-3/5 xl:w-2/5 p-8  md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white">
                 <div className="max-w-md w-full space-y-8">
                   <div className="text-center">
                     <h2 className="mt-6 text-3xl font-semibold text-teal-600">
