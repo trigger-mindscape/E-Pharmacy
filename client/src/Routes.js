@@ -10,7 +10,6 @@ import OrderHistory from './Pages/OrderHistory/OrderHistory';
 import ProductDetails from './Pages/ProductDetails/ProductDetails';
 import AllShop from './Pages/Shop/AllShop';
 import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
-import Blog from "./Components/Home/Blog/Blog";
 import Products from './Components/Products/Products';
 import CreateShop from './Pages/Shop/CreateShop';
 
