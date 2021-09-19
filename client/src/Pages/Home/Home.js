@@ -7,6 +7,7 @@ import NavBar from '../../Components/Home/NavBar/NavBar';
 import OfferCard from '../../Components/Home/OfferCard/OfferCard';
 import PictureUpload from '../../Components/Home/PictureUpload/PictureUpload';
 import ShopCard from '../../Components/Home/ShopCard/ShopCard';
+import CreateShopCTA from '../../Components/Home/VendorCTA/CreateShopCTA';
 import VendorCTA from '../../Components/Home/VendorCTA/VendorCTA';
 
 const Home = () => {
@@ -31,6 +32,7 @@ const Home = () => {
       <ShopCard />
       <PictureUpload />
       <VendorCTA />
+      <CreateShopCTA/>
       <Blog />
       <Footer />
     </>

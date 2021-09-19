@@ -31,7 +31,7 @@ const PictureUpload = () => {
             <div>
               <a
                 href="/"
-                className="inline-flex items-center justify-center h-12 px-6 font-sans font-medium tracking-wider transition duration-200 rounded shadow-md bg-teal-400 text-white uppercase hover:bg-teal-700 focus:shadow-outline focus:outline-none"
+                className="inline-flex items-center justify-center h-12 px-6 font-sans font-medium tracking-wider transition duration-200 rounded shadow-md bg-teal-400 text-white hover:text-white uppercase hover:bg-teal-700 focus:shadow-outline focus:outline-none"
               >
                 Upload Your prescription
               </a>

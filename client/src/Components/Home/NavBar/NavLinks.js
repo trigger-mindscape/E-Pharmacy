@@ -1,17 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NavLinks = () => {
   return (
     <>
       <li>
-        <a
-          href="/allshop"
+        <Link
+          to="/allshop"
           aria-label="Registered Shop"
           title="Registered Shop"
           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
         >
           Shop
-        </a>
+        </Link>
       </li>
       <li>
         <a
@@ -35,7 +36,7 @@ const NavLinks = () => {
       </li>
       <li>
         <a
-          href="/blogs"
+          href="#blogs"
           aria-label="Latest Blog"
           title="Latest Blog"
           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"

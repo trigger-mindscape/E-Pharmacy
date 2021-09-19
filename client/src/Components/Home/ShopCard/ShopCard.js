@@ -105,7 +105,7 @@ const ShopCard = () => {
       <div className="text-center mt-8">
         <Link
           to="/allShop"
-          className="inline-flex items-center justify-center h-12 px-6 font-sans font-medium tracking-wider transition duration-200 rounded shadow-md bg-teal-400 text-white hover:bg-teal-700 focus:shadow-outline focus:outline-none"
+          className="inline-flex items-center justify-center h-12 px-6 font-sans font-medium tracking-wider transition duration-200 rounded shadow-md bg-teal-400 text-white hover:text-white hover:bg-teal-700 focus:shadow-outline focus:outline-none"
         >
           See More{' '}
           <svg
@@ -115,12 +115,12 @@ const ShopCard = () => {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            {/* <path
+            <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
               d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
-            /> */}
+            />
           </svg>
         </Link>
       </div>
