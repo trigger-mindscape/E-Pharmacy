@@ -1,25 +1,66 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import NavBar from '../../Components/Home/NavBar/NavBar';
 import Footer from '../../Components/Home/Footer/Footer';
 import { RadioGroup } from '@headlessui/react';
+import axios from 'axios';
+import { useForm } from "react-hook-form";
 
 const settings = [
-  { name: 'Yes' },
-  { name: 'No' }
+  { delivery: 'Yes' },
+  { delivery: 'No' }
 ]
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 const CreateShop = () => {
 
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [isDeliveryHas, setIsDeliveryHas] = useState(settings[0])
+    const [imgURL, setImgURl] = useState(null)
+
+    const handleImageUpload = (e) => {
+        console.log(e.target.files[0]);
+        const imageData = new FormData()
+        imageData.set('key', 'e9b76bac5b575af176bc9b5717b706ca');
+        imageData.append('image', e.target.files[0]);
+
+        axios.post('https://api.imgbb.com/1/upload', imageData)
+        .then(function(response){
+            setImgURl(response.data.data.display_url)
+            //console.log(response)
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    }
+
+    const onSubmit = data => {
+        const vendorData = {
+            shopName: data.shopName,
+            ownerName: data.ownerName,
+            shopEmail: data.email,
+            shopLogo: imgURL,
+            shopBanner: imgURL,
+            address: data.address,
+            city: data.city,
+            zip: data.zip,
+            password: data.password,
+            confirmPassword: data.confirmPassword,
+            hasDelivery: isDeliveryHas
+        }
+
+        console.log(vendorData)
+    };
+
+
+    //console.log(isDeliveryHas)
     return (
         <div>
             <NavBar/>
             
             {/* Create Shop */}
             <div className="mx-auto container px-4 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 py-6">
-                <form className="space-y-8 divide-y divide-gray-200">
+                <form className="space-y-8 divide-y divide-gray-200" onSubmit={handleSubmit(onSubmit)}>
                     <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                         <div>
                         <div>
@@ -39,11 +80,13 @@ const CreateShop = () => {
                             <div className="mt-1 sm:mt-0 sm:col-span-2">
                                 <input
                                 type="text"
-                                name="shop-name"
+                                name="shopName"
                                 id="shop-name"
                                 placeholder="John's Shop"
                                 autoComplete="given-name"
                                 className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                                {...register("shopName")}
+                                required
                                 />
                             </div>
                             </div>
@@ -55,11 +98,13 @@ const CreateShop = () => {
                             <div className="mt-1 sm:mt-0 sm:col-span-2">
                                 <input
                                 type="text"
-                                name="owner-name"
+                                name="ownerName"
                                 id="owner-name"
                                 placeholder="John Doe"
                                 autoComplete="owner-name"
                                 className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                                {...register("ownerName")}
+                                required
                                 />
                             </div>
                             </div>
@@ -77,82 +122,81 @@ const CreateShop = () => {
                                 placeholder="johndoe@email.com"
                                 autoComplete="email"
                                 className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                                {...register("email")}
+                                required
                                 />
                             </div>
                             </div>
 
-                            
-
-                            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t sm:border-gray-200 sm:pt-5">
-                            <label htmlFor="photo" className="block text-sm font-medium text-gray-700">
-                                Shop Logo
-                            </label>
-                            <div className="mt-1 sm:mt-0 sm:col-span-2">
-                                <div className="flex items-center">
-                                <span className="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                                    <svg className="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                                    </svg>
-                                </span>
-                                <input
-                                    type="file"
-                                    className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                
-                                    Upload
-                                />
-                                </div>
-                            </div>
-                            </div>
-
-                            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                            <label htmlFor="cover-photo" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                                Cover photo
-                            </label>
-                            <div className="mt-1 sm:mt-0 sm:col-span-2">
-                                <div className="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                                <div className="space-y-1 text-center">
-                                    <svg
-                                    className="mx-auto h-12 w-12 text-gray-400"
-                                    stroke="currentColor"
-                                    fill="none"
-                                    viewBox="0 0 48 48"
-                                    aria-hidden="true"
-                                    >
-                                    <path
-                                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                        strokeWidth={2}
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                    </svg>
-                                    <div className="flex text-sm text-gray-600">
-                                    <label
-                                        htmlFor="file-upload"
-                                        className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
-                                    >
-                                        <span>Upload a file</span>
-                                        <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+                                <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <label htmlFor="cover-photo" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                                        Shop Logo
                                     </label>
-                                    <p className="pl-1">or drag and drop</p>
+                                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                                        <div className="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                        <div className="space-y-1 text-center">
+                                            <svg className="mx-auto h-8 w-8 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                            </svg>
+                                            <div className="flex text-sm text-gray-600">
+                                            <label
+                                                htmlFor="file-upload"
+                                                className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                                            >
+                                                <span>Upload a Logo</span>
+                                                <input id="file-upload" onChange={handleImageUpload} name="file-upload" type="file" className="sr-only" />
+                                            </label>
+                                            <p className="pl-1">or drag and drop</p>
+                                            </div>
+                                            <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                                        </div>
+                                        </div>
                                     </div>
-                                    <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                                 </div>
+
+
+                                <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <label htmlFor="cover-photo" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                                        Cover photo
+                                    </label>
+                                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                                        <div className="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                        <div className="space-y-1 text-center">
+                                            <svg
+                                            className="mx-auto h-12 w-12 text-gray-400"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            viewBox="0 0 48 48"
+                                            aria-hidden="true"
+                                            >
+                                            <path
+                                                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                                strokeWidth={2}
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                            />
+                                            </svg>
+                                            <div className="flex text-sm text-gray-600">
+                                            <label
+                                                htmlFor="file-upload"
+                                                className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                                            >
+                                                <span>Upload a file</span>
+                                                <input id="file-upload" onChange={handleImageUpload} name="file-upload" type="file" className="sr-only" />
+                                            </label>
+                                            <p className="pl-1">or drag and drop</p>
+                                            </div>
+                                            <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                                        </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            </div>
                         </div>
                         </div>
 
                         <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
                         
                         <div className="space-y-6 sm:space-y-5">
-                            
-
-
-
-
-                            
-
                             
 
                             <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
@@ -162,10 +206,12 @@ const CreateShop = () => {
                             <div className="mt-1 sm:mt-0 sm:col-span-2">
                                 <input
                                 type="text"
-                                name="street-address"
+                                name="address"
                                 id="street-address"
                                 autoComplete="street-address"
                                 className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
+                                {...register("address")}
+                                required
                                 />
                             </div>
                             </div>
@@ -180,6 +226,8 @@ const CreateShop = () => {
                                 name="city"
                                 id="city"
                                 className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                                {...register("city")}
+                                required
                                 />
                             </div>
                             </div>
@@ -197,6 +245,8 @@ const CreateShop = () => {
                                 id="zip"
                                 autoComplete="postal-code"
                                 className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                                {...register("zip")}
+                                required
                                 />
                             </div>
                             </div>
@@ -212,6 +262,8 @@ const CreateShop = () => {
                                 name="password"
                                 id="password"
                                 className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                                {...register("password")}
+                                required
                                 />
                             </div>
                             </div>
@@ -227,6 +279,8 @@ const CreateShop = () => {
                                 name="confirmPassword"
                                 id="confirmPassword"
                                 className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                                {...register("confirmPassword")}
+                                required
                                 />
                             </div>
                             </div>
@@ -244,12 +298,12 @@ const CreateShop = () => {
                                         <div className="max-w-lg space-y-4">
                                             
                                             
-                                            <RadioGroup value={isDeliveryHas} onChange={setIsDeliveryHas}>
+                                            <RadioGroup value={isDeliveryHas} onChange={setIsDeliveryHas} >
                                                 <RadioGroup.Label className="sr-only">Privacy setting</RadioGroup.Label>
                                                 <div className="bg-white rounded-md -space-y-px">
                                                     {settings.map((setting, settingIdx) => (
                                                     <RadioGroup.Option
-                                                        key={setting.name}
+                                                        key={setting.delivery}
                                                         value={setting}
                                                         className={({ checked }) =>
                                                         classNames(
@@ -277,7 +331,7 @@ const CreateShop = () => {
                                                                 as="span"
                                                                 className={classNames(checked ? 'text-indigo-900' : 'text-gray-900', 'block text-sm font-medium')}
                                                             >
-                                                                {setting.name}
+                                                                {setting.delivery}
                                                             </RadioGroup.Label>
                                                             <RadioGroup.Description
                                                                 as="span"
@@ -314,12 +368,13 @@ const CreateShop = () => {
                         >
                             Cancel
                         </button>
-                        <button
+                        <input
+                            
                             type="submit"
                             className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-                        >
-                            Create Account
-                        </button>
+                        
+                            value="Create Account"
+                        />
                         </div>
                     </div>
                     </form>
