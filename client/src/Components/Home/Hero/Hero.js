@@ -15,13 +15,13 @@ const Hero = () => {
               Say goodbye to all your healthcare worries with us
             </div>
 
-            <div className="relative flex items-center max-w-md mx-auto mt-12 overflow-hidden text-center rounded-full shadow-3xl">
+            <div className="relative flex items-center max-w-md mx-auto mt-12 overflow-hidden text-center rounded-full border-2 border-teal-300 shadow-3xl">
               {/* Search functionality for a medicine */}
               <input
                 type="text"
                 name="search"
                 placeholder="Search your medicine from here"
-                className="w-full h-12 px-6 py-2 font-medium text-teal-800 placeholder-gray-500 tracking-wide focus:outline-none"
+                className="w-full h-12 px-6 py-2 font-medium text-teal-800 placeholder-gray-500 tracking-wide focus:outline-none border-none"
               />
               <span className="relative top-0 right-0 block ">
                 <button type="button" className="hero-search-button">

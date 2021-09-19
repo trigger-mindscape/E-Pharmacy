@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import Footer from '../../Components/Home/Footer/Footer';
 import Header from '../../Components/Home/NavBar/Header';
 import NavBar from '../../Components/Home/NavBar/NavBar';
@@ -13,7 +13,7 @@ const ProductDetails = () => {
   }, []);
 
   return (
-    <>
+    <Fragment>
       <Header />
       <NavBar />
       <section className="overflow-hidden">
@@ -23,7 +23,7 @@ const ProductDetails = () => {
         </div>
       </section>
       <Footer />
-    </>
+    </Fragment>
   );
 };
 
