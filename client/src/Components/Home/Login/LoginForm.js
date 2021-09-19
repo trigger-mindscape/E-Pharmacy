@@ -230,7 +230,7 @@ const LoginForm = () => {
                           href="#0"
                           className="text-teal-400 hover:text-teal-600"
                         >
-                          Forgot your password?
+                          Forgot your password? 
                         </a>
                       </div>
                     </div>
