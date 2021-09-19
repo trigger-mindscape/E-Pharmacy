@@ -50,7 +50,7 @@ const Navigation = () => {
             <OrderHistory></OrderHistory>
           </PrivateRoute>
             
-          </Route>
+          
         </Switch>
       </Router>
     </div>
