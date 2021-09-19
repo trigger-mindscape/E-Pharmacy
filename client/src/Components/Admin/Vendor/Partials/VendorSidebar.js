@@ -47,7 +47,7 @@ const VendorSidebar = ({ sidebarOpen, setSidebarOpen }) => {
           {/* Close button */}
           <button
             ref={trigger}
-            className="lg:hidden pl-4 pt-5 text-white hover:text-teal-900"
+            className="lg:hidden pl-4 pt-5 text-teal-600 hover:text-teal-900"
             onClick={() => setSidebarOpen(!sidebarOpen)}
             aria-controls="sidebar"
             aria-expanded={sidebarOpen}
