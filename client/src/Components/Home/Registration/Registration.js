@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import { createAccount } from "../../../Redux/user/actions";
 import FormValidation from "../../../Validation/FormValidation";
 
@@ -212,13 +213,22 @@ const Registration = ({ setIsAccount }) => {
               </div>
             </div>
 
-            <div className="flex justify-center mt-6">
+            <div className="flex justify-evenly mt-6 ">
               <button
                 onClick={(e) => signUp(e)}
                 className="px-8 py-2 font-semibold text-white rounded-full shadow-lg bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500"
               >
                 Register
               </button>
+
+              <Link to="/createShop">
+                <button
+                  
+                  className="px-8 py-2 font-semibold text-white rounded-full shadow-lg bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500"
+                >
+                  Register Shop
+                </button>
+              </Link>
             </div>
 
             <div className="flex justify-center mt-1">
@@ -226,7 +236,7 @@ const Registration = ({ setIsAccount }) => {
                 onClick={() => setIsAccount((bool) => !bool)}
                 className="text-lg font-semibold tracking-wide text-teal-500 mt-5"
               >
-                Already have account?
+                Already have account? <span className="text-sm underline"><Link to="/login">Login </Link></span>
               </h6>
             </div>
           </form>

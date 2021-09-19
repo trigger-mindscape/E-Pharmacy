@@ -43,9 +43,6 @@ const Navigation = () => {
           <Route path="/allShop">
             <AllShop></AllShop>
           </Route>
-          <Route path="/blogs">
-            <Blog></Blog>
-          </Route>
           <Route path="/medicine">
             <Products></Products>
           </Route>

@@ -11,7 +11,7 @@ const CreateShopCTA = () => {
                         sells. It's totally free!
                         </p>
                         <Link to="/createShop">
-                            <button className="flex py-2 px-6 rounded shadow-3xl bg-teal-50 focus:outline-none active:bg-teal-400 text-teal-600 font-medium transition duration-150 ease-in-out hover:bg-teal-100 hover:text-teal-800">
+                            <button className="flex py-2 px-6 rounded shadow-3xl bg-white focus:outline-none active:bg-teal-400 text-teal-600 font-medium transition duration-150 ease-in-out hover:bg-teal-100 hover:text-teal-800">
                             <svg
                                 className="w-5 h-5 mr-1"
                                 fill="none"
