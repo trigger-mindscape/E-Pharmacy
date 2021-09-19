@@ -9,8 +9,10 @@ import Home from './Pages/Home/Home';
 import OrderHistory from './Pages/OrderHistory/OrderHistory';
 import ProductDetails from './Pages/ProductDetails/ProductDetails';
 import AllShop from './Pages/Shop/AllShop';
-import CreateShop from './Pages/Shop/CreateShop';
 import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
+import Blog from "./Components/Home/Blog/Blog";
+import Products from './Components/Products/Products';
+import CreateShop from './Pages/Shop/CreateShop';
 
 const Navigation = () => {
   return (
@@ -29,27 +31,31 @@ const Navigation = () => {
           <Route path="/shopDetails/:vendorId">
             <ShopDetailsPage />
           </Route>
-          <Route path="/checkout">
+          <PrivateRoute path="/checkout">
             <CheckoutPage />
-          </Route>
+          </PrivateRoute>
           <Route exact path="/productDetails">
             <ProductDetails />
           </Route>
-          <Route exact path="/vendor/:panel">
+          <PrivateRoute exact path="/vendor/:panel">
             <VenderDashboardPage />
-          </Route>
+          </PrivateRoute>
           <Route path="/allShop">
-              <AllShop></AllShop>
+            <AllShop></AllShop>
           </Route>
-
-          <Route path="/createShop">
-              <CreateShop/>
+          <Route path="/blogs">
+            <Blog></Blog>
           </Route>
-    
+          <Route path="/medicine">
+            <Products></Products>
+          </Route>
           <PrivateRoute path="/orderHistory">
             <OrderHistory></OrderHistory>
           </PrivateRoute>
-            
+          
+          <Route path="/createShop">
+            <CreateShop/>
+          </Route>
           
         </Switch>
       </Router>

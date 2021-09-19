@@ -1,5 +1,4 @@
 import React from 'react';
-import CreateShopCTA from './CreateShopCTA';
 
 const VendorCTA = () => {
   return (
@@ -152,9 +151,7 @@ const VendorCTA = () => {
           </div>
         </div>
       </section>
-
-      {/* Create Shop CTA */}
-      <CreateShopCTA/>
+      
     </>
   );
 };
