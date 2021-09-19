@@ -29,24 +29,28 @@ const Navigation = () => {
           <Route path="/shopDetails/:vendorId">
             <ShopDetailsPage />
           </Route>
-          <PrivateRoute path="/checkout">
+          <Route path="/checkout">
             <CheckoutPage />
-          </PrivateRoute>
+          </Route>
           <Route exact path="/productDetails">
             <ProductDetails />
           </Route>
-          <PrivateRoute exact path="/vendor/:panel">
+          <Route exact path="/vendor/:panel">
             <VenderDashboardPage />
-          </PrivateRoute>
+          </Route>
           <Route path="/allShop">
               <AllShop></AllShop>
           </Route>
+
           <Route path="/createShop">
               <CreateShop/>
           </Route>
+    
           <PrivateRoute path="/orderHistory">
             <OrderHistory></OrderHistory>
           </PrivateRoute>
+            
+          </Route>
         </Switch>
       </Router>
     </div>
