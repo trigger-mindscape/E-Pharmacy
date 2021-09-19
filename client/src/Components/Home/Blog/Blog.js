@@ -1,15 +1,27 @@
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+import Header from '../NavBar/Header';
+import NavBar from '../NavBar/NavBar';
 
 const Blog = () => {
   return (
-    <div>
+    <Fragment>
+      <Helmet>
+        <title>Latest Blog</title>
+        <meta
+          name="it would be dynamic by blog"
+          content="it would be dynamic by blog"
+        />
+      </Helmet>
+      <Header />
+      <NavBar />
       <div className="px-4 pt-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-        <h2 className="font-display text-center text-4xl mb-4 font-semibold text-teal-500 tracking-wide">
+        <h2 className="mb-4 text-4xl font-semibold tracking-wide text-center text-teal-500 font-display">
           Our Latest News
         </h2>
-        <p className="font-sans text-center mb-12 text-gray-700">
+        <p className="mb-12 font-sans text-center text-gray-700">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore,
           dolorem.
         </p>
@@ -21,26 +33,26 @@ const Blog = () => {
               alt=""
             />
             <div className="p-5 mb-4">
-              <p className="mb-3 text-xs font-semibold font-sans tracking-wide uppercase pb-4 border-b border-gray-300 ">
+              <p className="pb-4 mb-3 font-sans text-xs font-semibold tracking-wide uppercase border-b border-gray-300 ">
                 <a
                   href="/"
-                  className="transition-colors duration-200 text-teal-500 hover:text-teal-accent-700 border-r border-gray-300 pr-4"
+                  className="pr-4 text-teal-500 transition-colors duration-200 border-r border-gray-300 hover:text-teal-accent-700"
                   aria-label="Category"
                   title="date"
                 >
                   28 Jan 2021
                 </a>
-                <span className="text-gray-600 px-4">4 comments</span>
+                <span className="px-4 text-gray-600">4 comments</span>
               </p>
               <a
                 href="/"
                 aria-label="Category"
                 title="Visit the East"
-                className="inline-block mb-3 text-2xl font-display font-medium pt-3 leading-5 transition-colors duration-200 text-gray-700"
+                className="inline-block pt-3 mb-3 text-2xl font-medium leading-5 text-gray-700 transition-colors duration-200 font-display"
               >
                 Travelling Solo Is Awesome
               </a>
-              <p className="mb-2 text-gray-700 pb-4">
+              <p className="pb-4 mb-2 text-gray-700">
                 Solo travel gives you a chance to listen to your gut and control
                 what direction you want to head gut and control.
               </p>
@@ -60,26 +72,26 @@ const Blog = () => {
               alt=""
             />
             <div className="p-5 mb-4">
-              <p className="mb-3 text-xs font-semibold font-sans  tracking-wide uppercase pb-4 border-b border-gray-300 ">
+              <p className="pb-4 mb-3 font-sans text-xs font-semibold tracking-wide uppercase border-b border-gray-300 ">
                 <a
                   href="/"
-                  className="transition-colors duration-200 text-teal-500 hover:text-teal-accent-700 border-r border-gray-300 pr-4"
+                  className="pr-4 text-teal-500 transition-colors duration-200 border-r border-gray-300 hover:text-teal-accent-700"
                   aria-label="Category"
                   title="date"
                 >
                   18 Jun 2021
                 </a>
-                <span className="text-gray-600 px-4">1 comments</span>
+                <span className="px-4 text-gray-600">1 comments</span>
               </p>
               <a
                 href="/"
                 aria-label="Category"
                 title="Visit the East"
-                className="inline-block mb-3 text-2xl font-display font-medium pt-3 leading-5 transition-colors duration-200 text-gray-700"
+                className="inline-block pt-3 mb-3 text-2xl font-medium leading-5 text-gray-700 transition-colors duration-200 font-display"
               >
                 A Beautiful Sunday Morning
               </a>
-              <p className="mb-2 text-gray-700 pb-4">
+              <p className="pb-4 mb-2 text-gray-700">
                 There seems to be nature's healing medicine in fresh air. You
                 and your children will notice sweet aromas in the air.
               </p>
@@ -99,33 +111,33 @@ const Blog = () => {
               alt=""
             />
             <div className="p-5 mb-4">
-              <p className="mb-3 text-xs font-semibold font-sans  tracking-wide uppercase pb-4 border-b border-gray-300 ">
+              <p className="pb-4 mb-3 font-sans text-xs font-semibold tracking-wide uppercase border-b border-gray-300 ">
                 <a
                   href="/"
-                  className="transition-colors duration-200 text-teal-500 hover:text-teal-accent-700 border-r border-gray-300 pr-4"
+                  className="pr-4 text-teal-500 transition-colors duration-200 border-r border-gray-300 hover:text-teal-accent-700"
                   aria-label="Category"
                   title="date"
                 >
                   5 SEP 2021
                 </a>
-                <span className="text-gray-600 px-4">2 comments</span>
+                <span className="px-4 text-gray-600">2 comments</span>
               </p>
               <a
                 href="/"
                 aria-label="Category"
                 title="Visit the East"
-                className="inline-block mb-3 text-2xl font-display font-medium pt-3 leading-5 transition-colors duration-200 text-gray-700"
+                className="inline-block pt-3 mb-3 text-2xl font-medium leading-5 text-gray-700 transition-colors duration-200 font-display"
               >
                 Blood Pressure Machine
               </a>
-              <p className="mb-2 text-gray-700 pb-4">
+              <p className="pb-4 mb-2 text-gray-700">
                 To measure blood pressure, your doctor uses an instrument call a
                 sphygmomanometer, which is more often referred to as a blood
                 pressure cuff.
               </p>
               <a
                 href="#_"
-                className="bg-teal-300 p-2 rounded-sm tracking-wide text-white shadow-lg transition-all  hover:bg-teal-500 cursor-pointer"
+                className="p-2 tracking-wide text-white transition-all bg-teal-300 rounded-sm shadow-lg cursor-pointer hover:bg-teal-500"
               >
                 Read More <FontAwesomeIcon icon={faArrowRight} />
               </a>
@@ -133,7 +145,7 @@ const Blog = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

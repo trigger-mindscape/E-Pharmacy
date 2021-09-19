@@ -117,7 +117,7 @@ const Footer = () => {
                 </li>
                 <li className="mt-3">
                   <Link
-                    to="/"
+                    to="/blogs"
                     className="text-gray-500 cursor-pointer hover:text-teal-500"
                   >
                     Blog
@@ -223,8 +223,10 @@ const Footer = () => {
         <div className="bg-teal-50">
           <div className="container px-5 py-4 mx-auto">
             <p className="text-sm text-gray-700 capitalize xl:text-center">
-              © 2021 All rights reserved{' '}
-              <span className="text-teal-700">E-Pharmacy</span>
+              © {new Date().getFullYear()} All rights reserved{" "}
+              <a href="/" className="text-teal-700">
+                E-Pharmacy
+              </a>
             </p>
           </div>
         </div>
