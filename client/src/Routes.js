@@ -9,6 +9,7 @@ import Home from './Pages/Home/Home';
 import OrderHistory from './Pages/OrderHistory/OrderHistory';
 import ProductDetails from './Pages/ProductDetails/ProductDetails';
 import AllShop from './Pages/Shop/AllShop';
+import CreateShop from './Pages/Shop/CreateShop';
 import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
 
 const Navigation = () => {
@@ -40,8 +41,15 @@ const Navigation = () => {
           <Route path="/allShop">
               <AllShop></AllShop>
           </Route>
-          <Route path="/orderHistory">
+
+          <Route path="/createShop">
+              <CreateShop/>
+          </Route>
+    
+          <PrivateRoute path="/orderHistory">
             <OrderHistory></OrderHistory>
+          </PrivateRoute>
+            
           </Route>
         </Switch>
       </Router>
