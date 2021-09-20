@@ -9,9 +9,9 @@ const OfferCard = () => {
           src="https://wpbingosite.com/wordpress/fuho/wp-content/uploads/2021/05/banner-11.jpg"
           alt="Mountain"
         />
-        <div className="absolute top-8 sm:top-3 md:top-6 lg:top-12 left-6 lg:left-6 text-white">
+        <div className="absolute top-8 sm:top-3 md:top-6 lg:top-12 left-6 lg:left-6">
           <h2 className="text-sm lg:text-md mb-1 lg:mb-2">DON’T MISS</h2>
-          <h1 className="font-semibold text-xl lg:text-3xl mb-1 lg:mb-2">
+          <h1 className="font-semibold text-xl lg:text-3xl mb-1 lg:mb-2 text-white">
             Huge Sale <br />
             70%
           </h1>
@@ -24,9 +24,9 @@ const OfferCard = () => {
           src="https://wpbingosite.com/wordpress/fuho/wp-content/uploads/2021/05/banner-12.jpg"
           alt="River"
         />
-        <div className="absolute top-8 sm:top-3 md:top-6 lg:top-12 left-6 lg:left-6 text-white">
+        <div className="absolute top-8 sm:top-3 md:top-6 lg:top-12 left-6 lg:left-6">
           <h2 className="text-sm lg:text-md mb-1 lg:mb-2">COMMITMENT</h2>
-          <h1 className="font-semibold text-xl lg:text-3xl mb-1 lg:mb-2">
+          <h1 className="font-semibold text-xl lg:text-3xl mb-1 lg:mb-2 text-white">
             100% Secure
             <br />
             delivery
@@ -41,9 +41,9 @@ const OfferCard = () => {
           src="https://wpbingosite.com/wordpress/fuho/wp-content/uploads/2021/05/banner-13.jpg"
           alt="Forest"
         />
-        <div className="absolute top-8 sm:top-3 md:top-6 lg:top-12 left-6 lg:left-6 text-white">
+        <div className="absolute top-8 sm:top-3 md:top-6 lg:top-12 left-6 lg:left-6">
           <h2 className="text-sm lg:text-md mb-1 lg:mb-2">FREE SHIPPING</h2>
-          <h1 className="font-semibold text-xl lg:text-3xl mb-1 lg:mb-2">
+          <h1 className="font-semibold text-xl lg:text-3xl mb-1 lg:mb-2 text-white">
             35%
             <br />
             OFF

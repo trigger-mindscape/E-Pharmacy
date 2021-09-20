@@ -2,7 +2,7 @@ import React from 'react';
 
 const ShopPromotion = () => {
     return (
-        <div className="px-5 my-10 mx-32 sm:my-0 lg:p-10 grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div className="px-5 my-10 sm:my-0 mx-32 lg:p-10 grid grid-cols-1 sm:grid-cols-3 gap-5">
         <div className="rounded overflow-hidden shadow-lg relative ">
           <img
             className="w-full h-auto"
