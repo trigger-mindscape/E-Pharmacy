@@ -10,6 +10,8 @@ import OrderHistory from './Pages/OrderHistory/OrderHistory';
 import ProductDetails from './Pages/ProductDetails/ProductDetails';
 import AllShop from './Pages/Shop/AllShop';
 import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
+import Products from './Components/Products/Products';
+import CreateShop from './Pages/Shop/CreateShop';
 
 const Navigation = () => {
   return (
@@ -38,11 +40,19 @@ const Navigation = () => {
             <VenderDashboardPage />
           </PrivateRoute>
           <Route path="/allShop">
-              <AllShop></AllShop>
+            <AllShop></AllShop>
+          </Route>
+          <Route path="/medicine">
+            <Products></Products>
           </Route>
           <PrivateRoute path="/orderHistory">
             <OrderHistory></OrderHistory>
           </PrivateRoute>
+          
+          <Route path="/createShop">
+            <CreateShop/>
+          </Route>
+          
         </Switch>
       </Router>
     </div>

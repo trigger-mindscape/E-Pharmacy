@@ -1,17 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NavLinks = () => {
   return (
     <>
       <li>
-        <a
-          href="/"
-          aria-label="Our product"
-          title="Our product"
+        <Link
+          to="/allshop"
+          aria-label="Registered Shop"
+          title="Registered Shop"
           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
         >
           Shop
-        </a>
+        </Link>
       </li>
       <li>
         <a
@@ -25,9 +26,9 @@ const NavLinks = () => {
       </li>
       <li>
         <a
-          href="/"
-          aria-label="Product pricing"
-          title="Product pricing"
+          href="/medicine"
+          aria-label="Our Medicine"
+          title="Our Medicine"
           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
         >
           Medicine
@@ -35,9 +36,9 @@ const NavLinks = () => {
       </li>
       <li>
         <a
-          href="/"
-          aria-label="Blog"
-          title="Blog"
+          href="#blogs"
+          aria-label="Latest Blog"
+          title="Latest Blog"
           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
         >
           Blog

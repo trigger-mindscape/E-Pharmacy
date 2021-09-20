@@ -49,7 +49,7 @@ const NavBar = () => {
           </ul>
 
           {/* For Mobile Menu */}
-          <div className="lg:hidden z-40">
+          <div className="z-40 lg:hidden">
             <button
               aria-label="Open Menu"
               title="Open Menu"
@@ -98,7 +98,7 @@ const NavBar = () => {
                     <ul className="space-y-4">
                       <li>
                         <a
-                          href="/"
+                          href="/allshop"
                           aria-label="Our product"
                           title="Our product"
                           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
