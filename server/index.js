@@ -28,6 +28,9 @@ const options = {
 			{
 				url: "http://localhost:4000/",
 			},
+			{
+				url: "https://e-pharmacy-by-triggermindscape.herokuapp.com/",
+			},
 		],
 	},
 	apis: ["./api/routers/*.js"],
