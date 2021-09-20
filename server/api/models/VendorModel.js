@@ -27,7 +27,7 @@ const vendorSchema = new Schema(
       lowercase: true,
     },
     phone: {
-      type: Number,
+      type: String,
       required: true,
     },
     password: {
@@ -45,7 +45,7 @@ const vendorSchema = new Schema(
         required: true,
     },
     postalCode: {
-        type:Number,
+        type:String,
         required: true,
     },
     rating: {
