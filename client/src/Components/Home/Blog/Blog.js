@@ -1,20 +1,12 @@
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
 import Header from '../NavBar/Header';
 import NavBar from '../NavBar/NavBar';
 
 const Blog = () => {
   return (
     <Fragment>
-      <Helmet>
-        <title>Latest Blog</title>
-        <meta
-          name="it would be dynamic by blog"
-          content="it would be dynamic by blog"
-        />
-      </Helmet>
       <Header />
       <NavBar />
       <div className="px-4 pt-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">

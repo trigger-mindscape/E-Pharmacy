@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import Blog from '../../Components/Home/Blog/Blog';
 import Footer from '../../Components/Home/Footer/Footer';
 import Hero from '../../Components/Home/Hero/Hero';
@@ -16,9 +17,13 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>E-Pharmacy</title>
+        <meta name='' content='' />
+      </Helmet>
       {/* Background Image with 3 sections */}
       <div
-        className="min-h-auto lg:min-h-screen bg-cover bg-no-repeat bg-center"
+        className="bg-center bg-no-repeat bg-cover min-h-auto lg:min-h-screen"
         style={{
           backgroundImage: `url(https://i.ibb.co/9hFrQqt/medicine-home-banner.png)`,
         }}

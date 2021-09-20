@@ -8,10 +8,6 @@ import NavBar from '../Home/NavBar/NavBar';
 const Products = () => {
   return (
     <Fragment>
-      <Helmet>
-        <title>Our Products</title>
-        <meta name="Our Products" content="Best E-Pharmacy Products in the world" />
-      </Helmet>
       <Header />
       <NavBar />
       <div className="bg-white">

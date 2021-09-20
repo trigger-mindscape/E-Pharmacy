@@ -12,14 +12,14 @@ const ShopDetails = () => {
       {/* Shop Banner*/}
       <ShopBanner />
 
-      <div className="flex md:flex-row flex-col-reverse mx-auto container px-4 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+      <div className="container flex flex-col-reverse px-4 mx-auto md:flex-row sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         {/* Shop sidebar */}
-        <div className="md:w-3/12 bg-white order-first">
+        <div className="order-first bg-white md:w-3/12">
           <Categories />
           <ContactVendor />
         </div>
 
-        <div className="md:w-9/12 order-last">
+        <div className="order-last md:w-9/12">
           <ShopPromotion/>
           {/* Products */}
           <Products />
