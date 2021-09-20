@@ -23,7 +23,7 @@ const userSchema = new Schema(
       lowercase: true,
     },
     phone: {
-      type: Number,
+      type: String,
       required: true,
     },
     password: {
