@@ -6,18 +6,20 @@ const vendorData = [
     banner: 'http://dummyimage.com/100x100.png/dddddd/000000',
     cardBanner: require('../Assets/images/vendorCardBanner/Image-1.jpg')
       .default,
-    rating: 2,
-    totalReview: 22,
-    city: 'Seoul',
-    location: 'Albenia',
-    longitude: 126.9779692,
-    'postal code': 'G83',
+    
     name: 'Datha Harmon',
     phone: '717-24-2429',
     email: 'dharmon0@latimes.com',
     hasOwnDelivery: true,
     isDeliveryFree: true,
     status: 'Open',
+
+    rating: 2,
+    totalReview: 22,
+    city: 'Seoul',
+    location: 'Albenia',
+    longitude: 126.9779692,
+    'postal code': 'G83',
   },
   {
     _id: '8fb99109-ca7c-4a45-b6b1-5c0ea3279da6',
