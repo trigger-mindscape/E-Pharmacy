@@ -13,9 +13,6 @@ const Registration = ({ setIsAccount }) => {
   const [errorData, setErrorData] = useState({});
 
   const handelBlur = (e) => {
-    //checking input value
-    // const newErrorValue = FormValidation(e.target.name, e.target.value);
-    // setErrorData((errorData) => ({ ...errorData, ...newErrorValue }));
 
     //setting input value in state
     setFormData((formData) => ({
