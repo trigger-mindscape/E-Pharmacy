@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import AddNewCategory from './AddNewCategory';
 import AddNewProducts from './AddNewProducts';
 
 const AllProducts = () => {
   const [editModal, setEditModal] = useState(false);
+  const [newCategory, setNewCategory] = useState(false);
   const [viewProduct, setViewProduct] = useState();
+  const [viewCategory, setViewCategory] = useState()
 
   const orders = [
     {
@@ -59,7 +62,7 @@ const AllProducts = () => {
         <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full">
           <div className="flex-start">
             <button
-              className="flex-shrink-0 px-4 py-2 text-base font-medium tracking-wide text-white bg-teal-500 rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-teal-200"
+              className="flex-shrink-0 px-4 py-2 text-base mb-3 font-medium tracking-wide text-white bg-teal-500 rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-teal-200"
               onClick={() => setEditModal(true)}
             >
               Add a new Product
@@ -67,6 +70,7 @@ const AllProducts = () => {
             <button
               className="flex-shrink-0 px-4 py-2 text-base font-medium tracking-wide text-white bg-teal-500 rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-teal-200 ml-6"
               type="submit"
+              onClick={()=> setNewCategory(true)}
             >
               Add Category
             </button>{' '}
@@ -286,6 +290,10 @@ const AllProducts = () => {
       {/* Edit Modal Component */}
       {editModal ? (
         <AddNewProducts setEditModal={setEditModal} viewProduct={viewProduct} />
+      ) : null}
+
+{newCategory ? (
+        <AddNewCategory setNewCategory={setNewCategory} />
       ) : null}
     </section>
   );
