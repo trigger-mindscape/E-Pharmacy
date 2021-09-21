@@ -19,7 +19,11 @@ export const loginUserApi = formData => API.post(`/auth/login`, formData)
 export const createVendorApi = formData => API.post(`/vendor/auth/signup`, formData)
 export const loginVendorApi = formData => API.post(`/vendor/auth/login`, formData)
 
-//vendor auth
+//Shop
 export const getAllShopApi = () => API.get(`/shop/get/all`)
 export const getSingleShopApi = vendorId => API.get(`/shop/get/${vendorId}`)
+
+//Category
+export const createCategoryApi = formData => API.post(`/category/add`, formData)
+export const getSingleShopCategoryApi = vendorId => API.get(`/category/get/${vendorId}`)
 
