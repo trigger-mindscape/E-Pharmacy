@@ -1,19 +1,19 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import vendorData from '../../../Data/vendor';
+import React from "react";
+import { useSelector } from "react-redux";
+
 
 const ShopBanner = () => {
-  const { vendorId } = useParams();
-  const newVendor = vendorData.find((vendor) => vendor._id === vendorId);
+  const newVendor = useSelector((state) => state.shop.singleShop);
+  console.log("🚀 ~ file: ShopBanner.js ~ line 15 ~ ShopBanner ~ newVendor", newVendor)
 
-  const { shopName, cardBanner, logo, location, city, name, phone, status } =
+  const { shopName, banner, logo, location, city, name, phone, status } =
     newVendor;
 
   return (
     <div className="container mx-auto">
       <div className="max-w-full relative mt-6 mb-10">
         {/* Shop banner */}
-        <img src={cardBanner} alt="banner" className="max-h-80 w-full" />
+        <img src={banner} alt="banner" className="max-h-80 w-full" />
 
         {/* Shop Details */}
         <div className="bg-teal-500 sm:bg-blue-600 bg-opacity-90 sm:bg-opacity-40 py-4 lg:w-4/12 md:py-4 lg:py-12 px-4 lg:absolute left-0 top-0 text-white min-h-96 flex flex-col items-center justify-center text-sans">

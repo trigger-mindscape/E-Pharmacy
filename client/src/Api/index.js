@@ -21,6 +21,5 @@ export const loginVendorApi = formData => API.post(`/vendor/auth/login`, formDat
 
 //vendor auth
 export const getAllShopApi = () => API.get(`/shop/get/all`)
-export const getSixShopApi = () => API.get(`/shop/get/six`)
-export const getSingleShop = vendorId => API.get(`/shop/get/${vendorId}`)
+export const getSingleShopApi = vendorId => API.get(`/shop/get/${vendorId}`)
 
