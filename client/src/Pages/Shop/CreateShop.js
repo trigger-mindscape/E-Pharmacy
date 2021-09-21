@@ -16,7 +16,8 @@ const CreateShop = () => {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [isDeliveryHas, setIsDeliveryHas] = useState(settings[0])
-    const [imgURL, setImgURl] = useState(null)
+    const [logoImgURL, setLogoImgURl] = useState(null)
+    const [bannerImgURL, setBannerImgURl] = useState(null)
 
     const handleImageUpload = (e) => {
         console.log(e.target.files[0]);
@@ -26,12 +27,15 @@ const CreateShop = () => {
 
         axios.post('https://api.imgbb.com/1/upload', imageData)
         .then(function(response){
-            setImgURl(response.data.data.display_url)
-            //console.log(response)
+            // setLogoImgURl(response.data.data.display_url)
+            // setBannerImgURl(response.data.data.display_url)
+            //console.log(response.data.data.display_url)
         })
         .catch(function(error){
             console.log(error)
         })
+
+    
     }
 
     const onSubmit = data => {
@@ -39,8 +43,8 @@ const CreateShop = () => {
             shopName: data.shopName,
             ownerName: data.ownerName,
             shopEmail: data.email,
-            shopLogo: imgURL,
-            shopBanner: imgURL,
+            shopLogo: logoImgURL,
+            shopBanner: bannerImgURL,
             address: data.address,
             city: data.city,
             zip: data.zip,

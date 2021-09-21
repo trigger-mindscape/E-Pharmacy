@@ -1,6 +1,61 @@
-import React from 'react';
+import React, { Fragment, useState } from 'react';
+import axios from 'axios';
+import { useForm } from "react-hook-form";
+import { Listbox, Transition } from '@headlessui/react'
+import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
+
+const category = [
+  { id: 1, name: 'Wade Cooper' },
+  { id: 2, name: 'Arlene Mccoy' },
+  { id: 3, name: 'Devon Webb' },
+  { id: 4, name: 'Tom Cook' },
+  { id: 5, name: 'Tanya Fox' },
+  { id: 6, name: 'Hellen Schmidt' },
+  { id: 7, name: 'Caroline Schultz' },
+  { id: 8, name: 'Mason Heaney' },
+  { id: 9, name: 'Claudie Smitham' },
+  { id: 10, name: 'Emil Schaefer' },
+]
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 
 const AddNewProducts = ({ setEditModal }) => {
+
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [pdImgUrl, setPdImgUrl] = useState(null)
+    const [selectedCategory, setSelectedCategory] = useState(category[3])
+
+    const handleImageUpload = (e) => {
+      console.log(e.target.files[0]);
+      const imageData = new FormData()
+      imageData.set('key', '7bb36d98c8706d1538cecdc8950b9b34');
+      imageData.append('image', e.target.files[0]);
+
+      axios.post('https://api.imgbb.com/1/upload', imageData)
+      .then(function(response){
+          setPdImgUrl(response.data.data.display_url)
+          console.log(response.data.data.display_url)
+      })
+      .catch(function(error){
+          console.log(error)
+      })
+
+    }
+
+    const onSubmit = data => {
+      const productData = {
+          productName: data.productName,
+          productDetail: data.productAbout,
+          productImg: pdImgUrl,
+          productCategory: selectedCategory
+      }
+
+      console.log(productData)
+
+    };
+
   return (
     <section>
       <div className="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-filter saturate-150 backdrop-blur-sm">
@@ -15,12 +70,9 @@ const AddNewProducts = ({ setEditModal }) => {
               <div className="flex items-center justify-between pt-8 px-5 mb-4">
                 <div>
                   <h3 className="text-lg leading-6 font-medium text-gray-900">
-                    Profile
+                    Add New Product
                   </h3>
-                  <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                    This information will be displayed publicly so be careful
-                    what you share.
-                  </p>
+                  
                 </div>
 
                 <button
@@ -50,7 +102,7 @@ const AddNewProducts = ({ setEditModal }) => {
               </div>
             </div>
             {/* Product Details */}
-            <form className="p-5 space-y-8 divide-y divide-gray-200">
+            <form className="p-5 space-y-8 divide-y divide-gray-200"  onSubmit={handleSubmit(onSubmit)}>
               <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                 <div className="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
                   <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-3">
@@ -64,10 +116,12 @@ const AddNewProducts = ({ setEditModal }) => {
                       <div className="max-w-lg flex rounded-md shadow-sm">
                         <input
                           type="text"
-                          name="username"
-                          id="username"
-                          autoComplete="username"
+                          name="productName"
+                          id="productName"
+                          autoComplete="productName"
                           className="flex-1 block w-full focus:ring-teal-500 focus:border-teal-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                          {...register("productName")}
+                          required
                         />
                       </div>
                     </div>
@@ -82,11 +136,13 @@ const AddNewProducts = ({ setEditModal }) => {
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <textarea
-                        id="about"
-                        name="about"
+                        id="productAbout"
+                        name="productAbout"
                         rows={3}
                         className="max-w-lg shadow-sm block w-full focus:ring-teal-500 focus:border-teal-500 sm:text-sm border border-gray-300 rounded-md"
                         defaultValue={''}
+                        {...register("productAbout")}
+                        required
                       />
                       <p className="mt-2 text-sm text-gray-500">
                         Write a few sentences about product.
@@ -129,6 +185,8 @@ const AddNewProducts = ({ setEditModal }) => {
                                 name="file-upload"
                                 type="file"
                                 className="sr-only"
+                                onChange={handleImageUpload} 
+                                required
                               />
                             </label>
                             <p className="pl-1">or drag and drop</p>
@@ -141,29 +199,73 @@ const AddNewProducts = ({ setEditModal }) => {
                     </div>
                   </div>
 
-                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                    <label
-                      htmlFor="country"
-                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                    >
-                      Category
-                    </label>
-                    <div className="mt-1 sm:mt-0 sm:col-span-2">
-                      <select
-                        id="country"
-                        name="country"
-                        autoComplete="country"
-                        className="max-w-lg block focus:ring-teal-500 focus:border-teal-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                      >
-                        <option>Category 1</option>
-                        <option>Category 2</option>
-                        <option>Category 3</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
 
-               
+                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                    <Listbox value={selectedCategory} onChange={setSelectedCategory}>
+                          {({ open }) => (
+                            <>
+                              <Listbox.Label className="block text-sm font-medium text-gray-700">Category</Listbox.Label>
+                              <div className="mt-1 relative">
+                                <Listbox.Button className="bg-white relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                  <span className="block truncate">{selectedCategory.name}</span>
+                                  <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                                    <SelectorIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                                  </span>
+                                </Listbox.Button>
+
+                                <Transition
+                                  show={open}
+                                  as={Fragment}
+                                  leave="transition ease-in duration-100"
+                                  leaveFrom="opacity-100"
+                                  leaveTo="opacity-0"
+                                >
+                                  <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
+                                    {category.map((person) => (
+                                      <Listbox.Option
+                                        key={person.id}
+                                        className={({ active }) =>
+                                          classNames(
+                                            active ? 'text-white bg-indigo-600' : 'text-gray-900',
+                                            'cursor-default select-none relative py-2 pl-3 pr-9'
+                                          )
+                                        }
+                                        value={person}
+                                      >
+                                        {({ selectedCategory, active }) => (
+                                          <>
+                                            <span className={classNames(selectedCategory ? 'font-semibold' : 'font-normal', 'block truncate')}>
+                                              {person.name}
+                                            </span>
+
+                                            {selectedCategory ? (
+                                              <span
+                                                className={classNames(
+                                                  active ? 'text-white' : 'text-indigo-600',
+                                                  'absolute inset-y-0 right-0 flex items-center pr-4'
+                                                )}
+                                              >
+                                                <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                                              </span>
+                                            ) : null}
+                                          </>
+                                        )}
+                                      </Listbox.Option>
+                                    ))}
+                                  </Listbox.Options>
+                                </Transition>
+                              </div>
+                            </>
+                          )}
+                        </Listbox>
+                      </div>
+
+
+
+
+
+
+                </div>
               </div>
 
               <div className="pt-5">
@@ -174,12 +276,12 @@ const AddNewProducts = ({ setEditModal }) => {
                   >
                     Cancel
                   </button>
-                  <button
+                  <input
                     type="submit"
                     className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
-                  >
-                    Save
-                  </button>
+                  
+                    value="Add Product"
+                  />
                 </div>
               </div>
             </form>

@@ -25,14 +25,14 @@ const NavLinks = () => {
         </a>
       </li>
       <li>
-        <a
-          href="/medicine"
+        <Link
+          to="/medicine"
           aria-label="Our Medicine"
           title="Our Medicine"
           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
         >
           Medicine
-        </a>
+        </Link>
       </li>
       <li>
         <a
