@@ -69,39 +69,39 @@ vendorController.signup = async (req, res) => {
   }
 };
 
-vendorController.login = async (req, res) => {
+vendorController.vendorLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
     loginValidation(req, res);
 
-    const Vendor = await Vendor.findOne({ email });
+    const isVendor = await Vendor.findOne({ email });
 
-    if (!Vendor) {
+    if (!isVendor) {
       return res
         .status(400)
         .json({ message: "No account with this email has been registers" });
     }
-    const matchPassword = await bcrypt.compare(password, vendor.password);
+    const matchPassword = await bcrypt.compare(password, isVendor.password);
     if (!matchPassword) {
       return res.status(400).json({ message: "password incerate" });
     }
     // eslint-disable-next-line no-underscore-dangle
-    const token = jwt.sign({ id: vendor._id }, process.env.JWT_PASSWORD);
+    const token = jwt.sign({ id: isVendor._id }, process.env.JWT_PASSWORD);
     return res.send({
       token,
       vendorInfo: {
-        _id: vendor._id,
-        shopName: vendor.shopName,
-        logo: vendor.logo,
-        banner: vendor.banner,
-        name: vendor.name,
-        email: vendor.email,
-        phone: vendor.phone,
-        city: vendor.city,
-        location: vendor.location,
-        postalCode: vendor.postalCode,
-        hasOwnDelivery: vendor.hasOwnDelivery,
+        _id: isVendor._id,
+        shopName: isVendor.shopName,
+        logo: isVendor.logo,
+        banner: isVendor.banner,
+        name: isVendor.name,
+        email: isVendor.email,
+        phone: isVendor.phone,
+        city: isVendor.city,
+        location: isVendor.location,
+        postalCode: isVendor.postalCode,
+        hasOwnDelivery: isVendor.hasOwnDelivery,
       },
     });
   } catch (error) {

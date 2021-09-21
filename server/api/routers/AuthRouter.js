@@ -1,5 +1,5 @@
 const express = require('express');
-const { signup, login } = require('../controllers/VendorAuthController');
+const { signup, login, userLogin } = require('../controllers/AuthController');
 
 
 const authRouter = express.Router();
@@ -121,7 +121,7 @@ authRouter.post('/signup', signup);
  *       500:
  *         description: Some server error
  */
-authRouter.post('/login', login);
+authRouter.post('/login', userLogin);
 
 // authRouter.post('/make-admin', auth, admin, makeAdmin);
 module.exports = authRouter;

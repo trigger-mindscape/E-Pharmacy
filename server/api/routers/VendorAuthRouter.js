@@ -1,5 +1,5 @@
 const express = require("express");
-const {  login, signup } = require("../controllers/VendorAuthController");
+const {  login, signup, vendorLogin } = require("../controllers/VendorAuthController");
 
 const vendorRouter = express.Router();
 
@@ -142,6 +142,6 @@ vendorRouter.post("/signup", signup);
  *       500:
  *         description: Some server error
  */
-vendorRouter.post("/login", login);
+vendorRouter.post("/login", vendorLogin);
 
 module.exports = vendorRouter;

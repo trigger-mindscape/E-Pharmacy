@@ -2,7 +2,11 @@ const authController = {};
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/UserModel");
-const { signUpValidation,loginValidation } = require("../validations/AuthValidation");
+const {
+  signUpValidation,
+  loginValidation,
+} = require("../validations/AuthValidation");
+const { vendorLogin } = require("./VendorAuthController");
 
 authController.signup = async (req, res) => {
   try {
@@ -24,7 +28,6 @@ authController.signup = async (req, res) => {
 
     const saveUser = await newUser.save();
 
-
     const token = jwt.sign({ id: saveUser._id }, process.env.JWT_PASSWORD);
     return res.send({
       token,
@@ -42,7 +45,7 @@ authController.signup = async (req, res) => {
     return res.status(400).json({ message: error.message });
   }
 };
-authController.login = async (req, res) => {
+authController.userLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -51,27 +54,29 @@ authController.login = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res
-        .status(400)
-        .json({ message: "No account with this email has been registers" });
+      vendorLogin(req, res);
+      // return res
+      //   .status(400)
+      //   .json({ message: "No account with this email has been registers" });
+    } else {
+      const matchPassword = await bcrypt.compare(password, user.password);
+      if (!matchPassword) {
+        return res.status(400).json({ message: "password incerate" });
+      }
+      // eslint-disable-next-line no-underscore-dangle
+      const token = jwt.sign({ id: user._id }, process.env.JWT_PASSWORD);
+      return res.send({
+        token,
+        userInfo: {
+          _id: user._id,
+          fastName: user.fastName,
+          lastName: user.lastName,
+          userName: user.userName,
+          email: user.email,
+          phone: user.phone,
+        },
+      });
     }
-    const matchPassword = await bcrypt.compare(password, user.password);
-    if (!matchPassword) {
-      return res.status(400).json({ message: "password incerate" });
-    }
-    // eslint-disable-next-line no-underscore-dangle
-    const token = jwt.sign({ id: user._id }, process.env.JWT_PASSWORD);
-    return res.send({
-      token,
-      userInfo: {
-        _id: user._id,
-        fastName: user.fastName,
-        lastName: user.lastName,
-        userName: user.userName,
-        email: user.email,
-        phone: user.phone,
-      },
-    });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ message: error.message });

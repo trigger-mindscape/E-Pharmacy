@@ -36,10 +36,9 @@ export const loginAccount = (formData, history) => async (dispatch) => {
     dispatch(
       showNotification({
         massageType: "success",
-        message: `welcome ${data.userInfo.name}`,
+        message: `welcome ${data.userInfo?data.userInfo.name:data.vendorInfo.name}`,
       })
     );
-    history.push("/checkout");
   } catch (error) {
     dispatch(
       showNotification({
