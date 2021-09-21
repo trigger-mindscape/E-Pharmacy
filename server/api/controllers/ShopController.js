@@ -1,3 +1,5 @@
+const Vendor = require("../models/VendorModel");
+
 const VendorController = {};
 
 VendorController.getAllShop = async (req, res) => {
@@ -16,7 +18,8 @@ VendorController.getAllShop = async (req, res) => {
 VendorController.getSingleShop = async (req, res) => {
   try {
     const { vendorId } = req.params;
-    const singleShop = await Vendor.find({
+    console.log("🚀 ~ file: ShopController.js ~ line 21 ~ VendorController.getSingleShop= ~ vendorId", vendorId)
+    const singleShop = await Vendor.findOne({
       vendorId,
     });
 

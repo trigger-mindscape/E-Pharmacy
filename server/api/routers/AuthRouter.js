@@ -1,5 +1,5 @@
 const express = require('express');
-const { sineUp, login, makeAdmin } = require('../controllers/AuthController');
+const { signup, login, userLogin } = require('../controllers/AuthController');
 
 
 const authRouter = express.Router();
@@ -84,7 +84,7 @@ const authRouter = express.Router();
  *         description: Some server error
  */
 
-authRouter.post('/sineUp', sineUp);
+authRouter.post('/signup', signup);
 
 
 /**
@@ -121,7 +121,7 @@ authRouter.post('/sineUp', sineUp);
  *       500:
  *         description: Some server error
  */
-authRouter.post('/login', login);
+authRouter.post('/login', userLogin);
 
 // authRouter.post('/make-admin', auth, admin, makeAdmin);
 module.exports = authRouter;

@@ -1,5 +1,5 @@
 const express = require("express");
-const { sineUp, login } = require("../controllers/VendorAuthController");
+const {  login, signup, vendorLogin } = require("../controllers/VendorAuthController");
 
 const vendorRouter = express.Router();
 
@@ -106,7 +106,7 @@ const vendorRouter = express.Router();
  *         description: Some server error
  */
 
-vendorRouter.post("/sineUp", sineUp);
+vendorRouter.post("/signup", signup);
 
 /**
  * @swagger
@@ -142,6 +142,6 @@ vendorRouter.post("/sineUp", sineUp);
  *       500:
  *         description: Some server error
  */
-vendorRouter.post("/login", login);
+vendorRouter.post("/login", vendorLogin);
 
 module.exports = vendorRouter;

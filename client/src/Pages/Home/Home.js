@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Blog from '../../Components/Home/Blog/Blog';
 import Footer from '../../Components/Home/Footer/Footer';
 import Hero from '../../Components/Home/Hero/Hero';
@@ -9,10 +10,13 @@ import PictureUpload from '../../Components/Home/PictureUpload/PictureUpload';
 import ShopCard from '../../Components/Home/ShopCard/ShopCard';
 import CreateShopCTA from '../../Components/Home/VendorCTA/CreateShopCTA';
 import VendorCTA from '../../Components/Home/VendorCTA/VendorCTA';
+import { getAllShop } from '../../Redux/shop/actions';
 
 const Home = () => {
+  const dispatch = useDispatch()
   useEffect(() => {
     window.scrollTo(0, 0);
+    dispatch(getAllShop())
   }, []);
 
   return (

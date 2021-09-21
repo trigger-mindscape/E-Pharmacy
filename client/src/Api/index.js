@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const API = axios.create({ baseURL: 'http://localhost:4000' })
-const API = axios.create({ baseURL: 'https://e-pharmacy-by-triggermindscape.herokuapp.com' })
+const API = axios.create({ baseURL: 'http://localhost:4000' })
+// const API = axios.create({ baseURL: 'https://e-pharmacy-by-triggermindscape.herokuapp.com' })
 
 API.interceptors.request.use(req => {
   const token = JSON.parse(localStorage.getItem('profile'))?.token;
@@ -12,6 +12,15 @@ API.interceptors.request.use(req => {
 })
 
 //auth
-export const createUserApi = formData => API.post(`/auth/sineUp`, formData)
+export const createUserApi = formData => API.post(`/auth/signup`, formData)
 export const loginUserApi = formData => API.post(`/auth/login`, formData)
+
+//vendor auth
+export const createVendorApi = formData => API.post(`/vendor/auth/signup`, formData)
+export const loginVendorApi = formData => API.post(`/vendor/auth/login`, formData)
+
+//vendor auth
+export const getAllShopApi = () => API.get(`/shop/get/all`)
+export const getSixShopApi = () => API.get(`/shop/get/six`)
+export const getSingleShop = vendorId => API.get(`/shop/get/${vendorId}`)
 

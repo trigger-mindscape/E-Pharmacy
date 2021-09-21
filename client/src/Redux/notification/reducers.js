@@ -7,7 +7,7 @@ export default function notificationReducer(state = notificationState, action) {
   switch (action.type) {
     case SHOW_NOTIFICATION:
       notification[action.payload.massageType]({
-        message: action.payload.massage,
+        message: action.payload.message,
         description: action.payload.description,
       });
       return state

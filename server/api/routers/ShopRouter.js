@@ -94,19 +94,15 @@ const shopRouter = express.Router();
  *   get:
  *     summary: Get All Shop / Vendor
  *     tags: [Shop]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Vendor'
  *     responses:
  *       200:
  *         description: The Shop was successfully created
  *         content:
  *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Vendor'
+ *              schema:
+ *                  type: array
+ *                  items:
+ *                      $ref: '#/components/schemas/Vendor'
  *       500:
  *         description: Some server error
  */
@@ -115,7 +111,7 @@ shopRouter.get("/get/all", getAllShop);
 
 /**
  * @swagger
- * /shop/get/:vendorId :
+ * /shop/get/vendorId :
  *   get:
  *     summary: return all Shop
  *     tags: [Shop]
@@ -125,10 +121,8 @@ shopRouter.get("/get/all", getAllShop);
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Shop'
+ *                 $ref: '#/components/schemas/Vendor'
  */
- shopRouter.post("/get/:vendorId", getSingleShop);
+ shopRouter.get("/get/:vendorId", getSingleShop);
 
 module.exports = shopRouter;

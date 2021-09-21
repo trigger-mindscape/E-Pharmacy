@@ -1,14 +1,17 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../models/UserModel");
-const { signUpValidation, loginValidation } = require("../validations/VendorAuthValidation");
-
+const Vendor = require("../models/VendorModel");
+const {
+  signUpValidation,
+  loginValidation,
+} = require("../validations/VendorAuthValidation");
 
 const vendorController = {};
 
-vendorController.sineUp = async (req, res) => {
+vendorController.signup = async (req, res) => {
   try {
-    const { shopName,
+    const {
+      shopName,
       logo,
       banner,
       name,
@@ -19,14 +22,15 @@ vendorController.sineUp = async (req, res) => {
       city,
       location,
       postalCode,
-      hasOwnDelivery } = req.body;
+      hasOwnDelivery,
+    } = req.body;
 
     signUpValidation(req, res);
 
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(password, salt);
 
-    const newUser = new User({
+    const newVendor = new Vendor({
       shopName,
       logo,
       banner,
@@ -40,12 +44,12 @@ vendorController.sineUp = async (req, res) => {
       hasOwnDelivery,
     });
 
-    const saveVendor = await newUser.save();
+    const saveVendor = await newVendor.save();
 
     const token = jwt.sign({ id: saveVendor._id }, process.env.JWT_PASSWORD);
     return res.send({
       token,
-      userInfo: {
+      vendorInfo: {
         _id: saveVendor._id,
         shopName: saveVendor.shopName,
         logo: saveVendor.logo,
@@ -65,39 +69,39 @@ vendorController.sineUp = async (req, res) => {
   }
 };
 
-vendorController.login = async (req, res) => {
+vendorController.vendorLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
     loginValidation(req, res);
 
-    const vendor = await User.findOne({ email });
+    const isVendor = await Vendor.findOne({ email });
 
-    if (!vendor) {
+    if (!isVendor) {
       return res
         .status(400)
         .json({ message: "No account with this email has been registers" });
     }
-    const matchPassword = await bcrypt.compare(password, vendor.password);
+    const matchPassword = await bcrypt.compare(password, isVendor.password);
     if (!matchPassword) {
       return res.status(400).json({ message: "password incerate" });
     }
     // eslint-disable-next-line no-underscore-dangle
-    const token = jwt.sign({ id: vendor._id }, process.env.JWT_PASSWORD);
+    const token = jwt.sign({ id: isVendor._id }, process.env.JWT_PASSWORD);
     return res.send({
       token,
-      userInfo: {
-        _id: vendor._id,
-        shopName: vendor.shopName,
-        logo: vendor.logo,
-        banner: vendor.banner,
-        name: vendor.name,
-        email: vendor.email,
-        phone: vendor.phone,
-        city: vendor.city,
-        location: vendor.location,
-        postalCode: vendor.postalCode,
-        hasOwnDelivery: vendor.hasOwnDelivery,
+      vendorInfo: {
+        _id: isVendor._id,
+        shopName: isVendor.shopName,
+        logo: isVendor.logo,
+        banner: isVendor.banner,
+        name: isVendor.name,
+        email: isVendor.email,
+        phone: isVendor.phone,
+        city: isVendor.city,
+        location: isVendor.location,
+        postalCode: isVendor.postalCode,
+        hasOwnDelivery: isVendor.hasOwnDelivery,
       },
     });
   } catch (error) {

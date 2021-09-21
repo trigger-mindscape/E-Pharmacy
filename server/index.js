@@ -7,6 +7,7 @@ const swaggerJsDoc = require("swagger-jsdoc");
 const authRouter = require("./api/routers/AuthRouter");
 const categoryRouter = require("./api/routers/CategoryRouter");
 const vendorRouter = require("./api/routers/VendorAuthRouter");
+const shopRouter = require("./api/routers/ShopRouter");
 
 require("dotenv").config();
 
@@ -48,6 +49,8 @@ app.use("/vendor/auth", vendorRouter);
 
 //category
 app.use("/category", categoryRouter);
+//shop
+app.use("/shop", shopRouter);
 
 app.get("/", (req, res) => res.send("welcome our app"));
 
