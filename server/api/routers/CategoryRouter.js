@@ -40,7 +40,7 @@ const categoryRouter = express.Router();
  * @swagger
  * /category/add :
  *   post:
- *     summary: Create a new category
+ *     summary: Create a new category (Vendor)
  *     tags: [Category]
  *     requestBody:
  *       required: true
