@@ -5,10 +5,6 @@ import ShowRating from "../../Common/ShowRating";
 
 const ShopCard = () => {
   const shopCards = useSelector((state) => state.shop.allShop);
-  console.log(
-    "🚀 ~ file: ShopCard.js ~ line 7 ~ ShopCard ~ shopCards",
-    shopCards
-  );
 
   return (
     <div className="pb-10 pt-8 bg-teal-50">
@@ -43,7 +39,7 @@ const ShopCard = () => {
                   <div className="absolute right-4 top-8 shadow-4xl">
                     <p
                       className={`rounded border border-teal-300 py-0.5 px-3 ${
-                        'shopCard.status' === "shopCard.status"
+                        "shopCard.status" === "shopCard.status"
                           ? "text-green-800"
                           : "text-red-400"
                       }`}
@@ -90,23 +86,25 @@ const ShopCard = () => {
               {/* Visit store button */}
               <div className="flex justify-center items-center my-2 mt-4 ">
                 <Link to={`/shopDetails/${shopCard._id}`}>
-                  <button className="flex py-2 px-6 rounded shadow-lg bg-teal-400 focus:outline-none active:bg-teal-400 text-white transition duration-150 ease-in-out hover:bg-teal-600">
-                    <svg
-                      className="w-5 h-5 mr-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                      ></path>
-                    </svg>
-                    Visit Store
-                  </button>
+                <button
+                  className="flex py-2 px-6 rounded shadow-lg bg-teal-400 focus:outline-none active:bg-teal-400 text-white transition duration-150 ease-in-out hover:bg-teal-600"
+                >
+                  <svg
+                    className="w-5 h-5 mr-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                    ></path>
+                  </svg>
+                  Visit Store
+                </button>
                 </Link>
               </div>
             </div>

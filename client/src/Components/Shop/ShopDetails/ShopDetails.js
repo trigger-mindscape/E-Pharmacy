@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router';
+import { getSingleShop } from '../../../Redux/shop/actions';
 import Categories from '../../Categories/Categories';
 import ContactVendor from '../../ContactVendor/ContactVendor';
-import OfferCard from '../../Home/OfferCard/OfferCard';
 import Products from '../../Products/Products';
 import ShopBanner from './ShopBanner';
 import ShopPromotion from './ShopPromotion';
 
 const ShopDetails = () => {
+  const dispatch = useDispatch();
+  const { vendorId } = useParams();
+
+  useEffect(() => {
+    dispatch(getSingleShop(vendorId));
+  }, []);
   return (
     <section>
       {/* Shop Banner*/}
