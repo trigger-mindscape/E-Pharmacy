@@ -1,9 +1,11 @@
-import React, {useState } from 'react';
-import NavBar from '../../Components/Home/NavBar/NavBar';
-import Footer from '../../Components/Home/Footer/Footer';
 import { RadioGroup } from '@headlessui/react';
 import axios from 'axios';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+import { useDispatch } from 'react-redux';
+import Footer from '../../Components/Home/Footer/Footer';
+import NavBar from '../../Components/Home/NavBar/NavBar';
+import { createVendorAccount } from '../../Redux/vendor/actions';
 
 const settings = [
   { delivery: 'Yes' },
@@ -13,13 +15,14 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 const CreateShop = () => {
+    const dispatch = useDispatch()
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [isDeliveryHas, setIsDeliveryHas] = useState(settings[0])
     const [logoImgURL, setLogoImgURl] = useState(null)
-    const [bannerImgURL, setBannerImgURl] = useState(null)
+    const [bannerImgURL, setBannerImgURl] = useState("https://i.ibb.co/z7f8t3x/joshua-rondeau-RXANJo-Nk3-EI-unsplash.jpg")
 
-    const handleImageUpload = (e) => {
+    const handleImageUpload = (e, setImage) => {
         console.log(e.target.files[0]);
         const imageData = new FormData()
         imageData.set('key', 'e9b76bac5b575af176bc9b5717b706ca');
@@ -27,9 +30,7 @@ const CreateShop = () => {
 
         axios.post('https://api.imgbb.com/1/upload', imageData)
         .then(function(response){
-            // setLogoImgURl(response.data.data.display_url)
-            // setBannerImgURl(response.data.data.display_url)
-            //console.log(response.data.data.display_url)
+            setImage(response.data.data.display_url)
         })
         .catch(function(error){
             console.log(error)
@@ -41,19 +42,19 @@ const CreateShop = () => {
     const onSubmit = data => {
         const vendorData = {
             shopName: data.shopName,
-            ownerName: data.ownerName,
-            shopEmail: data.email,
-            shopLogo: logoImgURL,
-            shopBanner: bannerImgURL,
-            address: data.address,
+            name: data.ownerName,
+            email: data.email,
+            phone:'0171111111',
+            logo: logoImgURL,
+            banner: bannerImgURL,
+            location: data.address,
             city: data.city,
-            zip: data.zip,
+            postalCode: data.zip,
             password: data.password,
             confirmPassword: data.confirmPassword,
-            hasDelivery: isDeliveryHas
+            hasOwnDelivery: isDeliveryHas.delivery==='No'?false:true
         }
-
-        console.log(vendorData)
+        dispatch(createVendorAccount(vendorData))
     };
 
 
@@ -148,7 +149,7 @@ const CreateShop = () => {
                                                 className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                                             >
                                                 <span>Upload a Logo</span>
-                                                <input id="file-upload" onChange={handleImageUpload} name="file-upload" type="file" className="sr-only" />
+                                                <input id="file-upload" onChange={(e)=>handleImageUpload(e,setLogoImgURl)} name="file-upload" type="file" className="sr-only" />
                                             </label>
                                             <p className="pl-1">or drag and drop</p>
                                             </div>
@@ -186,7 +187,7 @@ const CreateShop = () => {
                                                 className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                                             >
                                                 <span>Upload a file</span>
-                                                <input id="file-upload" onChange={handleImageUpload} name="file-upload" type="file" className="sr-only" />
+                                                <input id="file-upload" onChange={(e)=>handleImageUpload(e,setBannerImgURl)}  name="file-upload" type="file" className="sr-only" />
                                             </label>
                                             <p className="pl-1">or drag and drop</p>
                                             </div>

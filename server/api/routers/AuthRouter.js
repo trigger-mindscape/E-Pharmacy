@@ -1,5 +1,5 @@
 const express = require('express');
-const { sineUp, login, makeAdmin } = require('../controllers/AuthController');
+const { signup, login } = require('../controllers/VendorAuthController');
 
 
 const authRouter = express.Router();
@@ -84,7 +84,7 @@ const authRouter = express.Router();
  *         description: Some server error
  */
 
-authRouter.post('/sineUp', sineUp);
+authRouter.post('/signup', signup);
 
 
 /**

@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/UserModel");
 const { signUpValidation,loginValidation } = require("../validations/AuthValidation");
 
-authController.sineUp = async (req, res) => {
+authController.signup = async (req, res) => {
   try {
     const { fastName, lastName, userName, email, phone, password } = req.body;
 
