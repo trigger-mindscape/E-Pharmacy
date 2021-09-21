@@ -89,7 +89,7 @@ productRouter.post("/add",auth, vendorAuth, addProduct);
 /**
  * @swagger
  * /product/get/:vendorId :
- *   post:
+ *   get:
  *     summary: Get a single Vendor Products
  *     tags: [Product]
  *     requestBody:
@@ -120,7 +120,7 @@ productRouter.post("/add",auth, vendorAuth, addProduct);
  *       500:
  *         description: Some server error
  */
-productRouter.post("/get/:vendorId", getProduct);
+productRouter.get("/get/:vendorId", getProduct);
 
 // authRouter.post('/make-admin', auth, admin, makeAdmin);
 module.exports = productRouter;

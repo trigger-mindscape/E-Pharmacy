@@ -6,7 +6,7 @@ const swaggerUI = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
 const authRouter = require("./api/routers/AuthRouter");
 const categoryRouter = require("./api/routers/CategoryRouter");
-const vendorRouter = require("./api/routers/VendorRouter");
+const vendorRouter = require("./api/routers/VendorAuthRouter");
 
 require("dotenv").config();
 
