@@ -2,10 +2,14 @@ export const SHOW_NOTIFICATION = 'SHOW_NOTIFICATION'
 export const SHOW_MESSAGE = 'SHOW_MESSAGE'
 export const SHOW_MODAL = 'SHOW_MODAL'
 
-export const showNotification = data => {
+export const showNotification = (type, title, description) => {
   return {
     type: SHOW_NOTIFICATION,
-    payload: data,
+    payload: {
+      massageType:type,
+      message:title,
+      description
+    },
   }
 }
 // export const showMessage = data => {

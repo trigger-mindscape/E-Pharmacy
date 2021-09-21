@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
 import Footer from '../../Components/Home/Footer/Footer';
 import NavBar from '../../Components/Home/NavBar/NavBar';
-import { createVendorAccount } from '../../Redux/vendor/actions';
+import { createVendorAccount } from '../../Redux/user/actions';
 
 const settings = [
   { delivery: 'Yes' },
