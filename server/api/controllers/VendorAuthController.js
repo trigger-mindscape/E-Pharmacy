@@ -36,7 +36,7 @@ vendorController.sineUp = async (req, res) => {
       password: hashPassword,
       city,
       location,
-      postalCode
+      postalCode,
       hasOwnDelivery,
     });
 

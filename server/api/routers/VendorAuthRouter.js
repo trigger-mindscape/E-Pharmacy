@@ -1,5 +1,5 @@
 const express = require("express");
-const { sineUp, login, makeAdmin } = require("../controllers/AuthController");
+const { sineUp, login } = require("../controllers/VendorAuthController");
 
 const vendorRouter = express.Router();
 
