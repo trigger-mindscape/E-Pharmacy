@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { getSingleShopCategory } from '../../../Redux/category/actions';
+import { getSingleShopProduct } from '../../../Redux/product/actions';
 import { getSingleShop } from '../../../Redux/shop/actions';
 import Categories from '../../Categories/Categories';
 import ContactVendor from '../../ContactVendor/ContactVendor';
@@ -16,6 +17,7 @@ const ShopDetails = () => {
   useEffect(() => {
     dispatch(getSingleShop(vendorId));
     dispatch(getSingleShopCategory(vendorId))
+    dispatch(getSingleShopProduct(vendorId))
   }, []);
   return (
     <section>
