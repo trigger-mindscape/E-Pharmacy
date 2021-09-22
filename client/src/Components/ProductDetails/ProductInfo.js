@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
-import QuantityButton from '../Common/QuantityButton';
-import ShowRating from '../Common/ShowRating';
+import React, { Fragment } from "react";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import QuantityButton from "../Common/QuantityButton";
+import ShowRating from "../Common/ShowRating";
 
 const ProductInfo = ({
-  product: { image, brand, description, totalReview },
+  product: { name, image, brand, description, totalReview },
 }) => {
   return (
     <Fragment>
@@ -21,7 +21,7 @@ const ProductInfo = ({
         />
         <div className="w-full mt-6 lg:w-2/3 lg:pl-10 lg:py-6 lg:mt-0">
           <h1 className="mb-2 text-3xl font-medium text-teal-500 font-display title-font">
-            The Catcher in the Rye
+            {name}
           </h1>
           <h2 className="mb-2 text-sm tracking-widest text-gray-800 title-font">
             Brand: {brand}

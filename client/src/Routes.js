@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Products from './Components/Products/Products';
 import PrivateRoute from './Helpers/PrivateRoute';
 import VenderDashboardPage from './Pages/Admin/Vendor/VenderDashboardPage';
 import LoginPage from './Pages/Authentication/LoginPage';
@@ -9,8 +10,6 @@ import Home from './Pages/Home/Home';
 import OrderHistory from './Pages/OrderHistory/OrderHistory';
 import ProductDetails from './Pages/ProductDetails/ProductDetails';
 import AllShop from './Pages/Shop/AllShop';
-import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
-import Products from './Components/Products/Products';
 import CreateShop from './Pages/Shop/CreateShop';
 import Blog from './Components/Home/Blog/Blog';
 import Company from './Pages/About/Company';
@@ -21,6 +20,7 @@ import ReleaseUpdate from './Pages/Support/ReleaseUpdate';
 import FAQ from './Pages/Platform/FAQ';
 import Pricing from './Pages/Platform/Pricing';
 import TermsPrivacy from './Pages/Platform/TermsPrivacy';
+import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
 
 const Navigation = () => {
   return (
@@ -42,7 +42,7 @@ const Navigation = () => {
           <PrivateRoute path="/checkout">
             <CheckoutPage />
           </PrivateRoute>
-          <Route exact path="/productDetails">
+          <Route exact path="/productDetails/:productId">
             <ProductDetails />
           </Route>
           <PrivateRoute exact path="/vendor/:panel">
@@ -54,14 +54,15 @@ const Navigation = () => {
           <Route path="/medicine">
             <Products></Products>
           </Route>
-          <Route path="/blogs">
-            <Blog />
-          </Route>
           <PrivateRoute path="/orderHistory">
             <OrderHistory></OrderHistory>
           </PrivateRoute>
+
           <Route path="/createShop">
             <CreateShop />
+          </Route>
+          <Route path="/blogs">
+            <Blog />
           </Route>
           <Route exact path="/company">
             <Company />

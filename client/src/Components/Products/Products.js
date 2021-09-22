@@ -1,15 +1,19 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import products from '../../Data/products';
 import Header from '../Home/NavBar/Header';
 import NavBar from '../Home/NavBar/NavBar';
 
 const Products = () => {
+  const products = useSelector(state => state.product.allProduct)
   return (
     <Fragment>
-      <Header />
-      <NavBar />
+      <Helmet>
+        <title>Our Products</title>
+        <meta name="Our Products" content="Best E-Pharmacy Products in the world" />
+      </Helmet>
+      
       <div className="bg-white">
         <div className="max-w-2xl px-4 pt-10 pb-10 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 sm:pt-10">
           <div className="flex justify-between align-center">
@@ -37,8 +41,8 @@ const Products = () => {
 
           <div className="grid grid-cols-1 mt-6 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (
-              <div key={product.id} className="group shadow-4xl">
-                <Link to="/productDetails">
+              <div key={product._id} className="group shadow-4xl">
+                <Link to={`/productDetails/${product._id}`}>
                   <div className="w-full overflow-hidden bg-blue-200 rounded-md min-h-80 aspect-w-1 aspect-h-1 group-hover:opacity-75 lg:h-80 lg:aspect-none">
                     <img
                       src={product.image}
@@ -117,11 +121,11 @@ const Products = () => {
                       </button>
                     </div>
 
-                    <Link to="/productDetails">
+                    {/* <Link to="/productDetails"> */}
                       <button className="flex px-3 py-2 text-sm text-white transition duration-150 ease-in-out bg-teal-500 rounded shadow-lg focus:outline-none active:bg-teal-500 hover:bg-teal-700">
                         Add to Cart
                       </button>
-                    </Link>
+                    {/* </Link> */}
                   </div>
                 </Link>
               </div>
