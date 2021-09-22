@@ -8,6 +8,7 @@ const authRouter = require("./api/routers/AuthRouter");
 const categoryRouter = require("./api/routers/CategoryRouter");
 const vendorRouter = require("./api/routers/VendorAuthRouter");
 const shopRouter = require("./api/routers/ShopRouter");
+const productRouter = require("./api/routers/ProductRouter");
 
 require("dotenv").config();
 
@@ -51,6 +52,8 @@ app.use("/vendor/auth", vendorRouter);
 app.use("/category", categoryRouter);
 //shop
 app.use("/shop", shopRouter);
+//product
+app.use("/product", productRouter);
 
 app.get("/", (req, res) => res.send("welcome our app"));
 

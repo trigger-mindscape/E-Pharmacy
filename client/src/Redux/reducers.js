@@ -1,5 +1,6 @@
 import categoryReducer from "./category/reducer";
 import notificationReducer from "./notification/reducers";
+import productReducer from "./product/reducer";
 import settingReducer from "./setting/reducer";
 import shopReducer from "./shop/reducer";
 import userReducer from "./user/reducers";
@@ -12,6 +13,7 @@ export const rootReducer = combineReducers(
         user:userReducer,
         shop:shopReducer,
         category:categoryReducer,
+        product:productReducer,
         setting:settingReducer,
         notification:notificationReducer,
     }
