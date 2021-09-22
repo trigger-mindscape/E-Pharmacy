@@ -24,12 +24,12 @@ const ShopCard = () => {
               key={shopCard._id}
               className="pb-4 m-6 rounded-lg shadow-3xl w-96 md:w-2/5 lg:w-1/4 bg-white"
             >
-              <img src={shopCard.banner} className="rounded-t-lg" alt="" />
+              <img src={shopCard.banner} className="rounded-t-lg  h-48 w-full object-cover md:h-52 md:w-full" alt="" />
 
               <div className="relative pt-2">
                 <div className="absolute -mt-12 w-full flex justify-center items-center">
                   <img
-                    className="shadow-3xl rounded-2xl border-2 border-gray-400 h-16 w-16"
+                    className="shadow-3xl rounded-2xl border-2 border-gray-400 object-cover h-16 w-16"
                     src={shopCard.logo}
                     alt=""
                   />
