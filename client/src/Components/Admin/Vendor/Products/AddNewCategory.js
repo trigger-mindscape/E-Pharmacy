@@ -1,15 +1,19 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { createCategory } from '../../../../Redux/category/actions';
 
 const AddNewCategory = ({ setNewCategory }) => {
+  const dispatch = useDispatch()
+  
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   
 
       const onSubmit = data => {
         const productCategory = {
-          categoryName: data.categoryName
+          name: data.categoryName
         }
-        console.log(productCategory)
+        dispatch(createCategory(productCategory,setNewCategory))
      };
 
     return (

@@ -77,6 +77,6 @@ categoryRouter.post("/add",auth, vendorAuth, addCategory);
  *               items:
  *                 $ref: '#/components/schemas/Category'
  */
- categoryRouter.post("/get/:vendorId", getCategory);
+ categoryRouter.get("/get/:vendorId", getCategory);
 
 module.exports = categoryRouter;

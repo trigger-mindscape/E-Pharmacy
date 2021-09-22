@@ -21,7 +21,6 @@ VendorController.getSingleShop = async (req, res) => {
     const singleShop = await Vendor.findOne({
       _id:vendorId
     });
-    console.log("🚀 ~ file: ShopController.js ~ line 24 ~ VendorController.getSingleShop= ~ singleShop", singleShop)
 
     return res.send(singleShop);
   } catch (error) {
