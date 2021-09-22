@@ -44,7 +44,7 @@ const CreateShop = () => {
             shopName: data.shopName,
             name: data.ownerName,
             email: data.email,
-            phone:'0171111111',
+            phone: data.phone,
             logo: logoImgURL,
             banner: bannerImgURL,
             location: data.address,
@@ -133,6 +133,25 @@ const CreateShop = () => {
                             </div>
                             </div>
 
+
+                            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                            <label htmlFor="email" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                                Phone Number
+                            </label>
+                            <div className="mt-1 sm:mt-0 sm:col-span-2">
+                                <input
+                                id="phone"
+                                name="phone"
+                                type="text"
+                                placeholder="01726987456"
+                                autoComplete="phone"
+                                className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                                {...register("phone")}
+                                required
+                                />
+                            </div>
+                            </div>
+
                                 <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                     <label htmlFor="cover-photo" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
                                         Shop Logo
@@ -160,7 +179,7 @@ const CreateShop = () => {
                                 </div>
 
 
-                                <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                {/* <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                     <label htmlFor="cover-photo" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
                                         Cover photo
                                     </label>
@@ -195,7 +214,7 @@ const CreateShop = () => {
                                         </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                         </div>
                         </div>
 
