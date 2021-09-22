@@ -12,6 +12,7 @@ const productController = {};
 productController.addProduct = async (req, res) => {
   try {
     const { name, image, description, price, brand, category } = req.body;
+    console.log("🚀 ~ file: ProductController.js ~ line 15 ~ productController.addProduct= ~ req.body", req.body)
     const { vendorId } = req;
 
     if (!name || !image || !description || !price || !brand || !category) {
@@ -20,7 +21,7 @@ productController.addProduct = async (req, res) => {
         .json({ message: "Not all field have been entered" });
     }
 
-    const newProduct = new Product(req.body);
+    const newProduct = new Product({...req.body,vendorId});
 
     const saveProduct = await newProduct.save();
 

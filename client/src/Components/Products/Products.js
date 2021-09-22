@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import products from '../../Data/products';
 import Header from '../Home/NavBar/Header';
 import NavBar from '../Home/NavBar/NavBar';
 
 const Products = () => {
+  const products = useSelector(state => state.product)
+  console.log("🚀 ~ file: Products.js ~ line 10 ~ Products ~ products", products)
   return (
     <Fragment>
       <Helmet>

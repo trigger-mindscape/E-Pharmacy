@@ -16,26 +16,18 @@ export const createAccount = (formData, history) => async (dispatch) => {
   }
 };
 
-
 export const createVendorAccount = (formData, history) => async (dispatch) => {
   try {
     const { data } = await createVendorApi(formData);
-    console.log("🚀 ~ file: actions.js ~ line 10 ~ createVendorAccount ~ data", data)
-    dispatch({ type: Add_USER, payload: data });
-    dispatch(
-      showNotification({
-        massageType: "success",
-        message: "Account created successfully",
-      })
+    console.log(
+      "🚀 ~ file: actions.js ~ line 10 ~ createVendorAccount ~ data",
+      data
     );
+    dispatch({ type: Add_USER, payload: data });
+    dispatch(showNotification("success", "Account created successfully"));
   } catch (error) {
     console.log(error?.message);
-    dispatch(
-      showNotification({
-        message: error?.response?.data?.message,
-        massageType: "error",
-      })
-    );
+    dispatch(showNotification("error", error?.response?.data?.message));
     console.log(error);
   }
 };

@@ -29,6 +29,7 @@ categoryController.addCategory = async (req, res) => {
 categoryController.getCategory = async (req, res) => {
   try {
     const { vendorId } = req.params;
+    console.log("🚀 ~ file: CategoryController.js ~ line 32 ~ categoryController.getCategory= ~ vendorId", vendorId)
     const catagories = await Category.find({
       vendorId,
     });

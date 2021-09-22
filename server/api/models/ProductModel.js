@@ -41,7 +41,7 @@ const productSchema = new Schema(
       required: true,
     },
     document: {
-      type: number,
+      type: Number,
       default: 0,
     },
     isDeliveryFree: {
