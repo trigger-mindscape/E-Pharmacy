@@ -26,28 +26,7 @@ const ActionIcons = () => {
           />
         </svg>
       </li>
-      {user.token ? (
-        <Link to="/vendor/dashboard">
-          <li>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 font-medium cursor-pointer text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-              />
-            </svg>
-          </li>
-        </Link>
-      ) : (
-        <Link to="/login">Login</Link>
-      )}
+
       <li>
         <button
           onClick={() => setOpen(true)}
@@ -102,7 +81,32 @@ const ActionIcons = () => {
           </span>
         </button>
       </li>
-
+      {user.token ? (
+        <Link to="/vendor/dashboard">
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 font-medium cursor-pointer text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              />
+            </svg>
+          </li>
+        </Link>
+      ) : (
+        <Link to="/login">
+          <p className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-700">
+            Login
+          </p>
+        </Link>
+      )}
       {/* Open cart modal */}
       <OrderCart open={open} setOpen={setOpen} />
       <WishList open={open} setOpen={setOpen}></WishList>
