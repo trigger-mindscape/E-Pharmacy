@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:4000' })
-// const API = axios.create({ baseURL: 'https://e-pharmacy-by-triggermindscape.herokuapp.com' })
+//const API = axios.create({ baseURL: 'http://localhost:4000' })
+ const API = axios.create({ baseURL: 'https://e-pharmacy-by-triggermindscape.herokuapp.com' })
 
 API.interceptors.request.use(req => {
   const token = JSON.parse(localStorage.getItem('profile'))?.token;
