@@ -6,17 +6,10 @@ const DisplayShops = () => {
     const [shopCards, setShopCards] = useState(allShops);
 
     return (
-        <div className="pb-10 pt-8 bg-gray-50">
+        <div className="pb-10 pt-8 bg-gray-50 w-full">
       {/* Shop Card */}
-      <div className="w-full text-center py-8">
-        <h1 className="font-medium text-4xl font-display tracking-wide text-teal-700">
-          All Registered Medicine Stores
-        </h1>
-        <p className="font-sans text-base tracking-wide text-gray-700 mt-2">
-          Search for Medicine, Filter by your location
-        </p>
-      </div>
-      <div className="cards flex flex-wrap justify-center">
+      
+      <div className="cards flex flex-wrap justify-center w-full">
         {shopCards.map((shopCard) => (
           <div className="pb-4 m-6 rounded-lg shadow-3xl w-96 md:w-2/5 lg:w-1/4 bg-white">
             <img src={shopCard.cardBanner} className="rounded-t-lg" alt="" />

@@ -20,7 +20,7 @@ const CreateShop = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [isDeliveryHas, setIsDeliveryHas] = useState(settings[0])
     const [logoImgURL, setLogoImgURl] = useState(null)
-    const [bannerImgURL, setBannerImgURl] = useState("https://i.ibb.co/W5LyBVq/Image-3.jpg")
+    const [bannerImgURL, setBannerImgURl] = useState("https://i.ibb.co/zR760Cw/Image-2.jpg")
 
     const handleImageUpload = (e, setImage) => {
         console.log(e.target.files[0]);
