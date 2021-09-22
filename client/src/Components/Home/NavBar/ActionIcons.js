@@ -102,7 +102,7 @@ const ActionIcons = () => {
         </Link>
       ) : (
         <Link to="/login">
-          <p className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-700">
+          <p className="font-medium text-lg tracking-wide py-1 px-3 rounded-md text-white bg-teal-400 transition-colors duration-200 hover:bg-teal-700">
             Login
           </p>
         </Link>

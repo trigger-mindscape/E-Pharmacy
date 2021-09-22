@@ -301,7 +301,7 @@ const Registration = ({ setIsAccount }) => {
                 onClick={() => setIsAccount((bool) => !bool)}
                 className="text-lg font-semibold tracking-wide text-teal-500 mt-5"
               >
-                Already have account?
+                Already have account? <span className="underline text-sm"><Link to="/login">Login</Link></span>
               </h6>
             </div>
           </form>
