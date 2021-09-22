@@ -12,7 +12,10 @@ const productController = {};
 productController.addProduct = async (req, res) => {
   try {
     const { name, image, description, price, brand, category } = req.body;
-    console.log("🚀 ~ file: ProductController.js ~ line 15 ~ productController.addProduct= ~ req.body", req.body)
+    console.log(
+      "🚀 ~ file: ProductController.js ~ line 15 ~ productController.addProduct= ~ req.body",
+      req.body
+    );
     const { vendorId } = req;
 
     if (!name || !image || !description || !price || !brand || !category) {
@@ -21,7 +24,7 @@ productController.addProduct = async (req, res) => {
         .json({ message: "Not all field have been entered" });
     }
 
-    const newProduct = new Product({...req.body,vendorId});
+    const newProduct = new Product({ ...req.body, vendorId });
 
     const saveProduct = await newProduct.save();
 
@@ -32,7 +35,7 @@ productController.addProduct = async (req, res) => {
   }
 };
 
-productController.getProduct = async (req, res) => {
+productController.getProducts = async (req, res) => {
   try {
     const { vendorId } = req.params;
     const products = await Product.find({
@@ -40,6 +43,20 @@ productController.getProduct = async (req, res) => {
     });
 
     return res.send(products);
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: error.message });
+  }
+};
+
+productController.getSingleProduct = async (req, res) => {
+  try {
+    const { productId } = req.params;
+    const product = await Product.findOne({
+      productId,
+    });
+
+    return res.send(product);
   } catch (error) {
     console.log(error);
     return res.status(400).json({ message: error.message });

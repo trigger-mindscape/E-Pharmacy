@@ -1,6 +1,6 @@
 const express = require("express");
 const { sineUp, login, makeAdmin } = require("../controllers/AuthController");
-const { addProduct, getProduct } = require("../controllers/ProductController");
+const { addProduct,  getProducts, getSingleProduct } = require("../controllers/ProductController");
 const auth = require("../middleware/auth/Auth");
 const vendorAuth = require("../middleware/auth/VendorAuth");
 
@@ -120,7 +120,43 @@ productRouter.post("/add",auth, vendorAuth, addProduct);
  *       500:
  *         description: Some server error
  */
-productRouter.get("/get/:vendorId", getProduct);
+productRouter.get("/get/:vendorId", getProducts);
+
+/**
+ * @swagger
+ * /product/single/get/:vendorId :
+ *   get:
+ *     summary: Get a single Vendor Products
+ *     tags: [Product]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             required:
+ *                - email
+ *                - password
+ *             properties:
+ *                email:
+ *                  type: string
+ *                  description: Product Email Address
+ *                password:
+ *                  type: string
+ *                  description: Password
+ *             example:
+ *                email: kamrul@gmail.com
+ *                password: amePass
+ *     responses:
+ *       200:
+ *         description: The Product was successfully created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *       500:
+ *         description: Some server error
+ */
+productRouter.get("/single/get/:vendorId", getSingleProduct);
 
 // authRouter.post('/make-admin', auth, admin, makeAdmin);
 module.exports = productRouter;

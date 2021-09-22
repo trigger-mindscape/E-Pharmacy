@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Products from './Components/Products/Products';
 import PrivateRoute from './Helpers/PrivateRoute';
 import VenderDashboardPage from './Pages/Admin/Vendor/VenderDashboardPage';
 import LoginPage from './Pages/Authentication/LoginPage';
@@ -9,9 +10,8 @@ import Home from './Pages/Home/Home';
 import OrderHistory from './Pages/OrderHistory/OrderHistory';
 import ProductDetails from './Pages/ProductDetails/ProductDetails';
 import AllShop from './Pages/Shop/AllShop';
-import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
-import Products from './Components/Products/Products';
 import CreateShop from './Pages/Shop/CreateShop';
+import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
 
 const Navigation = () => {
   return (
@@ -33,7 +33,7 @@ const Navigation = () => {
           <PrivateRoute path="/checkout">
             <CheckoutPage />
           </PrivateRoute>
-          <Route exact path="/productDetails">
+          <Route exact path="/productDetails/:productId">
             <ProductDetails />
           </Route>
           <Route exact path="/vendor/:panel">
