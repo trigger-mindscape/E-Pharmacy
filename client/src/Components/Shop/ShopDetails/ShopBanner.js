@@ -13,15 +13,15 @@ const ShopBanner = () => {
     <div className="container mx-auto">
       <div className="max-w-full relative mt-6 mb-10">
         {/* Shop banner */}
-        <img src={banner} alt="banner" className="max-h-80 w-full" />
+        <img src={banner} alt="banner" className="object-cover max-h-80 w-full" />
 
         {/* Shop Details */}
-        <div className="bg-teal-500 sm:bg-blue-600 bg-opacity-90 sm:bg-opacity-40 py-4 lg:w-4/12 md:py-4 lg:py-12 px-4 lg:absolute left-0 top-0 text-white min-h-96 flex flex-col items-center justify-center text-sans">
+        <div className="bg-teal-500 sm:bg-blue-600 bg-opacity-90 sm:bg-opacity-40 py-4 lg:w-4/12 md:py-4 lg:py-12 px-4 lg:absolute left-0 top-0 bottom-0 text-white max-h-80 flex flex-col items-center justify-center text-sans">
           <img src={logo} alt="logo" className="rounded-full w-16" />
-          <h1 className="text-2xl font-semibold pt-2 tracking-wide">
+          <h1 className="text-2xl  text-white font-semibold pt-2 tracking-wide">
             {shopName}
           </h1>
-          <h4 className="text-xl pb-2">Owner: {name}</h4>
+          <h4 className="text-xl pb-2 text-white">Owner: {name}</h4>
 
           <div>
             <div className="flex pb-1">
