@@ -52,9 +52,11 @@ productController.getProducts = async (req, res) => {
 productController.getSingleProduct = async (req, res) => {
   try {
     const { productId } = req.params;
-    const product = await Product.findOne({
-      productId,
-    });
+    console.log(
+      "🚀 ~ file: ProductController.js ~ line 55 ~ productController.getSingleProduct= ~ productId",
+      productId
+    );
+    const product = await Product.findById(productId);
 
     return res.send(product);
   } catch (error) {
