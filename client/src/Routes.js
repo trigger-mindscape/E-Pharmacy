@@ -10,8 +10,17 @@ import OrderHistory from './Pages/OrderHistory/OrderHistory';
 import ProductDetails from './Pages/ProductDetails/ProductDetails';
 import AllShop from './Pages/Shop/AllShop';
 import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
-import Blog from "./Components/Home/Blog/Blog";
 import Products from './Components/Products/Products';
+import CreateShop from './Pages/Shop/CreateShop';
+import Blog from './Components/Home/Blog/Blog';
+import Company from './Pages/About/Company';
+import Career from './Pages/About/Career';
+import ContactSupport from './Pages/Support/ContactSupport';
+import HelpResources from './Pages/Support/HelpResources';
+import ReleaseUpdate from './Pages/Support/ReleaseUpdate';
+import FAQ from './Pages/Platform/FAQ';
+import Pricing from './Pages/Platform/Pricing';
+import TermsPrivacy from './Pages/Platform/TermsPrivacy';
 
 const Navigation = () => {
   return (
@@ -42,15 +51,42 @@ const Navigation = () => {
           <Route path="/allShop">
             <AllShop></AllShop>
           </Route>
-          <Route path="/blogs">
-            <Blog></Blog>
-          </Route>
           <Route path="/medicine">
             <Products></Products>
+          </Route>
+          <Route path="/blogs">
+            <Blog />
           </Route>
           <PrivateRoute path="/orderHistory">
             <OrderHistory></OrderHistory>
           </PrivateRoute>
+          <Route path="/createShop">
+            <CreateShop />
+          </Route>
+          <Route exact path="/company">
+            <Company />
+          </Route>
+          <Route exact path="/career">
+            <Career />
+          </Route>
+          <Route exact path="/support">
+            <ContactSupport />
+          </Route>
+          <Route exact path="/resources">
+            <HelpResources />
+          </Route>
+          <Route exact path="/release-update">
+            <ReleaseUpdate />
+          </Route>
+          <Route exact path="/FAQ">
+            <FAQ />
+          </Route>
+          <Route exact path="/pricing">
+            <Pricing />
+          </Route>
+          <Route exact path="/terms&privacy">
+            <TermsPrivacy />
+          </Route>
         </Switch>
       </Router>
     </div>

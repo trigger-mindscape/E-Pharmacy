@@ -298,6 +298,7 @@ const CreateShop = () => {
                                         <div className="max-w-lg space-y-4">
                                             
                                             
+                                            
                                             <RadioGroup value={isDeliveryHas} onChange={setIsDeliveryHas} >
                                                 <RadioGroup.Label className="sr-only">Privacy setting</RadioGroup.Label>
                                                 <div className="bg-white rounded-md -space-y-px">

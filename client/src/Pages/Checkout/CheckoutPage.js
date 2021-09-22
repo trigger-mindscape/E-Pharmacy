@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Checkout from '../../Components/Checkout/Checkout';
-import Footer from '../../Components/Home/Footer/Footer';
+import E-Pharmacy from '../../Components/Home/Footer/Footer';
 import Header from '../../Components/Home/NavBar/Header';
 import NavBar from '../../Components/Home/NavBar/NavBar';
 

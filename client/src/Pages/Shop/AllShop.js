@@ -5,8 +5,6 @@ import AllShopBanner from '../../Components/Shop/AllShop/AllShopBanner';
 import DisplayShops from '../../Components/Shop/AllShop/DisplayShops';
 import NavBar from '../../Components/Home/NavBar/NavBar'
 import Header from '../../Components/Home/NavBar/Header';
-import Footer from '../../Components/Home/Footer/Footer'
-
 
 const AllShop = () => {
 
