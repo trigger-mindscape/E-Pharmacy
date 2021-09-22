@@ -156,7 +156,7 @@ productRouter.get("/get/:vendorId", getProducts);
  *       500:
  *         description: Some server error
  */
-productRouter.get("/single/get/:vendorId", getSingleProduct);
+productRouter.get("/single/get/:productId", getSingleProduct);
 
 // authRouter.post('/make-admin', auth, admin, makeAdmin);
 module.exports = productRouter;

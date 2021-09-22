@@ -32,6 +32,7 @@ export const getSingleShopProduct = (vendorId) => async (dispatch) => {
 export const getSingleProduct = (productId) => async (dispatch) => {
   try {
     const { data } = await getSingleProductApi(productId);
+    console.log("🚀 ~ file: actions.js ~ line 35 ~ getSingleProduct ~ data", data)
     dispatch({ type: GET_SINGLE_PRODUCT, payload: data });
 
   } catch (error) {

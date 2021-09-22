@@ -10,7 +10,6 @@ import { getSingleProduct } from '../../Redux/product/actions';
 
 const ProductDetails = () => {
   const product = useSelector(state => state.product.singleProduct);
-  console.log("🚀 ~ file: ProductDetails.js ~ line 13 ~ ProductDetails ~ product", product)
   const dispatch = useDispatch()
   const { productId } = useParams();
   useEffect(() => {
