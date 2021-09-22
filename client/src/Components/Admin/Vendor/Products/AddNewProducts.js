@@ -44,7 +44,7 @@ const AddNewProducts = ({ setEditModal }) => {
           image: pdImgUrl,
           category: selectedCategory.name,
           brand:'Own Brand',
-          price: 999
+          price: data.productPrice,
       }
       dispatch(createProduct(productData,setEditModal))
     };
@@ -192,6 +192,28 @@ const AddNewProducts = ({ setEditModal }) => {
                             PNG, JPG, GIF up to 10MB
                           </p>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-3">
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    >
+                      Price
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <div className="max-w-lg flex rounded-md shadow-sm">
+                        <input
+                          type="number"
+                          name="productPrice"
+                          id="productPrice"
+                          autoComplete="productPrice"
+                          className="flex-1 block w-full focus:ring-teal-500 focus:border-teal-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                          {...register("productPrice")}
+                          required
+                        />
                       </div>
                     </div>
                   </div>

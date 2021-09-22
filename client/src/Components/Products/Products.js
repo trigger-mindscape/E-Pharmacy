@@ -13,8 +13,7 @@ const Products = () => {
         <title>Our Products</title>
         <meta name="Our Products" content="Best E-Pharmacy Products in the world" />
       </Helmet>
-      <Header />
-      <NavBar />
+      
       <div className="bg-white">
         <div className="max-w-2xl px-4 pt-10 pb-10 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 sm:pt-10">
           <div className="flex justify-between align-center">

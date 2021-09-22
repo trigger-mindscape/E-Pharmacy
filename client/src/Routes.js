@@ -36,9 +36,9 @@ const Navigation = () => {
           <Route exact path="/productDetails/:productId">
             <ProductDetails />
           </Route>
-          <Route exact path="/vendor/:panel">
+          <PrivateRoute exact path="/vendor/:panel">
             <VenderDashboardPage />
-          </Route>
+          </PrivateRoute>
           <Route path="/allShop">
             <AllShop></AllShop>
           </Route>
