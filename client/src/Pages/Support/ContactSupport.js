@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import NavBar from "../../Components/Home/NavBar/NavBar";
+import Footer from '../../Components/Home/Footer/Footer'
 
 const ContactSupport = () => {
   return (
@@ -10,8 +11,8 @@ const ContactSupport = () => {
           <p class="mt-4 text-sm leading-7 text-gray-500 font-regular uppercase">
             Contact
           </p>
-          <h3 class="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight text-gray-900">
-            Get In <span class="text-indigo-600">Touch</span>
+          <h3 class="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight text-teal-500">
+            Get In <span class="text-teal-800">Touch</span>
           </h3>
         </div>
 
@@ -87,7 +88,7 @@ const ContactSupport = () => {
                 </label>
               </div>
               <button
-                class="shadow bg-indigo-600 hover:bg-indigo-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded"
+                class="shadow bg-teal-500 hover:bg-teal-800 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded"
                 type="submit"
               >
                 Send Message
@@ -96,6 +97,8 @@ const ContactSupport = () => {
           </div>
         </form>
       </div>
+
+      <Footer/>
     </Fragment>
   );
 };

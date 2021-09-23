@@ -18,7 +18,9 @@ const ShopDetails = () => {
     dispatch(getSingleShop(vendorId));
     dispatch(getSingleShopCategory(vendorId));
     dispatch(getSingleShopProduct(vendorId));
+
   }, []);
+
   return (
     <section>
       {/* Shop Banner*/}

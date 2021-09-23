@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import Footer from '../../Components/Home/Footer/Footer';
 import NavBar from "../../Components/Home/NavBar/NavBar";
 
 const TermsPrivacy = () => {
@@ -84,6 +85,8 @@ const TermsPrivacy = () => {
             </p>
           </div>
         </div>
+
+        <Footer/>
       </Fragment>
     );
 };
