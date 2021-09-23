@@ -15,14 +15,14 @@ const NavLinks = () => {
         </Link>
       </li>
       <li>
-        <Link
-          to="/"
+        <a
+          href="#offers"
           aria-label="Our product"
           title="Our product"
           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
         >
           Features
-        </Link>
+        </a>
       </li>
       <li>
         <Link
@@ -35,14 +35,14 @@ const NavLinks = () => {
         </Link>
       </li>
       <li>
-        <Link
-          to="/blogs"
+        <a
+          href="#blogs"
           aria-label="Latest Blog"
           title="Latest Blog"
           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
         >
           Blog
-        </Link>
+        </a>
       </li>
     </Fragment>
   );
