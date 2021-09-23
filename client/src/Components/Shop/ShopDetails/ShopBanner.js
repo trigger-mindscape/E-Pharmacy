@@ -14,7 +14,7 @@ const ShopBanner = () => {
   return (
     <Fragment>
       <Helmet>
-        <title>E-Pharmacy - {shopName}</title>
+        <title>{shopName}</title>
         <meta name={name} content={location}/>
       </Helmet>
       <div className="container mx-auto">
