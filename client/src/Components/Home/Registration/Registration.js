@@ -101,7 +101,7 @@ const Registration = ({ setIsAccount }) => {
               <li></li>
             </ul>
           </div>
-          <div className="w-2/5 p-8 bg-white md:flex md:items-center md:justify-center sm:w-auto md:h-full xl:w-2/5 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none">
+          <div className="w-full p-8 bg-white md:flex md:items-center md:justify-center sm:w-4/5 md:h-full xl:w-2/5 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none">
             <div className="w-full max-w-md space-y-8">
               <div className="text-center">
                 <h2 className="mt-6 text-3xl font-semibold text-teal-600">

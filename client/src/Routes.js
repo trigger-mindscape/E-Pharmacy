@@ -70,7 +70,7 @@ const Navigation = () => {
           <Route exact path="/career">
             <Career />
           </Route>
-          <Route exact path="/support">
+          <Route exact path="/contact">
             <ContactSupport />
           </Route>
           <Route exact path="/resources">

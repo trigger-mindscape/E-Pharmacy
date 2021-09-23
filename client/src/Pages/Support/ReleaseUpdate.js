@@ -32,13 +32,13 @@ const ReleaseUpdate = () => {
             </ol>
             <div className="my-5">
               <a
-                href="#"
+                href="#learn"
                 className="px-4 py-3 mt-6 text-center text-white uppercase bg-pink-400 rounded-full hover:bg-pink-700"
               >
                 Learn About Feature #1
               </a>
               <a
-                href="#"
+                href="#learn"
                 className="px-4 py-3 m-3 text-center text-white uppercase bg-gray-700 rounded-full hover:bg-pink-700"
               >
                 Learn About Feature #2

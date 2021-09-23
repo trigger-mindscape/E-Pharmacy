@@ -132,7 +132,7 @@ const Footer = () => {
               <nav className="mb-10 list-none">
                 <li className="mt-3">
                   <Link
-                    to="/support"
+                    to="/contact"
                     className="text-gray-500 cursor-pointer hover:text-teal-500"
                   >
                     Contact Support
