@@ -57,6 +57,7 @@ const Products = () => {
                       ৳{product.price}
                     </p>
                   </div>
+                </Link>
 
                   <div>
                     <p className="px-2 mt-1 font-sans text-sm tracking-wide text-gray-900">
@@ -119,7 +120,7 @@ const Products = () => {
                       </button>
                     {/* </Link> */}
                   </div>
-                </Link>
+                {/* </Link> */}
               </div>
             ))}
           </div>

@@ -1,7 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { RadioGroup } from '@headlessui/react'
+import QuantityButton from '../Common/QuantityButton';
+
+const payMethods = [
+  { name: 'Cash on Delivery' },
+  { name: 'Bkash' },
+  { name: 'Pay with Card' },
+]
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 
 const Checkout = () => {
+
+  const [selectedPayMethod, setSelectedPayMethod] = useState(payMethods[0])
+  console.log(selectedPayMethod.name)
+
+  const [useBkash, setUseBkash] = useState(false)
+  const [useCard, setUseCard] = useState(false)
+
+ const handlePayMethod = (e) => {
+   setSelectedPayMethod(e);
+   setUseBkash(!useBkash);
+   setUseCard(!useCard);
+ }
+
+
   return (
     <div className="flex justify-center my-6">
       <div className="flex flex-col w-full p-8 text-gray-800 bg-white pin-r pin-y md:w-4/5 lg:w-4/5">
@@ -58,14 +84,17 @@ const Checkout = () => {
                 <td className="justify-center md:justify-end md:flex md:mt-8">
                   <div className="flex-1 flex items-end justify-between text-sm">
                     <div className="border border-gray-400 rounded">
-                      <i className="fas fa-plus m-1 py-1 px-4 cursor-pointer font-medium text-teal-600"></i>
+                      {/* <i className="fas fa-plus m-1 py-1 px-4 cursor-pointer font-medium text-teal-600"></i>
                       <input
                         className="mx-2 text-center w-2 font-medium text-gray-800"
                         type="text"
                         value="1"
                       />
 
-                      <i className="fas fa-minus m-1 py-1 px-4 cursor-pointer font-medium text-teal-600"></i>
+                      <i className="fas fa-minus m-1 py-1 px-4 cursor-pointer font-medium text-teal-600"></i> */}
+
+                      <QuantityButton/>
+
                     </div>
                   </div>
                 </td>
@@ -318,26 +347,110 @@ const Checkout = () => {
                     system.
                   </p>
 
-                  <label className="inline-flex items-center">
-                    <input
-                      type="radio"
-                      className="form-radio h-5 w-5 text-gray-600"
-                      checked
-                    />
-                    <span className="ml-2 text-gray-800 font-medium">
-                      Cash On Delivery
-                    </span>
-                  </label>
-                  <hr />
-                  <label className="inline-flex items-center mt-2">
-                    <input
-                      type="radio"
-                      className="form-radio h-5 w-5 text-gray-600"
-                    />
-                    <span className="ml-2 text-gray-800 font-medium">
-                      Bkash
-                    </span>
-                  </label>
+                  {/* Select Radio input */}
+
+
+
+                  <RadioGroup value={selectedPayMethod} onChange={handlePayMethod }>
+                    <RadioGroup.Label className="sr-only">Privacy payMethod</RadioGroup.Label>
+                    <div className="bg-white rounded-md -space-y-px">
+                      {payMethods.map((payMethod, payMethodIdx) => (
+                        <RadioGroup.Option
+                          key={payMethod.name}
+                          value={payMethod}
+                          className={({ checked }) =>
+                            classNames(
+                              payMethodIdx === 0 ? 'rounded-tl-md rounded-tr-md' : '',
+                              payMethodIdx === payMethods.length - 1 ? 'rounded-bl-md rounded-br-lg' : '',
+                              checked ? 'bg-teal-50 border-teal-200 z-10' : 'border-white',
+                              'relative border p-4 flex cursor-pointer focus:outline-none'
+                            )
+                          }
+                        >
+                          {({ active, checked }) => (
+                            <>
+                              <span
+                                className={classNames(
+                                  checked ? 'bg-teal-600 border-transparent' : 'bg-white border-teal-300',
+                                  active ? 'ring-2 ring-offset-2 ring-teal-500' : '',
+                                  'h-4 w-4 mt-0.5 cursor-pointer rounded-full border flex items-center justify-center'
+                                )}
+                                aria-hidden="true"
+                              >
+                                <span className="rounded-full bg-white w-1.5 h-1.5" />
+                              </span>
+                              <div className="ml-3 flex flex-col">
+                                <RadioGroup.Label
+                                  as="span"
+                                  className={classNames(checked ? 'text-teal-900' : 'text-gray-600', 'block text-sm font-medium')}
+                                >
+                                  {payMethod.name }
+
+                                  {/* Bkash */}
+                                  { payMethod.name === "Bkash" && useBkash && 
+                                    <div className="pt-2">
+                                      <p>Please sent money on 0177777711(Personal)</p>
+                                      <p className="text-red-300">Don't forget the transaction ID</p>
+                                    </div>
+                                  }
+
+                                  {/* Card */}
+                                  { payMethod.name === "Pay with Card" && useCard && 
+                                     <fieldset>
+                                      <legend className="block text-sm pt-2 font-medium text-gray-700">Card Information</legend>
+                                      <div className="mt-1 bg-white rounded-md shadow-sm -space-y-px">
+                                        <div>
+                                          <label htmlFor="card-number" className="sr-only">
+                                            Card number
+                                          </label>
+                                          <input
+                                            type="text"
+                                            name="card-number"
+                                            id="card-number"
+                                            className="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-t-md bg-transparent focus:z-10 sm:text-sm border-gray-300"
+                                            placeholder="Card number"
+                                          />
+                                        </div>
+                                        <div className="flex -space-x-px">
+                                          <div className="w-1/2 flex-1 min-w-0">
+                                            <label htmlFor="card-expiration-date" className="sr-only">
+                                              Expiration date
+                                            </label>
+                                            <input
+                                              type="text"
+                                              name="card-expiration-date"
+                                              id="card-expiration-date"
+                                              className="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-bl-md bg-transparent focus:z-10 sm:text-sm border-gray-300"
+                                              placeholder="MM / YY"
+                                            />
+                                          </div>
+                                          <div className="flex-1 min-w-0">
+                                            <label htmlFor="card-cvc" className="sr-only">
+                                              CVC
+                                            </label>
+                                            <input
+                                              type="text"
+                                              name="card-cvc"
+                                              id="card-cvc"
+                                              className="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-br-md bg-transparent focus:z-10 sm:text-sm border-gray-300"
+                                              placeholder="CVC"
+                                            />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </fieldset>
+                                  }
+                                </RadioGroup.Label>
+                                
+                              </div>
+                            </>
+                          )}
+                        </RadioGroup.Option>
+                      ))}
+                    </div>
+                  </RadioGroup>
+
+
                 </div>
               </div>
 
