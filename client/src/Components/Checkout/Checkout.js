@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { RadioGroup } from '@headlessui/react'
+import QuantityButton from '../Common/QuantityButton';
+
+const payMethods = [
+  { name: 'Cash on Delivery' },
+  { name: 'Bkash' },
+  { name: 'Pay with Card' },
+]
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 
 const Checkout = () => {
+
+   const [selectedPayMethod, setSelectedPayMethod] = useState(payMethods[0])
+
+
+
   return (
     <div className="flex justify-center my-6">
       <div className="flex flex-col w-full p-8 text-gray-800 bg-white pin-r pin-y md:w-4/5 lg:w-4/5">
@@ -58,14 +75,17 @@ const Checkout = () => {
                 <td className="justify-center md:justify-end md:flex md:mt-8">
                   <div className="flex-1 flex items-end justify-between text-sm">
                     <div className="border border-gray-400 rounded">
-                      <i className="fas fa-plus m-1 py-1 px-4 cursor-pointer font-medium text-teal-600"></i>
+                      {/* <i className="fas fa-plus m-1 py-1 px-4 cursor-pointer font-medium text-teal-600"></i>
                       <input
                         className="mx-2 text-center w-2 font-medium text-gray-800"
                         type="text"
                         value="1"
                       />
 
-                      <i className="fas fa-minus m-1 py-1 px-4 cursor-pointer font-medium text-teal-600"></i>
+                      <i className="fas fa-minus m-1 py-1 px-4 cursor-pointer font-medium text-teal-600"></i> */}
+
+                      <QuantityButton/>
+
                     </div>
                   </div>
                 </td>
@@ -318,26 +338,55 @@ const Checkout = () => {
                     system.
                   </p>
 
-                  <label className="inline-flex items-center">
-                    <input
-                      type="radio"
-                      className="form-radio h-5 w-5 text-gray-600"
-                      checked
-                    />
-                    <span className="ml-2 text-gray-800 font-medium">
-                      Cash On Delivery
-                    </span>
-                  </label>
-                  <hr />
-                  <label className="inline-flex items-center mt-2">
-                    <input
-                      type="radio"
-                      className="form-radio h-5 w-5 text-gray-600"
-                    />
-                    <span className="ml-2 text-gray-800 font-medium">
-                      Bkash
-                    </span>
-                  </label>
+                  {/* Select Radio input */}
+
+
+
+                  <RadioGroup value={selectedPayMethod} onChange={setSelectedPayMethod}>
+                    <RadioGroup.Label className="sr-only">Privacy payMethod</RadioGroup.Label>
+                    <div className="bg-white rounded-md -space-y-px">
+                      {payMethods.map((payMethod, payMethodIdx) => (
+                        <RadioGroup.Option
+                          key={payMethod.name}
+                          value={payMethod}
+                          className={({ checked }) =>
+                            classNames(
+                              payMethodIdx === 0 ? 'rounded-tl-md rounded-tr-md' : '',
+                              payMethodIdx === payMethods.length - 1 ? 'rounded-bl-md rounded-br-lg' : '',
+                              checked ? 'bg-indigo-50 border-teal-200 z-10' : 'border-white',
+                              'relative border p-4 flex cursor-pointer focus:outline-none'
+                            )
+                          }
+                        >
+                          {({ active, checked }) => (
+                            <>
+                              <span
+                                className={classNames(
+                                  checked ? 'bg-teal-600 border-transparent' : 'bg-white border-teal-300',
+                                  active ? 'ring-2 ring-offset-2 ring-teal-500' : '',
+                                  'h-4 w-4 mt-0.5 cursor-pointer rounded-full border flex items-center justify-center'
+                                )}
+                                aria-hidden="true"
+                              >
+                                <span className="rounded-full bg-white w-1.5 h-1.5" />
+                              </span>
+                              <div className="ml-3 flex flex-col">
+                                <RadioGroup.Label
+                                  as="span"
+                                  className={classNames(checked ? 'text-teal-900' : 'text-gray-900', 'block text-sm font-medium')}
+                                >
+                                  {payMethod.name}
+                                </RadioGroup.Label>
+                                
+                              </div>
+                            </>
+                          )}
+                        </RadioGroup.Option>
+                      ))}
+                    </div>
+                  </RadioGroup>
+
+
                 </div>
               </div>
 
