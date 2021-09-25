@@ -15,8 +15,17 @@ function classNames(...classes) {
 
 const Checkout = () => {
 
-   const [selectedPayMethod, setSelectedPayMethod] = useState(payMethods[0])
+  const [selectedPayMethod, setSelectedPayMethod] = useState(payMethods[0])
+  console.log(selectedPayMethod.name)
 
+  const [useBkash, setUseBkash] = useState(false)
+  const [useCard, setUseCard] = useState(false)
+
+ const handlePayMethod = (e) => {
+   setSelectedPayMethod(e);
+   setUseBkash(!useBkash);
+   setUseCard(!useCard);
+ }
 
 
   return (
@@ -342,7 +351,7 @@ const Checkout = () => {
 
 
 
-                  <RadioGroup value={selectedPayMethod} onChange={setSelectedPayMethod}>
+                  <RadioGroup value={selectedPayMethod} onChange={handlePayMethod }>
                     <RadioGroup.Label className="sr-only">Privacy payMethod</RadioGroup.Label>
                     <div className="bg-white rounded-md -space-y-px">
                       {payMethods.map((payMethod, payMethodIdx) => (
@@ -353,7 +362,7 @@ const Checkout = () => {
                             classNames(
                               payMethodIdx === 0 ? 'rounded-tl-md rounded-tr-md' : '',
                               payMethodIdx === payMethods.length - 1 ? 'rounded-bl-md rounded-br-lg' : '',
-                              checked ? 'bg-indigo-50 border-teal-200 z-10' : 'border-white',
+                              checked ? 'bg-teal-50 border-teal-200 z-10' : 'border-white',
                               'relative border p-4 flex cursor-pointer focus:outline-none'
                             )
                           }
@@ -373,9 +382,64 @@ const Checkout = () => {
                               <div className="ml-3 flex flex-col">
                                 <RadioGroup.Label
                                   as="span"
-                                  className={classNames(checked ? 'text-teal-900' : 'text-gray-900', 'block text-sm font-medium')}
+                                  className={classNames(checked ? 'text-teal-900' : 'text-gray-600', 'block text-sm font-medium')}
                                 >
-                                  {payMethod.name}
+                                  {payMethod.name }
+
+                                  {/* Bkash */}
+                                  { payMethod.name === "Bkash" && useBkash && 
+                                    <div className="pt-2">
+                                      <p>Please sent money on 0177777711(Personal)</p>
+                                      <p className="text-red-300">Don't forget the transaction ID</p>
+                                    </div>
+                                  }
+
+                                  {/* Card */}
+                                  { payMethod.name === "Pay with Card" && useCard && 
+                                     <fieldset>
+                                      <legend className="block text-sm pt-2 font-medium text-gray-700">Card Information</legend>
+                                      <div className="mt-1 bg-white rounded-md shadow-sm -space-y-px">
+                                        <div>
+                                          <label htmlFor="card-number" className="sr-only">
+                                            Card number
+                                          </label>
+                                          <input
+                                            type="text"
+                                            name="card-number"
+                                            id="card-number"
+                                            className="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-t-md bg-transparent focus:z-10 sm:text-sm border-gray-300"
+                                            placeholder="Card number"
+                                          />
+                                        </div>
+                                        <div className="flex -space-x-px">
+                                          <div className="w-1/2 flex-1 min-w-0">
+                                            <label htmlFor="card-expiration-date" className="sr-only">
+                                              Expiration date
+                                            </label>
+                                            <input
+                                              type="text"
+                                              name="card-expiration-date"
+                                              id="card-expiration-date"
+                                              className="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-bl-md bg-transparent focus:z-10 sm:text-sm border-gray-300"
+                                              placeholder="MM / YY"
+                                            />
+                                          </div>
+                                          <div className="flex-1 min-w-0">
+                                            <label htmlFor="card-cvc" className="sr-only">
+                                              CVC
+                                            </label>
+                                            <input
+                                              type="text"
+                                              name="card-cvc"
+                                              id="card-cvc"
+                                              className="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-br-md bg-transparent focus:z-10 sm:text-sm border-gray-300"
+                                              placeholder="CVC"
+                                            />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </fieldset>
+                                  }
                                 </RadioGroup.Label>
                                 
                               </div>
