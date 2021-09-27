@@ -21,6 +21,7 @@ import FAQ from './Pages/Platform/FAQ';
 import Pricing from './Pages/Platform/Pricing';
 import TermsPrivacy from './Pages/Platform/TermsPrivacy';
 import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
+import UserInfo from './Components/Admin/UserInfo/UserInfo';
 
 const Navigation = () => {
   return (
@@ -87,6 +88,9 @@ const Navigation = () => {
           </Route>
           <Route exact path="/terms&privacy">
             <TermsPrivacy />
+          </Route>
+          <Route exact path="/user">
+            <UserInfo/>
           </Route>
         </Switch>
       </Router>

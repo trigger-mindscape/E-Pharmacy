@@ -82,7 +82,7 @@ const ActionIcons = () => {
         </button>
       </li>
       {user.token ? (
-        <Link to="/vendor/dashboard">
+        <Link to="/user">
           <li>
             <svg
               xmlns="http://www.w3.org/2000/svg"
