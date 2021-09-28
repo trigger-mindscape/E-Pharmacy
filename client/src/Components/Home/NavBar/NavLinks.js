@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
 
 const NavLinks = () => {
   return (
-    <>
+    <Fragment>
       <li>
         <Link
           to="/allshop"
@@ -16,7 +16,7 @@ const NavLinks = () => {
       </li>
       <li>
         <a
-          href="/"
+          href="#offers"
           aria-label="Our product"
           title="Our product"
           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
@@ -44,7 +44,7 @@ const NavLinks = () => {
           Blog
         </a>
       </li>
-    </>
+    </Fragment>
   );
 };
 

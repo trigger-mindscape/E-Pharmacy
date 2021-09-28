@@ -101,7 +101,7 @@ const Footer = () => {
               <nav className="mb-10 list-none">
                 <li className="mt-3">
                   <Link
-                    to="/"
+                    to="/company"
                     className="text-gray-500 cursor-pointer hover:text-teal-500"
                   >
                     Company
@@ -109,7 +109,7 @@ const Footer = () => {
                 </li>
                 <li className="mt-3">
                   <Link
-                    to="/"
+                    to="/career"
                     className="text-gray-500 cursor-pointer hover:text-teal-500"
                   >
                     Careers
@@ -117,7 +117,7 @@ const Footer = () => {
                 </li>
                 <li className="mt-3">
                   <Link
-                    to="/blogs"
+                    to="/#blogs"
                     className="text-gray-500 cursor-pointer hover:text-teal-500"
                   >
                     Blog
@@ -132,7 +132,7 @@ const Footer = () => {
               <nav className="mb-10 list-none">
                 <li className="mt-3">
                   <Link
-                    to="/"
+                    to="/contact"
                     className="text-gray-500 cursor-pointer hover:text-teal-500"
                   >
                     Contact Support
@@ -140,7 +140,7 @@ const Footer = () => {
                 </li>
                 <li className="mt-3">
                   <Link
-                    to="/"
+                    to="/resources"
                     className="text-gray-500 cursor-pointer hover:text-teal-500"
                   >
                     Help Resources
@@ -148,7 +148,7 @@ const Footer = () => {
                 </li>
                 <li className="mt-3">
                   <Link
-                    to="/"
+                    to="/release-update"
                     className="text-gray-500 cursor-pointer hover:text-teal-500"
                   >
                     Release Updates
@@ -163,7 +163,7 @@ const Footer = () => {
               <nav className="mb-10 list-none">
                 <li className="mt-3">
                   <Link
-                    to="/"
+                    to="/terms&privacy"
                     className="text-gray-500 cursor-pointer hover:text-teal-500"
                   >
                     Terms &amp; Privacy
@@ -171,7 +171,7 @@ const Footer = () => {
                 </li>
                 <li className="mt-3">
                   <Link
-                    to="/"
+                    to="/pricing"
                     className="text-gray-500 cursor-pointer hover:text-teal-500"
                   >
                     Pricing
@@ -179,7 +179,7 @@ const Footer = () => {
                 </li>
                 <li className="mt-3">
                   <Link
-                    to="/"
+                    to="/FAQ"
                     className="text-gray-500 cursor-pointer hover:text-teal-500"
                   >
                     FAQ
@@ -194,7 +194,7 @@ const Footer = () => {
               <nav className="mb-10 list-none">
                 <li className="mt-3">
                   <Link
-                    to="/"
+                    to="/contact"
                     className="text-gray-500 cursor-pointer hover:text-teal-500"
                   >
                     Send a Message
@@ -202,7 +202,7 @@ const Footer = () => {
                 </li>
                 <li className="mt-3">
                   <Link
-                    to="/"
+                    to="/contact"
                     className="text-gray-500 cursor-pointer hover:text-teal-500"
                   >
                     Request a Quote

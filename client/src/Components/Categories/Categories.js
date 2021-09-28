@@ -1,22 +1,22 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { useSelector } from "react-redux";
 
 const Categories = () => {
-  const categories = useSelector(state => state.category)
+  const categories = useSelector((state) => state.category);
 
   // console.log(categories[0].category)
   return (
     <div className="mt-12">
-      <h1 className="px-3 text-lg font-display font-semibold mb-5 text-teal-700">
+      <h1 className="px-3 mb-5 text-lg font-semibold text-teal-700 font-display">
         Product Category
       </h1>
-      <div className=" ">
+      <div className="">
         {categories.map((singleCategory) => (
           <div className="m-2">
             <ul>
-              <li className="bg-teal-50 hover:bg-teal-100 shadow-4xl my-4 p-2 cursor-pointer">
-                <div className="flex justify-between items-center">
-                  <p className="text-gray-800 whitespace-no-wrap tracking-wide">
+              <li className="p-2 my-4 cursor-pointer bg-teal-50 hover:bg-teal-100 shadow-4xl">
+                <div className="flex items-center justify-between">
+                  <p className="tracking-wide text-gray-800 whitespace-no-wrap">
                     {singleCategory.name}
                   </p>
                   <svg

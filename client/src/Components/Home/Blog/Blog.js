@@ -1,18 +1,23 @@
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
+import React, { Fragment, useEffect, useState } from 'react';
+// import { Helmet } from 'react-helmet';
+// import BlogPost from './BlogPost';
 
 const Blog = () => {
+// const [blog, setBlog] = useState([]);
+
+// const Blogs = blog.Result.Resources.Resource;
+// console.log(Blogs)
+
+//   useEffect(() => {
+//     fetch("https://health.gov/myhealthfinder/api/v3/topicsearch.json")
+//       .then((res) => res.json())
+//       .then((data) => setBlog(data));
+//     }, [])
+
   return (
     <Fragment >
-      <Helmet>
-        <title>Latest Blog</title>
-        <meta
-          name="it would be dynamic by blog"
-          content="it would be dynamic by blog"
-        />
-      </Helmet>
       <div className="px-4 pt-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8" id="blogs">
         <h2 className="mb-4 text-4xl font-semibold tracking-wide text-center text-teal-500 font-display">
           Our Latest News
@@ -133,7 +138,7 @@ const Blog = () => {
               </p>
               <a
                 href="#_"
-                className="py-2 px-4 tracking-wide text-white hover:text-white transition-all bg-teal-300 rounded-sm shadow-lg cursor-pointer hover:bg-teal-500"
+                className="px-4 py-2 tracking-wide text-white transition-all bg-teal-300 rounded-sm shadow-lg cursor-pointer hover:text-white hover:bg-teal-500"
               >
                 Read More <FontAwesomeIcon icon={faArrowRight} />
               </a>

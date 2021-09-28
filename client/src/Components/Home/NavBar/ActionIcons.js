@@ -13,7 +13,7 @@ const ActionIcons = () => {
       <li>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 font-medium cursor-pointer text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
+          className="w-6 h-6 font-medium text-gray-700 transition-colors duration-200 cursor-pointer hover:text-teal-accent-700"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -30,12 +30,12 @@ const ActionIcons = () => {
       <li>
         <button
           onClick={() => setOpen(true)}
-          className="py-4 relative border-2 border-transparent text-gray-700 rounded-full hover:text-teal-accent-700 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out"
+          className="relative py-4 text-gray-700 transition duration-150 ease-in-out border-2 border-transparent rounded-full hover:text-teal-accent-700 focus:outline-none focus:text-gray-900"
           aria-label="Favorite"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 font-medium cursor-pointer text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
+            className="w-6 h-6 font-medium text-gray-700 transition-colors duration-200 cursor-pointer hover:text-teal-accent-700"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -57,12 +57,12 @@ const ActionIcons = () => {
       <li>
         <button
           onClick={() => setOpen(true)}
-          className="py-4 relative border-2 border-transparent text-gray-800 rounded-full hover:text-teal-accent-700 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out"
+          className="relative py-4 text-gray-800 transition duration-150 ease-in-out border-2 border-transparent rounded-full hover:text-teal-accent-700 focus:outline-none focus:text-gray-500"
           aria-label="Cart"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 font-medium cursor-pointer text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
+            className="w-6 h-6 font-medium text-gray-700 transition-colors duration-200 cursor-pointer hover:text-teal-accent-700"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -82,11 +82,11 @@ const ActionIcons = () => {
         </button>
       </li>
       {user.token ? (
-        <Link to="/vendor/dashboard">
+        <Link to="/user">
           <li>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 font-medium cursor-pointer text-gray-700 transition-colors duration-200 hover:text-teal-accent-700"
+              className="w-6 h-6 font-medium text-gray-700 transition-colors duration-200 cursor-pointer hover:text-teal-accent-700"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -102,7 +102,7 @@ const ActionIcons = () => {
         </Link>
       ) : (
         <Link to="/login">
-          <p className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-700">
+          <p className="px-3 py-1 text-lg font-medium tracking-wide text-white transition-colors duration-200 bg-teal-400 rounded-md hover:bg-teal-700">
             Login
           </p>
         </Link>

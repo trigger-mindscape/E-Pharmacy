@@ -6,31 +6,24 @@ const DisplayShops = () => {
     const [shopCards, setShopCards] = useState(allShops);
 
     return (
-        <div className="pb-10 pt-8 bg-gray-50">
+        <div className="w-full pt-8 pb-10 bg-gray-50">
       {/* Shop Card */}
-      <div className="w-full text-center py-8">
-        <h1 className="font-medium text-4xl font-display tracking-wide text-teal-700">
-          All Registered Medicine Stores
-        </h1>
-        <p className="font-sans text-base tracking-wide text-gray-700 mt-2">
-          Search for Medicine, Filter by your location
-        </p>
-      </div>
-      <div className="cards flex flex-wrap justify-center">
+      
+      <div className="flex flex-wrap justify-center w-full cards">
         {shopCards.map((shopCard) => (
-          <div className="pb-4 m-6 rounded-lg shadow-3xl w-96 md:w-2/5 lg:w-1/4 bg-white">
+          <div className="pb-4 m-6 bg-white rounded-lg shadow-3xl w-96 md:w-2/5 lg:w-1/4">
             <img src={shopCard.cardBanner} className="rounded-t-lg" alt="" />
 
             <div className="relative pt-2">
-              <div className="absolute -mt-12 w-full flex justify-center items-center">
+              <div className="absolute flex items-center justify-center w-full -mt-12">
                 <img
-                  className="shadow-3xl rounded-2xl border-2 border-gray-400 h-16 w-16"
+                  className="w-16 h-16 border-2 border-gray-400 shadow-3xl rounded-2xl"
                   src={shopCard.logo}
                   alt=""
                 />
               </div>
 
-              <div className="pt-5 px-4">
+              <div className="px-4 pt-5">
                 <div className="absolute right-4 top-8 shadow-4xl">
                   <p
                     className={`rounded border border-teal-300 py-0.5 px-3 ${
@@ -46,7 +39,7 @@ const DisplayShops = () => {
                 <h1 className="font-medium text-xl py-1.5 text-teal-800 font-sans tracking-wide">
                   {shopCard.shopName}
                 </h1>
-                <div className="text-sm font-sans text-gray-800">
+                <div className="font-sans text-sm text-gray-800">
                   <p className="pb-1 text-yellow-800">⭐ {shopCard.rating}</p>
                   <p className="pb-1">
                     {shopCard.location} {shopCard['postal code']}
@@ -75,9 +68,9 @@ const DisplayShops = () => {
             </div>
 
             {/* Visit store button */}
-            <div className="flex justify-center items-center my-2 mt-4 ">
+            <div className="flex items-center justify-center my-2 mt-4 ">
               <Link to={`/shopDetails/${shopCard._id}`}>
-                <button className="flex py-2 px-6 rounded shadow-lg bg-teal-400 focus:outline-none active:bg-teal-400 text-white transition duration-150 ease-in-out hover:bg-teal-600">
+                <button className="flex px-6 py-2 text-white transition duration-150 ease-in-out bg-teal-400 rounded shadow-lg focus:outline-none active:bg-teal-400 hover:bg-teal-600">
                   <svg
                     className="w-5 h-5 mr-1"
                     fill="none"

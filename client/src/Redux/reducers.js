@@ -7,14 +7,11 @@ import userReducer from "./user/reducers";
 
 const { combineReducers } = require("redux");
 
-
-export const rootReducer = combineReducers(
-    {
-        user:userReducer,
-        shop:shopReducer,
-        category:categoryReducer,
-        product:productReducer,
-        setting:settingReducer,
-        notification:notificationReducer,
-    }
-)
+export const rootReducer = combineReducers({
+  user: userReducer,
+  shop: shopReducer,
+  category: categoryReducer,
+  product: productReducer,
+  setting: settingReducer,
+  notification: notificationReducer,
+});

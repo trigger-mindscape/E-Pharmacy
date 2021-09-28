@@ -1,18 +1,13 @@
-import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
-import QuantityButton from '../Common/QuantityButton';
-import ShowRating from '../Common/ShowRating';
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import QuantityButton from "../Common/QuantityButton";
+import ShowRating from "../Common/ShowRating";
 
 const ProductInfo = ({
   product: { name, image, brand, description, totalReview },
 }) => {
   return (
     <Fragment>
-      <Helmet>
-        <title>Product Details</title>
-        <meta name={brand} content={description} />
-      </Helmet>
       <div className="flex flex-wrap justify-between mx-auto">
         <img
           alt="ecommerce"

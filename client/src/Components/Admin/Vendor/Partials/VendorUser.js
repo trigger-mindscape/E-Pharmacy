@@ -1,26 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const VendorUser = () => {
   return (
     <div className="relative inline-flex">
       <button
-        className="inline-flex justify-center items-center group"
+        className="inline-flex items-center justify-center group"
         aria-haspopup="true"
       >
-        <img
-          className="w-10 h-10 rounded-full"
-          src="https://png.pngtree.com/png-clipart/20190924/original/pngtree-businessman-user-avatar-free-vector-png-image_4827807.jpg"
-          width="50"
-          height="50"
-          alt="User"
-        />
+        <Link to='/user'>
+          <img
+            className="w-10 h-10 rounded-full"
+            src="https://png.pngtree.com/png-clipart/20190924/original/pngtree-businessman-user-avatar-free-vector-png-image_4827807.jpg"
+            width="50"
+            height="50"
+            alt="User"
+          />
+        </Link>
         <div className="flex items-center truncate">
-          <span className="font-body truncate ml-2 mr-1 text-base font-medium text-teal-500 hover:text-teal-800">
+          <span className="ml-2 mr-1 text-base font-medium text-teal-500 truncate font-body hover:text-teal-800">
             Logout
           </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-teal-500 hover:text-teal-800"
+            className="w-6 h-6 text-teal-500 hover:text-teal-800"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

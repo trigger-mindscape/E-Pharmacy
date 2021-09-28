@@ -11,7 +11,17 @@ import OrderHistory from './Pages/OrderHistory/OrderHistory';
 import ProductDetails from './Pages/ProductDetails/ProductDetails';
 import AllShop from './Pages/Shop/AllShop';
 import CreateShop from './Pages/Shop/CreateShop';
+import Blog from './Components/Home/Blog/Blog';
+import Company from './Pages/About/Company';
+import Career from './Pages/About/Career';
+import ContactSupport from './Pages/Support/ContactSupport';
+import HelpResources from './Pages/Support/HelpResources';
+import ReleaseUpdate from './Pages/Support/ReleaseUpdate';
+import FAQ from './Pages/Platform/FAQ';
+import Pricing from './Pages/Platform/Pricing';
+import TermsPrivacy from './Pages/Platform/TermsPrivacy';
 import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
+import UserInfo from './Components/Admin/UserInfo/UserInfo';
 
 const Navigation = () => {
   return (
@@ -36,9 +46,9 @@ const Navigation = () => {
           <Route exact path="/productDetails/:productId">
             <ProductDetails />
           </Route>
-          <Route exact path="/vendor/:panel">
+          <PrivateRoute exact path="/vendor/:panel">
             <VenderDashboardPage />
-          </Route>
+          </PrivateRoute>
           <Route path="/allShop">
             <AllShop></AllShop>
           </Route>
@@ -48,11 +58,40 @@ const Navigation = () => {
           <PrivateRoute path="/orderHistory">
             <OrderHistory></OrderHistory>
           </PrivateRoute>
-          
+
           <Route path="/createShop">
-            <CreateShop/>
+            <CreateShop />
           </Route>
-          
+          <Route path="/blogs">
+            <Blog />
+          </Route>
+          <Route exact path="/company">
+            <Company />
+          </Route>
+          <Route exact path="/career">
+            <Career />
+          </Route>
+          <Route exact path="/contact">
+            <ContactSupport />
+          </Route>
+          <Route exact path="/resources">
+            <HelpResources />
+          </Route>
+          <Route exact path="/release-update">
+            <ReleaseUpdate />
+          </Route>
+          <Route exact path="/FAQ">
+            <FAQ />
+          </Route>
+          <Route exact path="/pricing">
+            <Pricing />
+          </Route>
+          <Route exact path="/terms&privacy">
+            <TermsPrivacy />
+          </Route>
+          <Route exact path="/user">
+            <UserInfo/>
+          </Route>
         </Switch>
       </Router>
     </div>

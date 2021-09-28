@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { loginAccount } from '../../../Redux/user/actions';
@@ -71,23 +71,23 @@ const LoginForm = () => {
   return (
     <>
       {!isAccount ? (
-        <>
-          <div className="relative min-h-screen flex">
-            <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-white">
+        <Fragment>
+          <div className="relative flex min-h-screen">
+            <div className="flex flex-col items-center flex-auto min-w-0 bg-white sm:flex-row md:items-start sm:justify-center md:justify-start">
               <div
-                className="sm:w-1/2 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-teal-900 text-white bg-no-repeat bg-cover bg-center relative"
+                className="relative items-center justify-center flex-auto hidden h-full p-10 overflow-hidden text-white bg-teal-900 bg-center bg-no-repeat bg-cover sm:w-1/2 xl:w-3/5 md:flex"
                 style={{
                   backgroundImage:
-                    'url(https://i.ibb.co/9hFrQqt/medicine-home-banner.png)',
+                    "url(https://i.ibb.co/9hFrQqt/medicine-home-banner.png)",
                 }}
               >
-                <div className="absolute bg-gradient-to-b from-teal-600 to-teal-400 opacity-75 inset-0 z-0"></div>
-                <div className="w-full max-w-md z-10">
-                  <div className="sm:text-4xl font-semibold text-gray-100 leading-tight mb-6">
+                <div className="absolute inset-0 z-0 opacity-75 bg-gradient-to-b from-teal-600 to-teal-400"></div>
+                <div className="z-10 w-full max-w-md">
+                  <div className="mb-6 font-semibold leading-tight text-gray-100 sm:text-4xl">
                     Your medication, delivered <br /> Say goodbye to all your
                     healthcare worries with us
                   </div>
-                  <div className="sm:text-sm xl:text-md text-gray-200 font-normal">
+                  <div className="font-normal text-gray-200 sm:text-sm xl:text-md">
                     What is Lorem Ipsum Lorem Ipsum is simply dummy text of the
                     printing and typesetting industry Lorem Ipsum has been the
                     industry's standard dummy text ever since the 1500s when an
@@ -109,8 +109,8 @@ const LoginForm = () => {
                   <li></li>
                 </ul>
               </div>
-              <div className="md:flex md:items-center md:justify-center sm:w-auto md:h-full w-2/5 xl:w-2/5 p-8  md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white">
-                <div className="max-w-md w-full space-y-8">
+              <div className="w-full p-12 bg-white md:flex md:items-center md:justify-center sm:w-auto md:h-full xl:w-2/5 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none">
+                <div className="w-full max-w-md space-y-8">
                   <div className="text-center">
                     <h2 className="mt-6 text-3xl font-semibold text-teal-600">
                       Welcom Back!
@@ -119,12 +119,12 @@ const LoginForm = () => {
                       Please sign in to your account
                     </p>
                   </div>
-                  <div className="flex flex-row justify-center items-center space-x-3">
+                  <div className="flex flex-row items-center justify-center space-x-3">
                     <a
                       alt=""
                       href="https://www.behance.net/ajeeshmon"
                       target="_blank"
-                      className="w-11 h-11 items-center justify-center inline-flex rounded-2xl font-bold text-lg   bg-teal-900 hover:shadow-lg cursor-pointer transition ease-in duration-300"
+                      className="inline-flex items-center justify-center text-lg font-bold transition duration-300 ease-in bg-teal-900 cursor-pointer w-11 h-11 rounded-2xl hover:shadow-lg"
                       rel="noreferrer"
                     >
                       <img
@@ -137,7 +137,7 @@ const LoginForm = () => {
                       alt=""
                       href="https://twitter.com/ajeemon?lang=en"
                       target="_blank"
-                      className="w-11 h-11 items-center justify-center inline-flex rounded-2xl font-bold text-lg  text-white bg-teal-400 hover:shadow-lg cursor-pointer transition ease-in duration-300"
+                      className="inline-flex items-center justify-center text-lg font-bold text-white transition duration-300 ease-in bg-teal-400 cursor-pointer w-11 h-11 rounded-2xl hover:shadow-lg"
                       rel="noreferrer"
                     >
                       <img
@@ -150,7 +150,7 @@ const LoginForm = () => {
                       alt=""
                       href="https://in.linkedin.com/in/ajeeshmon"
                       target="_blank"
-                      className="w-11 h-11 items-center justify-center inline-flex rounded-2xl font-bold text-lg  text-white bg-teal-500 hover:shadow-lg cursor-pointer transition ease-in duration-300"
+                      className="inline-flex items-center justify-center text-lg font-bold text-white transition duration-300 ease-in bg-teal-500 cursor-pointer w-11 h-11 rounded-2xl hover:shadow-lg"
                       rel="noreferrer"
                     >
                       <img
@@ -161,19 +161,19 @@ const LoginForm = () => {
                     </a>
                   </div>
                   <div className="flex items-center justify-center space-x-2">
-                    <span className="h-px w-16 bg-gray-300"></span>
-                    <span className="text-gray-500 font-normal">
+                    <span className="w-16 h-px bg-gray-300"></span>
+                    <span className="font-normal text-gray-500">
                       or continue with
                     </span>
-                    <span className="h-px w-16 bg-gray-300"></span>
+                    <span className="w-16 h-px bg-gray-300"></span>
                   </div>
-                  <form className="mt-8 space-y-6" action="#" method="POST">
+                  <form className="mt-8 space-y-6 " action="#" method="POST">
                     <input type="hidden" name="remember" value="true" />
                     <div className="relative">
-                      {/* <div className="absolute right-3 mt-4">
+                      {/* <div className="absolute mt-4 right-3">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6 text-green-500"
+                          className="w-6 h-6 text-green-500"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -186,27 +186,27 @@ const LoginForm = () => {
                           ></path>
                         </svg>
                       </div> */}
-                      <label className="ml-3 text-sm font-bold text-teal-500 tracking-wide">
+                      <label className="ml-3 text-sm font-bold tracking-wide text-teal-500">
                         Email
                       </label>
                       <input
-                        className=" w-full text-base px-4 py-2 border-b border-gray-300 placeholder-gray-600 focus:outline-none rounded-2xl focus:border-teal-500"
+                        className="w-full px-4 py-2 text-base placeholder-gray-600 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-teal-500"
                         type="email"
                         placeholder="mail@gmail.com"
                         name="email"
-                        onBlur={(e)=>handelBlur(e)}
+                        onBlur={(e) => handelBlur(e)}
                       />
                     </div>
-                    <div className="mt-8 content-center">
-                      <label className="ml-3 text-sm font-bold text-teal-500 tracking-wide">
+                    <div className="content-center mt-8">
+                      <label className="ml-3 text-sm font-bold tracking-wide text-teal-500">
                         Password
                       </label>
                       <input
-                        className="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 placeholder-gray-600 focus:outline-none focus:border-teal-500"
+                        className="content-center w-full px-4 py-2 text-base placeholder-gray-600 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-teal-500"
                         type="password"
                         placeholder="Enter your password"
                         name="password"
-                        onBlur={(e)=>handelBlur(e)}
+                        onBlur={(e) => handelBlur(e)}
                       />
                     </div>
                     <div className="flex items-center justify-between">
@@ -215,11 +215,11 @@ const LoginForm = () => {
                           id="remember_me"
                           name="remember_me"
                           type="checkbox"
-                          className="h-4 w-4 bg-teal-500 focus:ring-teal-400 border-gray-300 rounded"
+                          className="w-4 h-4 bg-teal-500 border-gray-300 rounded focus:ring-teal-400"
                         />
                         <label
                           for="remember_me"
-                          className="ml-2 block text-sm text-gray-900"
+                          className="block ml-2 text-sm text-gray-900"
                         >
                           Remember me
                         </label>
@@ -236,20 +236,20 @@ const LoginForm = () => {
                     </div>
                     <div>
                       <button
-                        onClick={(e)=>login(e)}
+                        onClick={(e) => login(e)}
                         type="submit"
-                        className="w-full flex justify-center bg-gradient-to-r from-teal-500 to-teal-600  hover:bg-gradient-to-l hover:from-teal-600 hover:to-teal-500 text-gray-100 p-4  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500"
+                        className="flex justify-center w-full p-4 font-semibold tracking-wide text-gray-100 transition duration-500 ease-in rounded-full shadow-lg cursor-pointer bg-gradient-to-r from-teal-500 to-teal-600 hover:bg-gradient-to-l hover:from-teal-600 hover:to-teal-500"
                       >
                         Sign in
                       </button>
                     </div>
-                    <p className="flex flex-col items-center justify-center mt-10 text-center text-md text-gray-600">
+                    <p className="flex flex-col items-center justify-center mt-10 text-center text-gray-600 text-md">
                       <span>Don't have an account?</span>
                       <a
                         alt=""
                         href="#0"
                         onClick={() => setIsAccount((bool) => !bool)}
-                        className="text-teal-500 hover:text-teal-700 text-lg font-semibold no-underline hover:underline cursor-pointer transition ease-in duration-300"
+                        className="text-lg font-semibold text-teal-500 no-underline transition duration-300 ease-in cursor-pointer hover:text-teal-700 hover:underline"
                       >
                         Sign up
                       </a>
@@ -259,7 +259,7 @@ const LoginForm = () => {
               </div>
             </div>
           </div>
-        </>
+        </Fragment>
       ) : (
         <Registration setIsAccount={setIsAccount} />
       )}

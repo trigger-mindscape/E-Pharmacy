@@ -1,20 +1,11 @@
 import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Header from '../Home/NavBar/Header';
-import NavBar from '../Home/NavBar/NavBar';
 
 const Products = () => {
   const products = useSelector(state => state.product.allProduct)
   return (
     <Fragment>
-      <Helmet>
-        <title>Our Products</title>
-        <meta name="Our Products" content="Best E-Pharmacy Products in the world" />
-      </Helmet>
-      <Header />
-      <NavBar />
       <div className="bg-white">
         <div className="max-w-2xl px-4 pt-10 pb-10 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 sm:pt-10">
           <div className="flex justify-between align-center">
@@ -66,6 +57,7 @@ const Products = () => {
                       ৳{product.price}
                     </p>
                   </div>
+                </Link>
 
                   <div>
                     <p className="px-2 mt-1 font-sans text-sm tracking-wide text-gray-900">
@@ -128,7 +120,7 @@ const Products = () => {
                       </button>
                     {/* </Link> */}
                   </div>
-                </Link>
+                {/* </Link> */}
               </div>
             ))}
           </div>

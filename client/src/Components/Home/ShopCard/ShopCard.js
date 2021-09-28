@@ -7,35 +7,39 @@ const ShopCard = () => {
   const shopCards = useSelector((state) => state.shop.allShop);
 
   return (
-    <div className="pb-10 pt-8 bg-teal-50">
+    <div className="pt-8 pb-10 bg-teal-50">
       {/* Shop Card */}
-      <div className="w-full text-center py-8">
-        <h1 className="font-medium text-4xl font-display tracking-wide text-teal-700">
+      <div className="w-full py-8 text-center">
+        <h1 className="text-4xl font-medium tracking-wide text-teal-700 font-display">
           Your Nearest Medicine Store
         </h1>
-        <p className="font-sans text-base tracking-wide text-gray-700 mt-2">
+        <p className="mt-2 font-sans text-base tracking-wide text-gray-700">
           Search for Medicine, Filter by your location
         </p>
       </div>
-      <div className="cards flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center cards">
         {shopCards &&
           shopCards.map((shopCard) => (
             <div
               key={shopCard._id}
-              className="pb-4 m-6 rounded-lg shadow-3xl w-96 md:w-2/5 lg:w-1/4 bg-white"
+              className="pb-4 m-6 bg-white rounded-lg shadow-3xl w-96 md:w-2/5 lg:w-1/4"
             >
-              <img src={shopCard.banner} className="rounded-t-lg  h-48 w-full object-cover md:h-52 md:w-full" alt="" />
+              <img
+                src={shopCard.banner}
+                className="object-cover w-full h-48 rounded-t-lg md:h-52 md:w-full"
+                alt=""
+              />
 
               <div className="relative pt-2">
-                <div className="absolute -mt-12 w-full flex justify-center items-center">
+                <div className="absolute flex items-center justify-center w-full -mt-12">
                   <img
-                    className="shadow-3xl rounded-2xl border-2 border-gray-400 object-cover h-16 w-16"
+                    className="object-cover w-16 h-16 border-2 border-gray-400 shadow-3xl rounded-2xl"
                     src={shopCard.logo}
                     alt=""
                   />
                 </div>
 
-                <div className="pt-5 px-4">
+                <div className="px-4 pt-5">
                   <div className="absolute right-4 top-8 shadow-4xl">
                     <p
                       className={`rounded border border-teal-300 py-0.5 px-3 ${
@@ -52,7 +56,7 @@ const ShopCard = () => {
                   <h1 className="font-medium text-xl py-1.5 text-teal-800 font-sans tracking-wide">
                     {shopCard.shopName}
                   </h1>
-                  <div className="text-sm font-sans text-gray-800">
+                  <div className="font-sans text-sm text-gray-800">
                     <div className="mb-2">
                       <ShowRating value={shopCard.rating} />
                     </div>
@@ -84,27 +88,25 @@ const ShopCard = () => {
               </div>
 
               {/* Visit store button */}
-              <div className="flex justify-center items-center my-2 mt-4 ">
+              <div className="flex items-center justify-center my-2 mt-4 ">
                 <Link to={`/shopDetails/${shopCard._id}`}>
-                <button
-                  className="flex py-2 px-6 rounded shadow-lg bg-teal-400 focus:outline-none active:bg-teal-400 text-white transition duration-150 ease-in-out hover:bg-teal-600"
-                >
-                  <svg
-                    className="w-5 h-5 mr-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                    ></path>
-                  </svg>
-                  Visit Store
-                </button>
+                  <button className="flex px-6 py-2 text-white transition duration-150 ease-in-out bg-teal-400 rounded shadow-lg focus:outline-none active:bg-teal-400 hover:bg-teal-600">
+                    <svg
+                      className="w-5 h-5 mr-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                      ></path>
+                    </svg>
+                    Visit Store
+                  </button>
                 </Link>
               </div>
             </div>
@@ -112,15 +114,15 @@ const ShopCard = () => {
       </div>
 
       {/* More button */}
-      <div className="text-center mt-8">
+      <div className="mt-8 text-center">
         <Link
           to="/allShop"
-          className="inline-flex items-center justify-center h-12 px-6 font-sans font-medium tracking-wider transition duration-200 rounded shadow-md bg-teal-400 text-white hover:text-white hover:bg-teal-700 focus:shadow-outline focus:outline-none"
+          className="inline-flex items-center justify-center h-12 px-6 font-sans font-medium tracking-wider text-white transition duration-200 bg-teal-400 rounded shadow-md hover:text-white hover:bg-teal-700 focus:shadow-outline focus:outline-none"
         >
           See More{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 ml-1"
+            className="w-5 h-5 ml-1"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
