@@ -22,6 +22,7 @@ import Pricing from './Pages/Platform/Pricing';
 import TermsPrivacy from './Pages/Platform/TermsPrivacy';
 import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
 import UserInfo from './Components/Admin/UserInfo/UserInfo';
+import UserDashboard from './Components/Admin/User/UserDashboard';
 
 const Navigation = () => {
   return (
@@ -91,6 +92,9 @@ const Navigation = () => {
           </Route>
           <Route exact path="/user">
             <UserInfo/>
+          </Route>
+          <Route exact path="/userDashboard">
+            <UserDashboard/>
           </Route>
         </Switch>
       </Router>
