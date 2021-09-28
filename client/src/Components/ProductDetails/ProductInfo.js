@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AddToCart from "../Common/AddToCart";
 import QuantityButton from "../Common/QuantityButton";
@@ -7,6 +7,15 @@ import ShowRating from "../Common/ShowRating";
 const ProductInfo = ({
   product, product: { name, image, brand, description, totalReview },
 }) => {
+  const [productWithQuantity, setProductWithQuantity] = useState(null)
+  useEffect(() => {
+    setProductWithQuantity(product)
+  }, [product])
+
+  const updateQuantity=(quantity)=>{
+    setProductWithQuantity({...product,quantity});
+  }
+
   return (
     <Fragment>
       <div className="flex flex-wrap justify-between mx-auto">
@@ -34,10 +43,10 @@ const ProductInfo = ({
             </span>
           </div>
           <div className="flex flex-wrap gap-3 align-center">
-            <QuantityButton />
+            <QuantityButton product={product} updateQuantity={updateQuantity}/>
 
             <Link to="checkout">
-             <AddToCart icon product={product}/>
+             <AddToCart icon product={productWithQuantity}/>
             </Link>
           </div>
         </div>
