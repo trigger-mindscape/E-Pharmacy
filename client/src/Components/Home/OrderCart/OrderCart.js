@@ -3,14 +3,37 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+const cartProducts = [
+  {
+    id: 1,
+    name: 'Vitamin C Medicine',
+    href: '#',
+    color: 'Salmon',
+    price: '90.00',
+    quantity: 1,
+    imageSrc:
+      'https://wpbingosite.com/wordpress/fuho/wp-content/uploads/2020/12/Image-36-1-480x480.jpg',
+    imageAlt:
+      'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
+  },
+  {
+    id: 2,
+    name: 'Stomach Medicine',
+    href: '#',
+    color: 'Blue',
+    price: '32.00',
+    quantity: 1,
+    imageSrc:
+      'https://wpbingosite.com/wordpress/fuho/wp-content/uploads/2020/12/Image-26-1-480x480.jpg',
+    imageAlt:
+      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+  },
+  // More products...
+];
 
 const OrderCart = ({ open, setOpen }) => {
-const cartProducts = useSelector(state => state.cart)
-console.log("🚀 ~ file: OrderCart.js ~ line 12 ~ OrderCart ~ cartProducts", cartProducts)
-
   return (
     <div>
       <Transition.Root show={open} as={Fragment}>
@@ -75,7 +98,7 @@ console.log("🚀 ~ file: OrderCart.js ~ line 12 ~ OrderCart ~ cartProducts", ca
                                 <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
                                   <img
                                     src={product.imageSrc}
-                                    alt=''
+                                    alt={product.imageAlt}
                                     className="w-full h-full object-center object-cover"
                                   />
                                 </div>
