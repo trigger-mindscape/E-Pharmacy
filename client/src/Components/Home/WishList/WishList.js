@@ -2,10 +2,12 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeFromCartAction } from "../../../Redux/cart/actions";
 
 const WishList = ({ open, setOpen }) => {
+  const dispatch = useDispatch()
   const cartProducts = useSelector((state) => state.cart);
   return (
     <div>
@@ -88,9 +90,9 @@ const WishList = ({ open, setOpen }) => {
                                       </h3>
                                       <p className="ml-4">৳ {product.price}</p>
                                     </div>
-                                    <p className="mt-1 text-sm text-gray-500">
+                                    {/* <p className="mt-1 text-sm text-gray-500">
                                       {product.color}
-                                    </p>
+                                    </p> */}
                                   </div>
                                   <div className="flex-1 flex items-end justify-between text-sm">
                                     <div className="border border-gray-300 rounded">
@@ -106,6 +108,7 @@ const WishList = ({ open, setOpen }) => {
                                       <button
                                         type="button"
                                         className="font-medium tracking-wide text-teal-600 hover:text-teal-800"
+                                        onClick={dispatch(()=>removeFromCartAction(product))}
                                       >
                                         Remove
                                       </button>

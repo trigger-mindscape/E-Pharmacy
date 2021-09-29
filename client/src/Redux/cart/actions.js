@@ -2,10 +2,16 @@ import { placeOrderApi } from "../../Api";
 import { showNotification } from "../notification/actions";
 
 export const ADD_TO_CART = "ADD_TO_CART";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const PLACE_ORDER = "PLACE_ORDER";
 
 export const addInCartAction = (Product) => ({
   type: ADD_TO_CART,
+  payload: Product,
+});
+
+export const removeFromCartAction = (Product) => ({
+  type: REMOVE_FROM_CART,
   payload: Product,
 });
 
