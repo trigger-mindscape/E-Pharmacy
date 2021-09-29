@@ -16,8 +16,7 @@ const ProductDetails = () => {
     window.scrollTo(0, 0);
     dispatch(getSingleProduct(productId));
   }, []);
-  const cart = useSelector(state => state.cart)
-  console.log("🚀 ~ file: Home.js ~ line 23 ~ Home ~ cart", cart)
+  
   return (
     <Fragment>
       <Header />
