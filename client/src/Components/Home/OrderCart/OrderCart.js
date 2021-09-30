@@ -91,7 +91,7 @@ const OrderCart = ({ open, setOpen }) => {
                                     <div className="flex justify-between text-base font-medium text-gray-800">
                                       <h3>
                                         <Link
-                                          to={("/productDetails/", product._id)}
+                                          to={("/productDetails/"+ product._id)}
                                         >
                                           {product.name}
                                         </Link>
@@ -120,7 +120,7 @@ const OrderCart = ({ open, setOpen }) => {
                                       <button
                                         type="button"
                                         className="font-medium tracking-wide text-teal-600 hover:text-teal-800"
-                                        onClick={dispatch(() =>
+                                        onClick={() =>dispatch(
                                           removeFromCartAction(product)
                                         )}
                                       >

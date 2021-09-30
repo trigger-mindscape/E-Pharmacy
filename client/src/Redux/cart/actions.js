@@ -16,10 +16,13 @@ export const updateCartProductAction = (Product) => ({
   payload: Product,
 });
 
-export const removeFromCartAction = (Product) => ({
-  type: REMOVE_FROM_CART,
-  payload: Product,
-});
+export const removeFromCartAction = (Product) => {
+console.log("🚀 ~ file: actions.js ~ line 20 ~ removeFromCartAction ~ Product", Product)
+  return {
+    type: REMOVE_FROM_CART,
+    payload: Product,
+  };
+};
 
 export const placeOrder = (vendorId) => async (dispatch) => {
   try {
