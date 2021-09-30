@@ -28,6 +28,7 @@ const Checkout = () => {
   };
 
   const subtotal= cartProducts.reduce((acc,curr)=>acc+Number(curr.price)*Number(curr.quantity),0)
+  const tax = Number((subtotal*.10).toFixed(2))
   const [selectedPayMethod, setSelectedPayMethod] = useState(payMethods[0]);
 
   const [useBkash, setUseBkash] = useState(false);
@@ -436,7 +437,7 @@ const Checkout = () => {
                     Tax
                   </div>
                   <div className="lg:px-4 lg:py-2 m-1 lg:text-lg font-medium text-center text-gray-800">
-                  ৳ {subtotal*.10}
+                  ৳ {tax}
                   </div>
                 </div>
                 <div className="flex justify-between pt-2 border-b">
@@ -444,7 +445,7 @@ const Checkout = () => {
                     Total
                   </div>
                   <div className="lg:px-4 lg:py-2 m-1 lg:text-lg font-medium text-center text-gray-800">
-                    ৳ {subtotal+subtotal*.10}
+                    ৳ {subtotal+tax}
                   </div>
                 </div>
                 <a href="#0">

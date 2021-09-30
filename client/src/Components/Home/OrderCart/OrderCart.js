@@ -17,6 +17,8 @@ const OrderCart = ({ open, setOpen }) => {
   const updateQuantity = (quantity, product) => {
     dispatch(updateCartProductAction({ ...product, quantity: quantity }));
   };
+  const subtotal= cartProducts.reduce((acc,curr)=>acc+Number(curr.price)*Number(curr.quantity),0)
+
   return (
     <div>
       <Transition.Root show={open} as={Fragment}>
@@ -139,7 +141,7 @@ const OrderCart = ({ open, setOpen }) => {
                     <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-gray-800">
                         <p>Subtotal</p>
-                        <p>৳ 262.00</p>
+                        <p>৳ {subtotal}</p>
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">
                         Shipping and taxes calculated at checkout.
