@@ -10,6 +10,7 @@ const ActionIcons = () => {
 
   return (
     <>
+    <Link to="/userDashboard">
       <li>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +27,7 @@ const ActionIcons = () => {
           />
         </svg>
       </li>
-
+      </Link>
       <li>
         <button
           onClick={() => setOpen(true)}
@@ -82,7 +83,7 @@ const ActionIcons = () => {
         </button>
       </li>
       {user.token ? (
-        <Link to="/user">
+        <Link to="/vendor/dashboard">
           <li>
             <svg
               xmlns="http://www.w3.org/2000/svg"
