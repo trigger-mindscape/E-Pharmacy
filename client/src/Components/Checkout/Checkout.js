@@ -21,6 +21,7 @@ function classNames(...classes) {
 const Checkout = () => {
   const dispatch = useDispatch();
   const cartProducts = useSelector((state) => state.cart);
+  const userInfo = useSelector((state) => state.user.vendorInfo);
 
   const updateQuantity = (quantity, product) => {
     dispatch(updateCartProductAction({ ...product, quantity: quantity }));
@@ -200,6 +201,7 @@ const Checkout = () => {
                   <input
                     type="text"
                     placeholder="Name"
+                    defaultValue={userInfo && userInfo.name}
                     className="px-3 py-4 my-1 border-b border-teal-300 placeholder-gray-500 text-blueGray-600 relative tracking-wide rounded-lg bg-white text-base shadow outline-none focus:outline-none focus:shadow-outline w-full"
                   />
                 </div>
@@ -207,6 +209,7 @@ const Checkout = () => {
                   <input
                     type="text"
                     placeholder="Email"
+                    defaultValue={userInfo && userInfo.email}
                     className="px-3 py-4 my-1 border-b border-teal-300 placeholder-gray-500 text-blueGray-600 relative  rounded-lg bg-white text-base shadow outline-none focus:outline-none focus:shadow-outline w-full"
                   />
                 </div>
@@ -214,6 +217,7 @@ const Checkout = () => {
                   <input
                     type="text"
                     placeholder="Phone"
+                    defaultValue={userInfo && userInfo.phone}
                     className="px-3 py-4 my-1 border-b border-teal-300 placeholder-gray-500 text-blueGray-600 relative  rounded-lg bg-white text-base shadow outline-none focus:outline-none focus:shadow-outline w-full"
                   />
                 </div>
