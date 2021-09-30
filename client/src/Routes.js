@@ -21,8 +21,8 @@ import FAQ from './Pages/Platform/FAQ';
 import Pricing from './Pages/Platform/Pricing';
 import TermsPrivacy from './Pages/Platform/TermsPrivacy';
 import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
-import UserInfo from './Components/Admin/UserInfo/UserInfo';
 import UserDashboard from './Components/Admin/User/UserDashboard';
+import EditUserInfo from './Components/Admin/User/EditUserInfo/EditUserInfo';
 
 const Navigation = () => {
   return (
@@ -90,11 +90,11 @@ const Navigation = () => {
           <Route exact path="/terms&privacy">
             <TermsPrivacy />
           </Route>
-          <Route exact path="/user">
-            <UserInfo/>
-          </Route>
           <Route exact path="/userDashboard">
             <UserDashboard/>
+          </Route>
+          <Route exact path="/editUserInfo">
+            <EditUserInfo/>
           </Route>
         </Switch>
       </Router>
