@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import OrderCart from "../OrderCart/OrderCart";
-import WishList from "../WishList/WishList";
 
 const ActionIcons = () => {
   const [open, setOpen] = useState(false);
@@ -110,7 +109,7 @@ const ActionIcons = () => {
       )}
       {/* Open cart modal */}
       <OrderCart open={open} setOpen={setOpen} />
-      <WishList open={open} setOpen={setOpen}></WishList>
+      {/* <WishList open={open} setOpen={setOpen}></WishList> */}
     </>
   );
 };

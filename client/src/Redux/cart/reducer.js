@@ -2,7 +2,7 @@ import {
   getItemFromLocalStorage,
   setItemInLocalStorage
 } from "../../Helpers/LocalStorage";
-import { ADD_TO_CART, REMOVE_FROM_CART } from "./actions";
+import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART_PRODUCT } from "./actions";
 
 const initialState = [];
 
@@ -29,6 +29,13 @@ export default function cartReducer(state = initialState, action) {
       }
       setItemInLocalStorage("cart", [action.payload, ...state]);
       return [action.payload, ...state];
+
+    case UPDATE_CART_PRODUCT:
+      const updatedProductInState = state.map((cartProduct) =>
+        cartProduct._id === action.payload._id ? action.payload : cartProduct
+      );
+      setItemInLocalStorage("cart", updatedProductInState);
+      return updatedProductInState;
 
     case REMOVE_FROM_CART:
       const updatedState = state.filter(

@@ -4,16 +4,19 @@ import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeFromCartAction } from "../../../Redux/cart/actions";
+import {
+  removeFromCartAction,
+  updateCartProductAction
+} from "../../../Redux/cart/actions";
 import QuantityButton from "../../Common/QuantityButton";
 
 const OrderCart = ({ open, setOpen }) => {
   const dispatch = useDispatch();
   const cartProducts = useSelector((state) => state.cart);
-  
-  const updateQuantity=(quantity,product)=>{
-    // setProductWithQuantity({...product,quantity});
-  }
+
+  const updateQuantity = (quantity, product) => {
+    dispatch(updateCartProductAction({ ...product, quantity: quantity }));
+  };
   return (
     <div>
       <Transition.Root show={open} as={Fragment}>
@@ -108,7 +111,11 @@ const OrderCart = ({ open, setOpen }) => {
 
                                       <i className="fas fa-minus m-1 py-1 px-4 cursor-pointer font-normal text-teal-600"></i>
                                     </div> */}
-<QuantityButton product={product} updateQuantity={updateQuantity}/>
+                                    <QuantityButton
+                                      product={product}
+                                      updateQuantity={updateQuantity}
+                                      quantity={product.quantity}
+                                    />
                                     <div className="flex">
                                       <button
                                         type="button"

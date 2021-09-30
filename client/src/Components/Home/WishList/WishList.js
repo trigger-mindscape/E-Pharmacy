@@ -14,10 +14,10 @@ const WishList = ({ open, setOpen }) => {
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 overflow-hidden z-50"
-          onClose={setOpen}
+          className={open?"fixed inset-0 overflow-hidden z-50":""}
+          onClose={()=>setOpen(false)}
         >
-          <div className="absolute inset-0 overflow-hidden">
+          <div className={open?"absolute inset-0 overflow-hidden":""}>
             <Transition.Child
               as={Fragment}
               enter="ease-in-out duration-500"
