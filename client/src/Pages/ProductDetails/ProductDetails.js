@@ -16,7 +16,7 @@ const ProductDetails = () => {
     window.scrollTo(0, 0);
     dispatch(getSingleProduct(productId));
   }, []);
-
+  
   return (
     <Fragment>
       <Header />

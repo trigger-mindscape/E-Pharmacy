@@ -1,6 +1,6 @@
-import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import {  XIcon } from '@heroicons/react/outline'
+import { XIcon } from '@heroicons/react/outline'
+import { Fragment, useState } from 'react'
 import Footer from '../../Components/Home/Footer/Footer'
 import Header from '../../Components/Home/NavBar/Header'
 import NavBar from '../../Components/Home/NavBar/NavBar'
@@ -13,7 +13,7 @@ const orders = [
     status: 'out-for-delivery',
     productName: 'Kicks Carrier',
     href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/order-history-page-05-product-01.jpg',
+    imageSrc: 'https://i.ibb.co/pb2hQs5/5-14-1000x1000-min.jpg',
     imageAlt: 'Black fabric shoe bag with zipper around 3 sides, holding pair of white sneakers.',
   },
   {
@@ -23,7 +23,7 @@ const orders = [
     status: 'delivered',
     productName: 'Micro Backpack',
     href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/order-history-page-05-product-02.jpg',
+    imageSrc: 'https://i.ibb.co/bLKP624/5-15-1000x1000-min.jpg',
     imageAlt: 'Light grey canvas backpack with black handle, zipper, and edge details.',
   },
   {
@@ -33,7 +33,7 @@ const orders = [
     status: 'cancelled',
     productName: 'Drawtop Canister',
     href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/order-history-page-05-product-03.jpg',
+    imageSrc: 'https://i.ibb.co/02WmJdc/5-19-1000x1000-min.jpg',
     imageAlt: 'Orange canvas cylindrical bag with drawstring top, front zipper pouch, and black shoulder strap.',
   },
   {

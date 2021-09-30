@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import OrderCart from "../OrderCart/OrderCart";
-import WishList from "../WishList/WishList";
 
 const ActionIcons = () => {
   const [open, setOpen] = useState(false);
   const user = useSelector((state) => state.user);
+  const cartProducts = useSelector(state => state.cart)
 
   return (
     <>
@@ -77,7 +77,7 @@ const ActionIcons = () => {
           </svg>
           <span className="absolute inset-0 object-right-top -mr-6">
             <div className="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-teal-400 text-white">
-              7
+              {cartProducts.length}
             </div>
           </span>
         </button>
@@ -110,7 +110,7 @@ const ActionIcons = () => {
       )}
       {/* Open cart modal */}
       <OrderCart open={open} setOpen={setOpen} />
-      <WishList open={open} setOpen={setOpen}></WishList>
+      {/* <WishList open={open} setOpen={setOpen}></WishList> */}
     </>
   );
 };

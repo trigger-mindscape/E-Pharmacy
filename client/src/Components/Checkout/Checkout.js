@@ -1,32 +1,44 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { RadioGroup } from '@headlessui/react'
-import QuantityButton from '../Common/QuantityButton';
+import { RadioGroup } from "@headlessui/react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import {
+  removeFromCartAction,
+  updateCartProductAction
+} from "../../Redux/cart/actions";
+import QuantityButton from "../Common/QuantityButton";
 
 const payMethods = [
-  { name: 'Cash on Delivery' },
-  { name: 'Bkash' },
-  { name: 'Pay with Card' },
-]
+  { name: "Cash on Delivery" },
+  { name: "Bkash" },
+  { name: "Pay with Card" },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 const Checkout = () => {
+  const dispatch = useDispatch();
+  const cartProducts = useSelector((state) => state.cart);
+  const userInfo = useSelector((state) => state.user.vendorInfo);
 
-  const [selectedPayMethod, setSelectedPayMethod] = useState(payMethods[0])
-  console.log(selectedPayMethod.name)
+  const updateQuantity = (quantity, product) => {
+    dispatch(updateCartProductAction({ ...product, quantity: quantity }));
+  };
 
-  const [useBkash, setUseBkash] = useState(false)
-  const [useCard, setUseCard] = useState(false)
+  const subtotal= cartProducts.reduce((acc,curr)=>acc+Number(curr.price)*Number(curr.quantity),0)
+  const tax = Number((subtotal*.10).toFixed(2))
+  const [selectedPayMethod, setSelectedPayMethod] = useState(payMethods[0]);
 
- const handlePayMethod = (e) => {
-   setSelectedPayMethod(e);
-   setUseBkash(!useBkash);
-   setUseCard(!useCard);
- }
+  const [useBkash, setUseBkash] = useState(false);
+  const [useCard, setUseCard] = useState(false);
 
+  const handlePayMethod = (e) => {
+    setSelectedPayMethod(e);
+    setUseBkash(!useBkash);
+    setUseCard(!useCard);
+  };
 
   return (
     <div className="flex justify-center my-6">
@@ -61,199 +73,80 @@ const Checkout = () => {
               <tr>
                 <td className="pt-2"> </td>
               </tr>
-              <tr>
-                <td className="hidden pb-4 md:table-cell">
-                  <a href="#0">
-                    <img
-                      src="https://wpbingosite.com/wordpress/fuho/wp-content/uploads/2020/12/Image-26-1-480x480.jpg"
-                      className="w-20 rounded"
-                      alt="Thumbnail"
-                    />
-                  </a>
-                </td>
-                <td>
-                  <a href="#0">
-                    <p className="mb-2 ">Stomach Medicine</p>
-                    <form action="" method="POST">
+
+              {cartProducts.map((product) => (
+                <tr>
+                  <td className="hidden pb-4 md:table-cell">
+                    <a href="#0">
+                      <img
+                        src={product.image}
+                        className="w-20 rounded"
+                        alt="Thumbnail"
+                      />
+                    </a>
+                  </td>
+                  <td>
+                    <Link to={"/productDetails/" + product._id}>
+                      <p className="mb-2 ">{product.name}</p>
+
                       <button type="submit" className="text-gray-700">
-                        <small>Structural (Fabrication)</small>
+                        <small>Brand: {product.brand}</small>
                       </button>
-                    </form>
-                  </a>
-                </td>
-                <td className="justify-center md:justify-end md:flex md:mt-8">
-                  <div className="flex-1 flex items-end justify-between text-sm">
-                    <div className="border border-gray-400 rounded">
-                      {/* <i className="fas fa-plus m-1 py-1 px-4 cursor-pointer font-medium text-teal-600"></i>
-                      <input
-                        className="mx-2 text-center w-2 font-medium text-gray-800"
-                        type="text"
-                        value="1"
+                    </Link>
+                  </td>
+                  <td className="justify-center md:justify-end items-center md:flex md:mt-8">
+                    <div className="flex-1 flex  justify-between text-sm">
+                      <QuantityButton
+                        product={product}
+                        updateQuantity={updateQuantity}
+                        quantity={product.quantity}
                       />
-
-                      <i className="fas fa-minus m-1 py-1 px-4 cursor-pointer font-medium text-teal-600"></i> */}
-
-                      <QuantityButton/>
-
                     </div>
-                  </div>
-                </td>
-                <td className="text-right px-5 md:table-cell">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-gray-00"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                  </td>
+                  <td
+                    className="text-right px-5 md:table-cell"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                    />
-                  </svg>
-                </td>
-                <td className="hidden text-right md:table-cell">
-                  <span className="text-sm lg:text-base font-medium">
-                    ৳ 10.00
-                  </span>
-                </td>
-                <td className="text-right">
-                  <span className="text-sm lg:text-base font-medium">
-                    ৳ 20.00
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td className="hidden pb-4 md:table-cell">
-                  <a href="#0">
-                    <img
-                      src="https://wpbingosite.com/wordpress/fuho/wp-content/uploads/2021/04/Image-24-480x480.jpg"
-                      className="w-20 rounded"
-                      alt="Thumbnail"
-                    />
-                  </a>
-                </td>
-                <td>
-                  <p className="mb-2">Birth Control Pills</p>
-                  <form action="" method="POST">
-                    <button type="submit" className="text-gray-700">
-                      <small>Overhead Doors</small>
-                    </button>
-                  </form>
-                </td>
-                <td className="justify-center md:justify-end md:flex md:mt-8">
-                  <div className="flex-1 flex items-end justify-between text-sm">
-                    <div className="border border-gray-400 rounded">
-                      <i className="fas fa-plus m-1 py-1 px-4 cursor-pointer font-medium text-teal-600"></i>
-                      <input
-                        className="mx-2 text-center w-2 font-medium text-gray-800"
-                        type="text"
-                        value="1"
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 text-gray-00 cursor-pointer"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      onClick={() =>dispatch(
+                        removeFromCartAction(product)
+                      )}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                       />
-
-                      <i className="fas fa-minus m-1 py-1 px-4 cursor-pointer font-medium text-teal-600"></i>
-                    </div>
-                  </div>
-                </td>
-                <td className="text-right px-5 md:table-cell">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-gray-00"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                    />
-                  </svg>
-                </td>
-                <td className="hidden text-right md:table-cell">
-                  <span className="text-sm lg:text-base font-medium">
-                    ৳ 9,600.01
-                  </span>
-                </td>
-                <td className="text-right">
-                  <span className="text-sm lg:text-base font-medium">
-                    ৳ 19,800.03
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td className="hidden pb-4 md:table-cell">
-                  <a href="#0">
-                    <img
-                      src="https://wpbingosite.com/wordpress/fuho/wp-content/uploads/2020/12/Image-36-1-480x480.jpg"
-                      className="w-20 rounded"
-                      alt="Thumbnail"
-                    />
-                  </a>
-                </td>
-                <td>
-                  <p className="mb-2">Vitamin C Medicine</p>
-                  <form action="" method="POST">
-                    <button type="submit" className="text-gray-700">
-                      <small>Framing (Wood)</small>
-                    </button>
-                  </form>
-                </td>
-                <td className="justify-center md:justify-end md:flex md:mt-8">
-                  <div className="flex-1 flex items-end justify-between text-sm">
-                    <div className="border border-gray-400 rounded">
-                      <i className="fas fa-plus m-1 py-1 px-4 cursor-pointer font-medium text-teal-600"></i>
-                      <input
-                        className="mx-2 text-center w-2 font-medium text-gray-800"
-                        type="text"
-                        value="1"
-                      />
-
-                      <i className="fas fa-minus m-1 py-1 px-4 cursor-pointer font-medium text-teal-600"></i>
-                    </div>
-                  </div>
-                </td>
-                <td className="text-right px-5 md:table-cell">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-gray-00"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                    />
-                  </svg>
-                </td>
-                <td className="hidden text-right md:table-cell">
-                  <span className="text-sm lg:text-base font-medium">
-                    ৳ 1.50
-                  </span>
-                </td>
-                <td className="text-right">
-                  <span className="text-sm lg:text-base font-medium">
-                    ৳ 7.50
-                  </span>
-                </td>
-              </tr>
+                    </svg>
+                  </td>
+                  <td className="hidden text-right md:table-cell">
+                    <span className="text-sm lg:text-base font-medium">
+                      ৳ {product.price}
+                    </span>
+                  </td>
+                  <td className="text-right">
+                    <span className="text-sm lg:text-base font-medium">
+                      ৳ {Number(product.price)*Number(product.quantity)}
+                    </span>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
           <hr className="pb-6 mt-6" />
           <div className="my-4 mt-6 -mx-2 lg:flex">
             <div className="lg:px-2 lg:w-1/2">
-              <div className="p-3 bg-teal-50 rounded-full">
+              {/* <div className="p-3 bg-teal-50 rounded-full">
                 <h1 className="ml-2 font-semibold text-teal-600 uppercase">
                   Coupon Code
                 </h1>
-              </div>
-              <div className="p-4">
+              </div> */}
+              {/* <div className="p-4">
                 <p className="mb-4 italic">
                   If you have a coupon code, please enter it in the box below
                 </p>
@@ -287,12 +180,13 @@ const Checkout = () => {
                         </svg>
                         <span className="font-medium">Apply coupon</span>
                       </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
+                    </div> */}
+                  {/* </form> */}
+                {/* </div> */}
+              {/* </div> */}
 
-              <div className="p-3 bg-teal-50 rounded-full my-3">
+              {/* <div className="p-3 bg-teal-50 rounded-full my-3"> */}
+              <div className="p-3 bg-teal-50 rounded-full mb-3">
                 <h1 className="ml-2 font-semibold text-teal-600 uppercase">
                   Enter Shipping Info
                 </h1>
@@ -308,6 +202,7 @@ const Checkout = () => {
                   <input
                     type="text"
                     placeholder="Name"
+                    defaultValue={userInfo && userInfo.name}
                     className="px-3 py-4 my-1 border-b border-teal-300 placeholder-gray-500 text-blueGray-600 relative tracking-wide rounded-lg bg-white text-base shadow outline-none focus:outline-none focus:shadow-outline w-full"
                   />
                 </div>
@@ -315,6 +210,7 @@ const Checkout = () => {
                   <input
                     type="text"
                     placeholder="Email"
+                    defaultValue={userInfo && userInfo.email}
                     className="px-3 py-4 my-1 border-b border-teal-300 placeholder-gray-500 text-blueGray-600 relative  rounded-lg bg-white text-base shadow outline-none focus:outline-none focus:shadow-outline w-full"
                   />
                 </div>
@@ -322,6 +218,7 @@ const Checkout = () => {
                   <input
                     type="text"
                     placeholder="Phone"
+                    defaultValue={userInfo && userInfo.phone}
                     className="px-3 py-4 my-1 border-b border-teal-300 placeholder-gray-500 text-blueGray-600 relative  rounded-lg bg-white text-base shadow outline-none focus:outline-none focus:shadow-outline w-full"
                   />
                 </div>
@@ -349,10 +246,13 @@ const Checkout = () => {
 
                   {/* Select Radio input */}
 
-
-
-                  <RadioGroup value={selectedPayMethod} onChange={handlePayMethod }>
-                    <RadioGroup.Label className="sr-only">Privacy payMethod</RadioGroup.Label>
+                  <RadioGroup
+                    value={selectedPayMethod}
+                    onChange={handlePayMethod}
+                  >
+                    <RadioGroup.Label className="sr-only">
+                      Privacy payMethod
+                    </RadioGroup.Label>
                     <div className="bg-white rounded-md -space-y-px">
                       {payMethods.map((payMethod, payMethodIdx) => (
                         <RadioGroup.Option
@@ -360,10 +260,16 @@ const Checkout = () => {
                           value={payMethod}
                           className={({ checked }) =>
                             classNames(
-                              payMethodIdx === 0 ? 'rounded-tl-md rounded-tr-md' : '',
-                              payMethodIdx === payMethods.length - 1 ? 'rounded-bl-md rounded-br-lg' : '',
-                              checked ? 'bg-teal-50 border-teal-200 z-10' : 'border-white',
-                              'relative border p-4 flex cursor-pointer focus:outline-none'
+                              payMethodIdx === 0
+                                ? "rounded-tl-md rounded-tr-md"
+                                : "",
+                              payMethodIdx === payMethods.length - 1
+                                ? "rounded-bl-md rounded-br-lg"
+                                : "",
+                              checked
+                                ? "bg-teal-50 border-teal-200 z-10"
+                                : "border-white",
+                              "relative border p-4 flex cursor-pointer focus:outline-none"
                             )
                           }
                         >
@@ -371,9 +277,13 @@ const Checkout = () => {
                             <>
                               <span
                                 className={classNames(
-                                  checked ? 'bg-teal-600 border-transparent' : 'bg-white border-teal-300',
-                                  active ? 'ring-2 ring-offset-2 ring-teal-500' : '',
-                                  'h-4 w-4 mt-0.5 cursor-pointer rounded-full border flex items-center justify-center'
+                                  checked
+                                    ? "bg-teal-600 border-transparent"
+                                    : "bg-white border-teal-300",
+                                  active
+                                    ? "ring-2 ring-offset-2 ring-teal-500"
+                                    : "",
+                                  "h-4 w-4 mt-0.5 cursor-pointer rounded-full border flex items-center justify-center"
                                 )}
                                 aria-hidden="true"
                               >
@@ -382,66 +292,85 @@ const Checkout = () => {
                               <div className="ml-3 flex flex-col">
                                 <RadioGroup.Label
                                   as="span"
-                                  className={classNames(checked ? 'text-teal-900' : 'text-gray-600', 'block text-sm font-medium')}
+                                  className={classNames(
+                                    checked ? "text-teal-900" : "text-gray-600",
+                                    "block text-sm font-medium"
+                                  )}
                                 >
-                                  {payMethod.name }
+                                  {payMethod.name}
 
                                   {/* Bkash */}
-                                  { payMethod.name === "Bkash" && useBkash && 
+                                  {payMethod.name === "Bkash" && useBkash && (
                                     <div className="pt-2">
-                                      <p>Please sent money on 0177777711(Personal)</p>
-                                      <p className="text-red-300">Don't forget the transaction ID</p>
+                                      <p>
+                                        Please sent money on
+                                        0177777711(Personal)
+                                      </p>
+                                      <p className="text-red-300">
+                                        Don't forget the transaction ID
+                                      </p>
                                     </div>
-                                  }
+                                  )}
 
                                   {/* Card */}
-                                  { payMethod.name === "Pay with Card" && useCard && 
-                                     <fieldset>
-                                      <legend className="block text-sm pt-2 font-medium text-gray-700">Card Information</legend>
-                                      <div className="mt-1 bg-white rounded-md shadow-sm -space-y-px">
-                                        <div>
-                                          <label htmlFor="card-number" className="sr-only">
-                                            Card number
-                                          </label>
-                                          <input
-                                            type="text"
-                                            name="card-number"
-                                            id="card-number"
-                                            className="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-t-md bg-transparent focus:z-10 sm:text-sm border-gray-300"
-                                            placeholder="Card number"
-                                          />
-                                        </div>
-                                        <div className="flex -space-x-px">
-                                          <div className="w-1/2 flex-1 min-w-0">
-                                            <label htmlFor="card-expiration-date" className="sr-only">
-                                              Expiration date
+                                  {payMethod.name === "Pay with Card" &&
+                                    useCard && (
+                                      <fieldset>
+                                        <legend className="block text-sm pt-2 font-medium text-gray-700">
+                                          Card Information
+                                        </legend>
+                                        <div className="mt-1 bg-white rounded-md shadow-sm -space-y-px">
+                                          <div>
+                                            <label
+                                              htmlFor="card-number"
+                                              className="sr-only"
+                                            >
+                                              Card number
                                             </label>
                                             <input
                                               type="text"
-                                              name="card-expiration-date"
-                                              id="card-expiration-date"
-                                              className="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-bl-md bg-transparent focus:z-10 sm:text-sm border-gray-300"
-                                              placeholder="MM / YY"
+                                              name="card-number"
+                                              id="card-number"
+                                              className="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-t-md bg-transparent focus:z-10 sm:text-sm border-gray-300"
+                                              placeholder="Card number"
                                             />
                                           </div>
-                                          <div className="flex-1 min-w-0">
-                                            <label htmlFor="card-cvc" className="sr-only">
-                                              CVC
-                                            </label>
-                                            <input
-                                              type="text"
-                                              name="card-cvc"
-                                              id="card-cvc"
-                                              className="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-br-md bg-transparent focus:z-10 sm:text-sm border-gray-300"
-                                              placeholder="CVC"
-                                            />
+                                          <div className="flex -space-x-px">
+                                            <div className="w-1/2 flex-1 min-w-0">
+                                              <label
+                                                htmlFor="card-expiration-date"
+                                                className="sr-only"
+                                              >
+                                                Expiration date
+                                              </label>
+                                              <input
+                                                type="text"
+                                                name="card-expiration-date"
+                                                id="card-expiration-date"
+                                                className="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-bl-md bg-transparent focus:z-10 sm:text-sm border-gray-300"
+                                                placeholder="MM / YY"
+                                              />
+                                            </div>
+                                            <div className="flex-1 min-w-0">
+                                              <label
+                                                htmlFor="card-cvc"
+                                                className="sr-only"
+                                              >
+                                                CVC
+                                              </label>
+                                              <input
+                                                type="text"
+                                                name="card-cvc"
+                                                id="card-cvc"
+                                                className="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-br-md bg-transparent focus:z-10 sm:text-sm border-gray-300"
+                                                placeholder="CVC"
+                                              />
+                                            </div>
                                           </div>
                                         </div>
-                                      </div>
-                                    </fieldset>
-                                  }
+                                      </fieldset>
+                                    )}
                                 </RadioGroup.Label>
-                                
                               </div>
                             </>
                           )}
@@ -449,8 +378,6 @@ const Checkout = () => {
                       ))}
                     </div>
                   </RadioGroup>
-
-
                 </div>
               </div>
 
@@ -469,10 +396,10 @@ const Checkout = () => {
                     Subtotal
                   </div>
                   <div className="lg:px-4 lg:py-2 m-1 lg:text-lg font-medium text-center text-gray-800">
-                    ৳ 148,827.53
+                    ৳ {subtotal}
                   </div>
                 </div>
-                <div className="flex justify-between pt-2 border-b">
+                {/* <div className="flex justify-between pt-2 border-b">
                   <div className="flex lg:px-4 lg:py-2 m-1 text-lg lg:text-xl font-medium text-teal-500">
                     <form action="" method="POST">
                       <button type="submit" className="mr-2 lg:mt-1">
@@ -496,21 +423,21 @@ const Checkout = () => {
                   <div className="lg:px-4 lg:py-2 m-1 lg:text-lg font-medium text-center text-green-600">
                     ৳ -13,944.77
                   </div>
-                </div>
-                <div className="flex justify-between pt-2 border-b">
+                </div> */}
+                {/* <div className="flex justify-between pt-2 border-b">
                   <div className="lg:px-4 lg:py-2 m-1 text-lg lg:text-xl font-medium text-center text-gray-800">
                     New Subtotal
                   </div>
                   <div className="lg:px-4 lg:py-2 m-1 lg:text-lg font-medium text-center text-gray-800">
                     ৳ 14,882.75
                   </div>
-                </div>
+                </div> */}
                 <div className="flex justify-between pt-2 border-b">
                   <div className="lg:px-4 lg:py-2 m-1 text-lg lg:text-xl font-medium text-center text-gray-800">
                     Tax
                   </div>
                   <div className="lg:px-4 lg:py-2 m-1 lg:text-lg font-medium text-center text-gray-800">
-                    ৳ 2,976.55
+                  ৳ {tax}
                   </div>
                 </div>
                 <div className="flex justify-between pt-2 border-b">
@@ -518,11 +445,14 @@ const Checkout = () => {
                     Total
                   </div>
                   <div className="lg:px-4 lg:py-2 m-1 lg:text-lg font-medium text-center text-gray-800">
-                    ৳ 17,859.3
+                    ৳ {subtotal+tax}
                   </div>
                 </div>
                 <a href="#0">
-                  <Link to="/orderHistory" className="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-teal-500 rounded-full shadow item-center hover:bg-teal-700 focus:shadow-outline focus:outline-none">
+                  <Link
+                    to="/orderHistory"
+                    className="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-teal-500 rounded-full shadow item-center hover:bg-teal-700 focus:shadow-outline focus:outline-none"
+                  >
                     <svg
                       aria-hidden="true"
                       data-prefix="far"
