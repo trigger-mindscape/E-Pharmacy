@@ -22,7 +22,7 @@ import Pricing from './Pages/Platform/Pricing';
 import TermsPrivacy from './Pages/Platform/TermsPrivacy';
 import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
 import UserInfo from './Components/Admin/UserInfo/UserInfo';
-import Payment from './Pages/Payment/Payment';
+import ProcessPayment from './Pages/Payment/ProcessPayment';
 
 const Navigation = () => {
   return (
@@ -94,7 +94,7 @@ const Navigation = () => {
             <UserInfo />
           </Route>
           <Route exact path="/payment">
-            <Payment/>
+            <ProcessPayment/>
           </Route>
         </Switch>
       </Router>

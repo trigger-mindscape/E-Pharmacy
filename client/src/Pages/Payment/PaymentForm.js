@@ -1,8 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
-
-const Payment = ({ handlePayment }) => {
+const PaymentForm = ({ handlePayment }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -40,8 +39,9 @@ const Payment = ({ handlePayment }) => {
       console.log("[PaymentMethod]", paymentMethod);
     }
   };
+
   return (
-    <Fragment>
+    <form>
       <div class="leading-loose">
         <form class="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
           <p class="text-gray-800 font-medium">Customer information</p>
@@ -150,8 +150,8 @@ const Payment = ({ handlePayment }) => {
             </div>
         </form>
       </div>
-    </Fragment>
+    </form>
   );
 };
 
-export default Payment;
+export default PaymentForm;
