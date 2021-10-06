@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import AddToCart from '../Common/AddToCart';
 
 const Products = () => {
   const products = useSelector(state => state.product.allProduct)
@@ -115,9 +116,7 @@ const Products = () => {
                     </div>
 
                     {/* <Link to="/productDetails"> */}
-                      <button className="flex px-3 py-2 text-sm text-white transition duration-150 ease-in-out bg-teal-500 rounded shadow-lg focus:outline-none active:bg-teal-500 hover:bg-teal-700">
-                        Add to Cart
-                      </button>
+                      <AddToCart product={product}/>
                     {/* </Link> */}
                   </div>
                 {/* </Link> */}

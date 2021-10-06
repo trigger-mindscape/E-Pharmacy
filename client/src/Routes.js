@@ -23,6 +23,8 @@ import TermsPrivacy from './Pages/Platform/TermsPrivacy';
 import ShopDetailsPage from './Pages/Shop/ShopDetailsPage';
 import UserInfo from './Components/Admin/UserInfo/UserInfo';
 import ProcessPayment from './Pages/Payment/ProcessPayment';
+import UserDashboard from './Components/Admin/User/UserDashboard';
+import EditUserInfo from './Components/Admin/User/EditUserInfo/EditUserInfo';
 
 const Navigation = () => {
   return (
@@ -95,6 +97,12 @@ const Navigation = () => {
           </Route>
           <Route exact path="/payment">
             <ProcessPayment/>
+          </Route>
+          <Route exact path="/userDashboard">
+            <UserDashboard/>
+          </Route>
+          <Route exact path="/editUserInfo">
+            <EditUserInfo/>
           </Route>
         </Switch>
       </Router>

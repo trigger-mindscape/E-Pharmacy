@@ -40,3 +40,8 @@ export const getSingleShopProductApi = (vendorId) =>
   API.get(`/product/get/${vendorId}`);
 export const getSingleProductApi = (productId) =>
   API.get(`/product/single/get/${productId}`);
+
+//product
+export const placeOrderApi = (formData) =>
+  API.post(`/order/add`, formData);
+

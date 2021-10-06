@@ -1,3 +1,4 @@
+import cartReducer from "./cart/reducer";
 import categoryReducer from "./category/reducer";
 import notificationReducer from "./notification/reducers";
 import productReducer from "./product/reducer";
@@ -12,6 +13,7 @@ export const rootReducer = combineReducers({
   shop: shopReducer,
   category: categoryReducer,
   product: productReducer,
+  cart: cartReducer,
   setting: settingReducer,
   notification: notificationReducer,
 });
